@@ -20,7 +20,7 @@ public class HiloZombieIzquierda extends Thread{
 		for (int i = 0; i < zombies.size()/2; i++) {
 		
 			if(zombies.get(i) instanceof Zombie ) {
-				if(principal.getPosX() < zombies.get(i).getPosX() && zombies.get(i).getPosX() !=  principal.getPosX() + 30){
+				if(principal.getPosX() < zombies.get(i).getPosX() && zombies.get(i).getPosX() !=  principal.getPosX() - 30){
 					((Zombie) zombies.get(i)).setAtacar(false);
 					zombies.get(i).moverPersonaje(-5);
 				}else {

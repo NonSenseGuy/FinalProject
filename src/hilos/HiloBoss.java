@@ -22,7 +22,7 @@ public class HiloBoss extends Thread{
 				if( principal.getPosX() > zombies.get(i).getPosX() && zombies.get(i).getPosX() !=  principal.getPosX() + 200 ) {
 					((Boss) zombies.get(i)).setAtacar(false);
 					zombies.get(i).moverPersonaje(5);
-				}else if(principal.getPosX() < zombies.get(i).getPosX() && zombies.get(i).getPosX() !=  principal.getPosX() + 200){
+				}else if(principal.getPosX() < zombies.get(i).getPosX() && zombies.get(i).getPosX() !=  principal.getPosX() - 200){
 					((Boss) zombies.get(i)).setAtacar(false);
 					zombies.get(i).moverPersonaje(-5);
 				}else {
