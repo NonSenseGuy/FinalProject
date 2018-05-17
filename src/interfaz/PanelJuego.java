@@ -1,5 +1,7 @@
 package interfaz;
 
-public class PanelJuego {
+import javax.swing.JPanel;
+
+public class PanelJuego extends JPanel{
 
 }
