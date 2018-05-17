@@ -8,6 +8,8 @@ import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import modelo.Escenario;
+
 @SuppressWarnings("serial")
 public class PanelJuego extends JPanel implements KeyListener{
 	
@@ -21,9 +23,12 @@ public class PanelJuego extends JPanel implements KeyListener{
 	}
 	
 	public void paintComponent(Graphics g) {
-		ImageIcon usuario = new ImageIcon(IMAGEN_FONDO);
+		
+		ImageIcon usuario = new ImageIcon(v.getJuegoModelo().getEscenario().getImagen());
 		Image newImg = usuario.getImage();
 		g.drawImage(newImg, 0, 0, null);
+		
+		
 	}
 
 	@Override
