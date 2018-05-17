@@ -14,7 +14,5 @@ public class ArmaTiro extends Arma {
 
 	public void setCadencia(int cadencia) {
 		this.cadencia = cadencia;
-	}
-	
-	
+	}	
 }
