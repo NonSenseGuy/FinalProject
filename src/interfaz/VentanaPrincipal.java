@@ -37,6 +37,9 @@ public class VentanaPrincipal extends JFrame{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));
 		setResizable(false);	
 		setLayout(new BorderLayout());
+		
+		pj = new PanelJuego(this);
+		add(pj);
 	}
 
 	public JuegoModelo getJuegoModelo() {
