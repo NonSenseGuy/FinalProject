@@ -6,19 +6,21 @@ public class Escenario {
 	
 	private String imagen;
 	private Escenario siguiente;
-	private ArrayList<Personaje> personaje;
+	private ArrayList<Personaje> personajes;
 	
-	public Escenario(String imagen) {
+	public Escenario(String imagen, PersonajePrincipal p) {
 		super();
 		this.imagen = imagen;
+		personajes = new ArrayList<Personaje>();
+		personajes.add(p);
 	}
 
 	public ArrayList<Personaje> getPersonaje() {
-		return personaje;
+		return personajes;
 	}
 
-	public void setPersonaje(ArrayList<Personaje> personaje) {
-		this.personaje = personaje;
+	public void setPersonaje(ArrayList<Personaje> personajes) {
+		this.personajes = personajes;
 	}
 
 	public Escenario getSiguiente() {
