@@ -4,9 +4,9 @@ import java.awt.geom.Rectangle2D;
 
 public abstract class Personaje {
 	
-	private final static int ANCHO = 60;
-	private final static int ALTO = 60;
-	private final static int POS_Y = 80;
+	public final static int ANCHO = 60;
+	public final static int ALTO = 60;
+	public final static int POS_Y = 80;
 	private int vida;
 	private int posX;
 	private String imagen;

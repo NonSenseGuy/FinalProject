@@ -3,9 +3,11 @@ package modelo;
 public class Boss extends Personaje implements Disparar{
 	
 	public final static int VIDA = 100;
+	public final static int SCORE = 60;
 	private int damage;
 	private int radioDistanciaAtaque;
 	private boolean atacar;
+	private int score;
 	
 	public Boss(int posX, String imagen, int damage, int radioDistanciaAtaque) {
 		super(VIDA, posX, imagen);
@@ -13,10 +15,16 @@ public class Boss extends Personaje implements Disparar{
 		this.radioDistanciaAtaque = radioDistanciaAtaque;
 		setHitBox();
 		atacar = false;
+		score = SCORE;
 	}
 	public int getDamage() {
 		return damage;
 	}
+	
+	public int getScore() {
+		return score;
+	}
+	
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}

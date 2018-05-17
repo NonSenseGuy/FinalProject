@@ -3,18 +3,25 @@ package modelo;
 public class Zombie extends Personaje{
 	
 	public final static int VIDA = 50;
+	public final static int SCORE = 20;
 	private int damage;
 	private boolean atacar;
+	private int score;
 	
 	public Zombie(int posX, String imagen, int damage) {
 		super(VIDA, posX, imagen);
 		this.damage= damage;
 		setHitBox();
 		atacar = false;
+		score = 20;
 	}
 
 	public int getDamage() {
 		return damage;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 
 	public void setDamage(int damage) {

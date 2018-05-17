@@ -4,15 +4,14 @@ public class Arma {
 	
 	private int damage;
 	private int ammo;
-	private String imagen;
+	private String imagenArma;
 	private Arma siguiente;
 	private Arma anterior;
 	
-	public Arma(int damage, int ammo, String imagen) {
-		super();
+	public Arma(int damage, int ammo, String imagenArma) {
 		this.damage = damage;
 		this.ammo = ammo;
-		this.imagen = imagen;
+		this.imagenArma = imagenArma;
 	}
 	public Arma getSiguiente() {
 		return siguiente;
@@ -38,10 +37,10 @@ public class Arma {
 	public void setAmmo(int ammo) {
 		this.ammo = ammo;
 	}
-	public String getImagen() {
-		return imagen;
+	public String getImagenArma() {
+		return imagenArma;
 	}
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}	
+	public void setImagenArma(String imagen) {
+		this.imagenArma = imagen;
+	}
 }
