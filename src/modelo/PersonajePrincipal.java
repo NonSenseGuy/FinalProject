@@ -2,6 +2,7 @@ package modelo;
 
 public class PersonajePrincipal extends Personaje implements Disparar{
 	
+	public final static String IMAGEN= "./img/personajePrincipal.png";
 	public final static int VIDA = 100;
 	private Arma arma;
 

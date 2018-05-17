@@ -11,6 +11,9 @@ public class JuegoModelo{
 		this.nickname = nickname;
 		this.score = score;
 		this.nivel = nivel;
+		PersonajePrincipal p = new PersonajePrincipal(640, PersonajePrincipal.IMAGEN);
+		escenario = new Escenario(Escenario.ESCENARIOS[0],p);
+		escenario.setSiguiente(new Escenario.ESCENARIO[1], p);
 	}
 	public String getNickname() {
 		return nickname;
@@ -32,7 +35,12 @@ public class JuegoModelo{
 	}
 	
 	public Escenario getEscenario() {
-		return escenario;
+		if(nivel <= 2) {
+			return escenario;
+		}else{
+			escenario = escenario.getSiguiente();
+			return escenario;
+		}
 	}
 	
 	public void setEscenario(Escenario escenario) {

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Escenario implements Generar{
 	
+	public final static String[] ESCENARIOS = { "./img/background2.png", "./img/background3.png", "./img/background4.png"};
 	private String imagen;
 	private Escenario siguiente;
 	private ArrayList<Personaje> enemigos;
 	private PersonajePrincipal pPrincipal;
 	
 	public Escenario(String imagen, PersonajePrincipal p){
-		super();
 		this.imagen = imagen;
 		enemigos = new ArrayList<Personaje>();
 		this.pPrincipal = p;
@@ -47,6 +47,7 @@ public class Escenario implements Generar{
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
+
 
 	@Override
 	public void generar() {
