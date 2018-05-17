@@ -1,11 +1,13 @@
 package interfaz;
 
-import java.awt.Graphics;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import modelo.*;
 
+@SuppressWarnings("serial")
 public class VentanaPrincipal extends JFrame{
 	
 	private JuegoModelo jm;
@@ -13,16 +15,20 @@ public class VentanaPrincipal extends JFrame{
 	private PanelMenu pm;
 	
 	public VentanaPrincipal() {
-		setTitle("Pixel ZombieWar");
+		setTitle("Zombies Pixel War");
 		setSize(1280,720);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));
+		setResizable(false);	
+		setLayout(new BorderLayout());
+		
+		pm = new PanelMenu(this);
 				
 	}
 	
 	public JuegoModelo getJuegoModelo() {
-		return this.jm;
+		return jm;
 	}	
 	
 	public static void main(String[] args) {

@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class PanelMenu extends JPanel implements MouseListener{
 	
 	private VentanaPrincipal v;
