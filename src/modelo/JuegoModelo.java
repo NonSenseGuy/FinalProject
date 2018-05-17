@@ -32,7 +32,6 @@ public class JuegoModelo implements Generar{
 	}
 	@Override
 	public void generar() {
-		// TODO Auto-generated method stub
 		
 	}	
 	
