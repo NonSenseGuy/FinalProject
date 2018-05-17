@@ -1,6 +1,6 @@
 package modelo;
 
-public class JuegoModelo implements Generar{
+public class JuegoModelo{
 	
 	private String nickname;
 	private int score;
@@ -30,9 +30,5 @@ public class JuegoModelo implements Generar{
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	@Override
-	public void generar() {
-		
-	}	
 	
 }
