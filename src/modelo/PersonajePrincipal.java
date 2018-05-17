@@ -24,10 +24,4 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 		
 	}
 	
-	@Override
-	public void mover(int distancia) {
-		setPosX(getPosX() + distancia);
-		setHitBox();
-	}
-	
 }

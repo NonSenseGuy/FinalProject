@@ -23,8 +23,7 @@ public class VentanaPrincipal extends JFrame{
 	
 	public JuegoModelo getJuegoModelo() {
 		return this.jm;
-	}
-	
+	}	
 	
 	public static void main(String[] args) {
 		VentanaPrincipal v = new VentanaPrincipal();

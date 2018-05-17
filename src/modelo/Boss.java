@@ -5,12 +5,14 @@ public class Boss extends Personaje implements Disparar{
 	public final static int VIDA = 100;
 	private int damage;
 	private int radioDistanciaAtaque;
+	private boolean atacar;
 	
 	public Boss(int posX, String imagen, int damage, int radioDistanciaAtaque) {
 		super(VIDA, posX, imagen);
 		this.damage = damage;
 		this.radioDistanciaAtaque = radioDistanciaAtaque;
 		setHitBox();
+		atacar = false;
 	}
 	public int getDamage() {
 		return damage;
@@ -23,6 +25,14 @@ public class Boss extends Personaje implements Disparar{
 	}
 	public void setRadioDistanciaAtaque(int radioDistanciaAtaque) {
 		this.radioDistanciaAtaque = radioDistanciaAtaque;
+	}
+	
+	public boolean getAtacar() {
+		return atacar;
+	}
+	
+	public void setAtacar(boolean atacar) {
+		this.atacar = atacar;
 	}
 	@Override
 	public void disparar() {

@@ -52,7 +52,7 @@ public abstract class Personaje {
 		return hitBox;
 	}
 	
-	public void mover(int distancia) {
+	public void moverPersonaje(int distancia) {
 		setPosX(getPosX() + distancia);
 		setHitBox();
 	}
