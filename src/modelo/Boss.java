@@ -2,12 +2,15 @@ package modelo;
 
 public class Boss extends Personaje implements Disparar{
 	
+	public final static int VIDA = 100;
 	private int damage;
 	private int radioDistanciaAtaque;
-	public Boss(int vida, int posX, int posY, String imagen, int damage, int radioDistanciaAtaque) {
-		super(vida, posX, posY, imagen);
+	
+	public Boss(int posX, String imagen, int damage, int radioDistanciaAtaque) {
+		super(VIDA, posX, imagen);
 		this.damage = damage;
 		this.radioDistanciaAtaque = radioDistanciaAtaque;
+		setHitBox();
 	}
 	public int getDamage() {
 		return damage;
@@ -25,5 +28,5 @@ public class Boss extends Personaje implements Disparar{
 	public void disparar() {
 		// TODO Auto-generated method stub
 		
-	}	
+	}
 }

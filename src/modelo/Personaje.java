@@ -1,18 +1,22 @@
 package modelo;
 
+import java.awt.geom.Rectangle2D;
+
 public abstract class Personaje {
 	
+	private final static int ANCHO = 60;
+	private final static int ALTO = 60;
+	private final static int POS_Y = 80;
 	private int vida;
 	private int posX;
-	private int posY;
 	private String imagen;
+	private Rectangle2D hitBox;
 	
-	public Personaje(int vida, int posX, int posY, String imagen) {
-		super();
+	public Personaje(int vida, int posX, String imagen) {
 		this.vida = vida;
 		this.posX = posX;
-		this.posY = posY;
 		this.imagen = imagen;
+		setHitBox();
 	}
 
 	public int getVida() {
@@ -31,14 +35,6 @@ public abstract class Personaje {
 		this.posX = posX;
 	}
 
-	public int getPosY() {
-		return posY;
-	}
-
-	public void setPosY(int posY) {
-		this.posY = posY;
-	}
-
 	public String getImagen() {
 		return imagen;
 	}
@@ -47,7 +43,18 @@ public abstract class Personaje {
 		this.imagen = imagen;
 	}
 	
+	public void setHitBox() {
+		Rectangle2D hitBox = new Rectangle2D.Double(posX, POS_Y, ANCHO, ALTO);
+		this.hitBox = hitBox;
+	}
 	
+	public Rectangle2D getHitBox() {
+		return hitBox;
+	}
 	
+	public void mover(int distancia) {
+		setPosX(getPosX() + distancia);
+		setHitBox();
+	}
 	
 }

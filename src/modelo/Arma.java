@@ -43,8 +43,5 @@ public class Arma {
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
-	}
-	
-	
-	
+	}	
 }

@@ -6,8 +6,8 @@ public class JuegoModelo implements Generar{
 	private int score;
 	private int nivel;
 	private Escenario escenario;
+	
 	public JuegoModelo(String nickname, int score, int nivel) {
-		super();
 		this.nickname = nickname;
 		this.score = score;
 		this.nivel = nivel;
