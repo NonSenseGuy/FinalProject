@@ -31,4 +31,12 @@ public class JuegoModelo{
 		this.nivel = nivel;
 	}
 	
+	public Escenario getEscenario() {
+		return escenario;
+	}
+	
+	public void setEscenario(Escenario escenario) {
+		this.escenario = escenario;
+	}
+	
 }
