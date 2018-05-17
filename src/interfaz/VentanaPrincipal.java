@@ -9,6 +9,7 @@ public class VentanaPrincipal extends JFrame{
 	
 	private JuegoModelo jm;
 	private PanelJuego pj;
+	private PanelMenu pm;
 	
 	public VentanaPrincipal() {
 		setTitle("Pixel Z");
@@ -20,9 +21,6 @@ public class VentanaPrincipal extends JFrame{
 		
 	}
 	
-	public void paint(Graphics g) {
-		
-	}
 	
 	
 	public static void main(String[] args) {
