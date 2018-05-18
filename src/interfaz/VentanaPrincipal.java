@@ -3,8 +3,11 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import modelo.*;
 
 @SuppressWarnings("serial")
@@ -49,5 +52,21 @@ public class VentanaPrincipal extends JFrame{
 	public static void main(String[] args) {
 		VentanaPrincipal v = new VentanaPrincipal();
 		v.setVisible(true);
+	}
+
+	public void moverPersonajePrincipal(int keyCode) {
+		
+		if(keyCode == KeyEvent.VK_A) {
+			jm.getEscenario().getPersonajePrincipal().moverPersonaje(-1);
+		}else if(keyCode == KeyEvent.VK_D){
+			jm.getEscenario().getPersonajePrincipal().moverPersonaje(1);
+		}
+		pj.repaint();
+		
+	}
+
+	public void dispararPersonajePrincipal(int keyCode) {
+		jm.getEscenario().getPersonajePrincipal().disparar();
+		
 	}
 }

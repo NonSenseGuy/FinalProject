@@ -3,8 +3,8 @@ package modelo;
 public class ArmaTiro extends Arma {
 	private int cadencia;
 
-	public ArmaTiro(int damage, int ammo, String imagen, int cadencia) {
-		super(damage, ammo, imagen);
+	public ArmaTiro(String nombre,int damage, int ammo, String imagen, int cadencia) {
+		super(nombre,damage, ammo, imagen);
 		this.cadencia = cadencia;
 	}
 

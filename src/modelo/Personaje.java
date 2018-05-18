@@ -6,7 +6,7 @@ public abstract class Personaje {
 	
 	public final static int ANCHO = 60;
 	public final static int ALTO = 60;
-	public final static int POS_Y = 80;
+	public final static int POS_Y = 500;
 	private int vida;
 	private int posX;
 	private String imagen;
@@ -53,7 +53,7 @@ public abstract class Personaje {
 	}
 	
 	public void moverPersonaje(int distancia) {
-		setPosX(getPosX() + distancia);
+		setPosX(getPosX() + (distancia));
 		setHitBox();
 	}
 	

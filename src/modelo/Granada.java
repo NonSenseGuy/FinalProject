@@ -4,8 +4,8 @@ public class Granada extends Explosivo {
 	
 	private int tiempoExplosion;
 
-	public Granada(int damage, int ammo, String imagen, int radioExplosion, int tiempoExplosion) {
-		super(damage, ammo, imagen, radioExplosion);
+	public Granada(String nombre,int damage, int ammo, String imagen, int radioExplosion, int tiempoExplosion) {
+		super(nombre,damage, ammo, imagen, radioExplosion);
 		this.tiempoExplosion = tiempoExplosion;
 	}
 

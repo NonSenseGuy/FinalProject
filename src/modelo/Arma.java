@@ -2,17 +2,28 @@ package modelo;
 
 public class Arma {
 	
+	private String nombre;
 	private int damage;
 	private int ammo;
 	private String imagenArma;
 	private Arma siguiente;
 	private Arma anterior;
 	
-	public Arma(int damage, int ammo, String imagenArma) {
+	public Arma(String nombre,int damage, int ammo, String imagenArma) {
+		this.nombre = nombre;
 		this.damage = damage;
 		this.ammo = ammo;
 		this.imagenArma = imagenArma;
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setArma(String nombre) {
+		this.nombre = nombre;
+	}
+	
 	public Arma getSiguiente() {
 		return siguiente;
 	}

@@ -3,8 +3,8 @@ package modelo;
 public class Explosivo extends Arma implements Explosion{
 	private int radioExplosion;
 
-	public Explosivo(int damage, int ammo, String imagen, int radioExplosion) {
-		super(damage, ammo, imagen);
+	public Explosivo(String nombre,int damage, int ammo, String imagen, int radioExplosion) {
+		super(nombre,damage, ammo, imagen);
 		this.radioExplosion = radioExplosion;
 	}
 
