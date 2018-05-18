@@ -25,6 +25,7 @@ public class VentanaPrincipal extends JFrame{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));
 		setResizable(false);	
 		setLayout(new BorderLayout());
+		setLocationRelativeTo(null);
 		
 		pm = new PanelMenu(this);
 		add(pm);
