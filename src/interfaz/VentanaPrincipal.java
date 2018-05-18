@@ -1,14 +1,12 @@
 package interfaz;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
-import modelo.*;
+import modelo.JuegoModelo;
 
 @SuppressWarnings("serial")
 public class VentanaPrincipal extends JFrame{
