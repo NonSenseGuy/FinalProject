@@ -8,6 +8,7 @@ public class Arma {
 	private String imagenArma;
 	private Arma siguiente;
 	private Arma anterior;
+	private Bala bala;
 	
 	public Arma(String nombre,int damage, int ammo, String imagenArma) {
 		this.nombre = nombre;
