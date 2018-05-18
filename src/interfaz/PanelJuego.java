@@ -54,7 +54,6 @@ public class PanelJuego extends JPanel implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 

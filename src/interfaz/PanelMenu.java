@@ -22,6 +22,8 @@ public class PanelMenu extends JPanel implements MouseListener{
 	
 	private VentanaPrincipal v;
 	
+	private DialogoPuntajes dp; 
+	
 	public PanelMenu(VentanaPrincipal v) {
 		this.v =v;
 		addMouseListener(this);
@@ -87,7 +89,7 @@ public class PanelMenu extends JPanel implements MouseListener{
 	}
 
 	private void cargarPuntajes() {
-		// TODO Auto-generated method stub
+		dp = new DialogoPuntajes(v);
 		
 	}
 

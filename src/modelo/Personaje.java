@@ -44,8 +44,8 @@ public abstract class Personaje {
 	}
 	
 	public void setHitBox() {
-		Rectangle2D hitBox = new Rectangle2D.Double(posX, POS_Y, ANCHO, ALTO);
-		this.hitBox = hitBox;
+		hitBox = new Rectangle2D.Double(posX, POS_Y, ANCHO, ALTO);
+		
 	}
 	
 	public Rectangle2D getHitBox() {
@@ -53,7 +53,8 @@ public abstract class Personaje {
 	}
 	
 	public void moverPersonaje(int distancia) {
-		setPosX(getPosX() + (distancia));
+		int xFuturo=posX+distancia;
+		setPosX(xFuturo);
 		setHitBox();
 	}
 	
