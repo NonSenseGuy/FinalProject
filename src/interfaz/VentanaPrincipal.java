@@ -56,9 +56,9 @@ public class VentanaPrincipal extends JFrame{
 	public void moverPersonajePrincipal(int keyCode) {
 		
 		if(keyCode == KeyEvent.VK_A) {
-			jm.getEscenario().getPersonajePrincipal().moverPersonaje(-1);
+			jm.getEscenario().getPersonajePrincipal().moverPersonaje(-5);
 		}else if(keyCode == KeyEvent.VK_D){
-			jm.getEscenario().getPersonajePrincipal().moverPersonaje(1);
+			jm.getEscenario().getPersonajePrincipal().moverPersonaje(5);
 		}
 		pj.repaint();
 		

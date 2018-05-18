@@ -17,6 +17,7 @@ import modelo.Personaje;
 public class PanelJuego extends JPanel implements KeyListener{
 	
 	private VentanaPrincipal v;
+	private boolean parar;
 	
 	public PanelJuego(VentanaPrincipal v) {
 		this.v = v;
@@ -33,6 +34,7 @@ public class PanelJuego extends JPanel implements KeyListener{
 		Image newImg = usuario.getImage();
 		g.drawImage(newImg, 0, 0, null);
 		g.drawImage(new ImageIcon(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getImagen()).getImage(), v.getJuegoModelo().getEscenario().getPersonajePrincipal().getPosX(),Personaje.POS_Y, null);
+		parar = false;
 		g.drawString("Score: " + v.getJuegoModelo().getScore() , 15, 20);
 		g.drawString("Nivel: " + v.getJuegoModelo().getNivel(), 15, 50);
 		if(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma() != null){
@@ -44,11 +46,17 @@ public class PanelJuego extends JPanel implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		//JOptionPane.showMessageDialog(null, KeyEvent.VK_A+"");
-		if(arg0.getKeyCode() == KeyEvent.VK_A || arg0.getKeyCode() == KeyEvent.VK_D) {
-			v.moverPersonajePrincipal(arg0.getKeyCode());
-		}else if(arg0.getKeyCode() == KeyEvent.VK_RIGHT || arg0.getKeyCode() == KeyEvent.VK_LEFT) {
-			v.dispararPersonajePrincipal(arg0.getKeyCode());
+		
+		if(!parar) {
+			if(arg0.getKeyCode() == KeyEvent.VK_A || arg0.getKeyCode() == KeyEvent.VK_D) {
+				v.moverPersonajePrincipal(arg0.getKeyCode());
+			}else if(arg0.getKeyCode() == KeyEvent.VK_RIGHT || arg0.getKeyCode() == KeyEvent.VK_LEFT) {
+				v.dispararPersonajePrincipal(arg0.getKeyCode());
+			}
+			
+			parar = true;
 		}
+		
 		
 	}
 
