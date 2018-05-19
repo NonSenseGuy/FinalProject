@@ -19,6 +19,10 @@ public class Bala {
 		setHitBox();
 	}
 	
+	public String getImagenBala() {
+		return imagenBala;
+	}
+	
 	public void setHitBox() {
 		ImageIcon ii = new ImageIcon(imagenBala);
 		Rectangle2D hitBox = new Rectangle2D.Double(posX, Personaje.POS_Y, ii.getIconWidth(), ii.getIconHeight());

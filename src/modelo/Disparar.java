@@ -1,5 +1,5 @@
 package modelo;
 
 public interface Disparar {
-	void disparar();
+	void disparar(int direccion);
 }

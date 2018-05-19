@@ -12,6 +12,7 @@ public class JuegoModelo{
 		this.score = score;
 		this.nivel = nivel;
 		PersonajePrincipal p = new PersonajePrincipal(640, PersonajePrincipal.IMAGEN);
+		p.setArma(new ArmaTiro("Gun", 20, 50, " ", 1));
 		escenario = new Escenario(Escenario.ESCENARIOS[0],p);
 		escenario.setSiguiente(new Escenario(Escenario.ESCENARIOS[1], p));
 	}

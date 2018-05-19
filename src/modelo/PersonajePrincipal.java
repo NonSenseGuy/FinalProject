@@ -1,5 +1,7 @@
 package modelo;
 
+import java.awt.event.KeyEvent;
+
 public class PersonajePrincipal extends Personaje implements Disparar{
 	
 	public final static String IMAGEN= "./img/personajePrincipal.png";
@@ -20,9 +22,15 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 	}
 
 	@Override
-	public void disparar() {
-		// TODO Auto-generated method stub
-		
+	public void disparar(int direccion) {
+		if(arma instanceof ArmaTiro) {
+			if(direccion == KeyEvent.VK_RIGHT) {
+				Bala balaDisparada = ((ArmaTiro)arma).dispararBala(getPosX()+5);
+					balaDisparada.moverBala(10);
+			}else if(direccion == KeyEvent.VK_LEFT){
+				Bala balaDisparada = ((ArmaTiro)arma).dispararBala(getPosX()-5);
+					balaDisparada.moverBala(-10);
+			}
+		}	
 	}
-	
 }

@@ -42,8 +42,9 @@ public class Boss extends Personaje implements Disparar{
 	public void setAtacar(boolean atacar) {
 		this.atacar = atacar;
 	}
+	
 	@Override
-	public void disparar() {
+	public void disparar(int direccion) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -65,7 +65,7 @@ public class VentanaPrincipal extends JFrame{
 	}
 
 	public void dispararPersonajePrincipal(int keyCode) {
-		jm.getEscenario().getPersonajePrincipal().disparar();
+		jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
 		
 	}
 }
