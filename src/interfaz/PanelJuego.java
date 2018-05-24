@@ -7,10 +7,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import modelo.*;
+import modelo.ArmaTiro;
+import modelo.Bala;
+import modelo.Personaje;
 
 @SuppressWarnings("serial")
 public class PanelJuego extends JPanel implements KeyListener{
@@ -74,7 +75,9 @@ public class PanelJuego extends JPanel implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		
+		if(arg0.getKeyCode() == KeyEvent.VK_A || arg0.getKeyCode() == KeyEvent.VK_D) {
+				v.moverPersonajePrincipal(0);
+			}
 	}
 
 	@Override
