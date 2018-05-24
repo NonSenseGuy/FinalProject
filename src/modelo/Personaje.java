@@ -11,12 +11,31 @@ public abstract class Personaje {
 	private int posX;
 	private String imagen;
 	private Rectangle2D hitBox;
-	
+	private int velocidad;
+	private boolean enMovimiento;
+
 	public Personaje(int vida, int posX, String imagen) {
 		this.vida = vida;
 		this.posX = posX;
 		this.imagen = imagen;
 		setHitBox();
+		velocidad = 0;
+		enMovimiento = false;
+	}
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
+	
+	public boolean isEnMovimiento() {
+		return enMovimiento;
+	}
+	
+	public void setEnMovimiento(boolean enMovimiento) {
+		this.enMovimiento = enMovimiento;
 	}
 
 	public int getVida() {
@@ -57,5 +76,7 @@ public abstract class Personaje {
 		setPosX(xFuturo);
 		setHitBox();
 	}
+
+
 	
 }

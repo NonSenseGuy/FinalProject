@@ -6,7 +6,9 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
+import hilos.HiloPersonaje;
 import modelo.JuegoModelo;
+import modelo.PersonajePrincipal;
 
 @SuppressWarnings("serial")
 public class VentanaPrincipal extends JFrame{
@@ -14,6 +16,7 @@ public class VentanaPrincipal extends JFrame{
 	private JuegoModelo jm;
 	private PanelJuego pj;
 	private PanelMenu pm;
+	private HiloPersonaje hiloPersonaje;
 	
 	public VentanaPrincipal() {
 		setTitle("Zombies Pixel War");
@@ -42,6 +45,8 @@ public class VentanaPrincipal extends JFrame{
 		
 		pj = new PanelJuego(this);
 		add(pj);
+		hiloPersonaje = new HiloPersonaje(jm.getEscenario().getPersonajePrincipal(), this);
+		hiloPersonaje.start();
 	}
 
 	public JuegoModelo getJuegoModelo() {
@@ -56,16 +61,21 @@ public class VentanaPrincipal extends JFrame{
 	public void moverPersonajePrincipal(int keyCode) {
 		
 		if(keyCode == KeyEvent.VK_A) {
-			jm.getEscenario().getPersonajePrincipal().moverPersonaje(-5);
+			jm.getEscenario().getPersonajePrincipal().setVelocidad(-PersonajePrincipal.VELOCIDAD);
 		}else if(keyCode == KeyEvent.VK_D){
-			jm.getEscenario().getPersonajePrincipal().moverPersonaje(5);
+			jm.getEscenario().getPersonajePrincipal().setVelocidad(PersonajePrincipal.VELOCIDAD);;
 		}
-		pj.repaint();
+		
 		
 	}
 
 	public void dispararPersonajePrincipal(int keyCode) {
-		jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
+		if(keyCode == KeyEvent.VK_LEFT) {
+			jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
+		}else if(keyCode == KeyEvent.VK_RIGHT) {
+			
+		}
+		
 		
 	}
 }

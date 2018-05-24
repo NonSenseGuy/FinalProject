@@ -2,7 +2,9 @@ package modelo;
 
 public class ArmaTiro extends Arma {
 	
+	public final int VELOCIDAD_BALA = 5;
 	private int cadencia;
+	
 	
 	private Bala[] balas;
 

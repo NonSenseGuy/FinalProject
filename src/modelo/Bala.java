@@ -10,6 +10,7 @@ public class Bala {
 	private int damage;
 	private Rectangle2D hitBox;
 	private int posX;
+	private int velocidad;
 	
 	
 	public Bala(String imagenBala, int posX, int damage) {
