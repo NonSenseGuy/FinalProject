@@ -70,7 +70,7 @@ public class PanelMenu extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent arg0) {
 		int x = arg0.getX();
 		int y = arg0.getY();
-		JOptionPane.showMessageDialog(null, y+"");
+		
 		int posicionBoton = 230;
 		
 		
