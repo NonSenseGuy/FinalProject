@@ -41,7 +41,7 @@ public class PanelMenu extends JPanel implements MouseListener{
 			
 			Font font = new Font("curier" , Font.BOLD, 30);
 			g.setFont(font);
-			g.drawString(BOTONES[i], v.getWidth()/2 -100, y);
+			g.drawString(BOTONES[i], VentanaPrincipal.ANCHO_VENTANA/2 -100, y);
 			y+= TAMANO_BOTON;
 			
 		}
@@ -74,8 +74,8 @@ public class PanelMenu extends JPanel implements MouseListener{
 		int posicionBoton = 230;
 		
 		
-		if(x > v.getWidth()/2 -300 && x  < v.getWidth()/2 + 300) {
-			if(y > posicionBoton && y < posicionBoton+TAMANO_BOTON-60) {
+		if(x > VentanaPrincipal.ANCHO_VENTANA/2 -300 && x  < VentanaPrincipal.ANCHO_VENTANA/2 + 300) {
+			if(y > posicionBoton && y < posicionBoton + TAMANO_BOTON - 60) {
 				crearPartida();
 			}else if(y > posicionBoton+TAMANO_BOTON && y < posicionBoton+TAMANO_BOTON+50) {
 				cargarPartida();
@@ -104,7 +104,6 @@ public class PanelMenu extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 	

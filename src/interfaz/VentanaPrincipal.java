@@ -14,6 +14,8 @@ import modelo.PersonajePrincipal;
 @SuppressWarnings("serial")
 public class VentanaPrincipal extends JFrame{
 	
+	public final static int ANCHO_VENTANA = 1280;
+	public final static int ALTO_VENTANA = 720;
 	private JuegoModelo jm;
 	private PanelJuego pj;
 	private PanelMenu pm;
@@ -22,7 +24,7 @@ public class VentanaPrincipal extends JFrame{
 	
 	public VentanaPrincipal() {
 		setTitle("Zombies Pixel War");
-		setSize(1280,720);
+		setSize(ANCHO_VENTANA, ALTO_VENTANA);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));

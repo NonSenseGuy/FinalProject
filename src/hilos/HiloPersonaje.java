@@ -1,6 +1,6 @@
 package hilos;
-import modelo.*;
 import interfaz.VentanaPrincipal;
+import modelo.PersonajePrincipal;
 
 public class HiloPersonaje extends Thread{
 	
@@ -21,7 +21,7 @@ public class HiloPersonaje extends Thread{
 			
 			if(personajePrincipal.getPosX() <= 0) {
 				personajePrincipal.setPosX(0);
-			}else if(personajePrincipal.getPosX() >= ventanaPrincipal.getWidth()-personajePrincipal.ANCHO_IMAGEN) {
+			}else if(personajePrincipal.getPosX() >= VentanaPrincipal.ANCHO_VENTANA - personajePrincipal.ANCHO_IMAGEN) {
 				personajePrincipal.setPosX(ventanaPrincipal.getWidth()-personajePrincipal.ANCHO_IMAGEN);
 			}
 			

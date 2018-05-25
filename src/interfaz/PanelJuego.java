@@ -44,9 +44,7 @@ public class PanelJuego extends JPanel{
 	}
 	
 	public void pintarBalas(Graphics g) {
-
-		//ArmaTiro arma = (ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma();
-		//for(int i = 0; i < 3; i ++) {
+		
 			if(((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida()).getBala() != null) {
 				Bala bala = ((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida()).getBala();
 				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y +60, null);
