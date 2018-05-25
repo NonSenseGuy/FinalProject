@@ -26,20 +26,7 @@ public class HiloBalas extends Thread{
 					if(balaDisparada.getPosX() < 0 || balaDisparada.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
 						((ArmaTiro)arma).setBala(null);
 					}
-				}
-				
-				/*for(int i = 0; i < arma.getBala().length; i++) {
-					Bala balaDisparada = arma.getBala()[i];
-					if(balaDisparada != null) {
-						balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());
-						if(balaDisparada.getPosX() < 0) {
-							balaDisparada = null;
-						}else if(balaDisparada.getPosX() > ventana.getWidth()) {
-							balaDisparada = null;
-						}
-					}
-				}*/
-				
+				}				
 			}	
 			
 			try {
