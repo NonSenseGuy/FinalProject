@@ -44,7 +44,6 @@ public class PanelJuego extends JPanel{
 	}
 	
 	public void pintarBalas(Graphics g) {
-		//ArmaTiro arma = (ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma();
 		for(int i = 0; i < 3; i ++) {
 			if(((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma()).getBala()[i] != null) {
 				Bala bala = ((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma()).getBala()[i];
@@ -55,8 +54,7 @@ public class PanelJuego extends JPanel{
 	}
 
 	
-	public void keyPressed(KeyEvent arg0) {
-		
+	public void keyPressed(KeyEvent arg0) {		
 		if(arg0.getKeyCode() == KeyEvent.VK_A || arg0.getKeyCode() == KeyEvent.VK_D) {
 			v.moverPersonajePrincipal(arg0.getKeyCode());
 		}
@@ -70,7 +68,12 @@ public class PanelJuego extends JPanel{
 	public void keyReleased(KeyEvent arg0) {
 		if(arg0.getKeyCode() == KeyEvent.VK_A || arg0.getKeyCode() == KeyEvent.VK_D) {
 				v.getJuegoModelo().getEscenario().getPersonajePrincipal().setVelocidad(0);
-			}
+		}
+		
+		if(arg0.getKeyCode() == KeyEvent.VK_RIGHT || arg0.getKeyCode() == KeyEvent.VK_LEFT) {
+			v.dispararPersonajePrincipal(0);
+		}
+		
 	}
 
 }

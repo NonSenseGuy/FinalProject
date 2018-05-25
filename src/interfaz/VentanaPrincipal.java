@@ -69,8 +69,6 @@ public class VentanaPrincipal extends JFrame{
 		}else if(keyCode == KeyEvent.VK_D){
 			jm.getEscenario().getPersonajePrincipal().setVelocidad(PersonajePrincipal.VELOCIDAD);;
 		}
-		
-		
 	}
 
 	public void dispararPersonajePrincipal(int keyCode) {
@@ -78,8 +76,6 @@ public class VentanaPrincipal extends JFrame{
 			jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
 		}else if(keyCode == KeyEvent.VK_RIGHT) {
 			jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
-		}
-		
-		
+		}		
 	}
 }
