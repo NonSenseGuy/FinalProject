@@ -71,7 +71,7 @@ public class PanelJuego extends JPanel{
 		}
 		
 		if(arg0.getKeyCode() == KeyEvent.VK_RIGHT || arg0.getKeyCode() == KeyEvent.VK_LEFT) {
-			v.dispararPersonajePrincipal(0);
+				v.dispararPersonajePrincipal(0);
 		}
 		
 	}

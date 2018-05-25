@@ -22,13 +22,17 @@ public class ArmaTiro extends Arma {
 		this.cadencia = cadencia;
 	}
 	
-	public Bala dispararBala(int posX) {
+	public void dispararBala(int posX) {
+		if(bala == null)
 		bala = new Bala("./img/disparoHorizontal.png", posX, getDamage());
 		
-		return bala;
+		
 	}
 	
 	public Bala getBala() {
 		return bala;
+	}
+	public void setBala(Bala bala) {
+		this.bala = bala;
 	}
 }

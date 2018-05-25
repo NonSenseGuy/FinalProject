@@ -23,6 +23,9 @@ public class HiloBalas extends Thread{
 				if(balaDisparada != null) {
 					
 					balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());
+					if(balaDisparada.getPosX() < 0 || balaDisparada.getPosX() > ventana.getWidth()) {
+						((ArmaTiro)arma).setBala(null);
+					}
 				}
 				
 				/*for(int i = 0; i < arma.getBala().length; i++) {

@@ -12,6 +12,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 	public final static int VELOCIDAD = 2;
 	private Arma primera;
 	private Arma elegida;
+
 	
 
 	public PersonajePrincipal(int posX, String imagen) {
@@ -57,11 +58,19 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 	public void disparar(int direccion) {
 		if(elegida instanceof ArmaTiro) {
 			if(direccion == KeyEvent.VK_RIGHT) {
-				Bala balaDisparada = ((ArmaTiro)elegida).dispararBala(getPosX());
-				balaDisparada.setVelocidad(balaDisparada.VELOCIDAD_BALA);
+				if(((ArmaTiro)elegida).getBala() == null) {
+					((ArmaTiro)elegida).dispararBala(getPosX());
+					Bala balaDisparada = ((ArmaTiro) elegida).getBala();
+					balaDisparada.setVelocidad(balaDisparada.VELOCIDAD_BALA);
+				}
+				
 			}else if(direccion == KeyEvent.VK_LEFT){
-				Bala balaDisparada = ((ArmaTiro)elegida).dispararBala(getPosX()-5);
+				if(((ArmaTiro)elegida).getBala() == null) {
+					((ArmaTiro)elegida).dispararBala(getPosX()-5);
+					Bala balaDisparada = ((ArmaTiro)elegida).getBala();
 					balaDisparada.setVelocidad(-balaDisparada.VELOCIDAD_BALA);
+				}
+				
 			}
 		}	
 	}
