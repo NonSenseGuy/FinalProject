@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
+import hilos.HiloBalas;
 import hilos.HiloPersonaje;
 import modelo.JuegoModelo;
 import modelo.PersonajePrincipal;
@@ -17,6 +18,7 @@ public class VentanaPrincipal extends JFrame{
 	private PanelJuego pj;
 	private PanelMenu pm;
 	private HiloPersonaje hiloPersonaje;
+	private HiloBalas hiloBalas;
 	
 	public VentanaPrincipal() {
 		setTitle("Zombies Pixel War");
@@ -47,6 +49,8 @@ public class VentanaPrincipal extends JFrame{
 		add(pj);
 		hiloPersonaje = new HiloPersonaje(jm.getEscenario().getPersonajePrincipal(), this);
 		hiloPersonaje.start();
+		hiloBalas = new HiloBalas(jm.getEscenario().getPersonajePrincipal(), this);
+		hiloBalas.start();
 	}
 
 	public JuegoModelo getJuegoModelo() {
@@ -73,7 +77,7 @@ public class VentanaPrincipal extends JFrame{
 		if(keyCode == KeyEvent.VK_LEFT) {
 			jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
 		}else if(keyCode == KeyEvent.VK_RIGHT) {
-			
+			jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
 		}
 		
 		

@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -49,7 +48,7 @@ public class PanelJuego extends JPanel{
 		for(int i = 0; i < 3; i ++) {
 			if(((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma()).getBala()[i] != null) {
 				Bala bala = ((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma()).getBala()[i];
-				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y, null);
+				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y +60, null);
 			}
 		}
 		
@@ -57,21 +56,16 @@ public class PanelJuego extends JPanel{
 
 	
 	public void keyPressed(KeyEvent arg0) {
-		//JOptionPane.showMessageDialog(null, KeyEvent.VK_A+"");
 		
-		//if(!parar) {
-			if(arg0.getKeyCode() == KeyEvent.VK_A || arg0.getKeyCode() == KeyEvent.VK_D) {
-				v.moverPersonajePrincipal(arg0.getKeyCode());
-			}
-			//parar = true;
-		//}
+		if(arg0.getKeyCode() == KeyEvent.VK_A || arg0.getKeyCode() == KeyEvent.VK_D) {
+			v.moverPersonajePrincipal(arg0.getKeyCode());
+		}
 		
 		if(arg0.getKeyCode() == KeyEvent.VK_RIGHT || arg0.getKeyCode() == KeyEvent.VK_LEFT) {
 			v.dispararPersonajePrincipal(arg0.getKeyCode());
 		}
 		
 	}
-
 	
 	public void keyReleased(KeyEvent arg0) {
 		if(arg0.getKeyCode() == KeyEvent.VK_A || arg0.getKeyCode() == KeyEvent.VK_D) {

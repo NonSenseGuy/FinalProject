@@ -4,26 +4,25 @@ import interfaz.VentanaPrincipal;
 
 public class HiloPersonaje extends Thread{
 	
-	private PersonajePrincipal p;
-	private VentanaPrincipal v;
-	private boolean mover;
+	private PersonajePrincipal personajePrincipal;
+	private VentanaPrincipal ventanaPrincipal;
 	
 	
 	public HiloPersonaje(PersonajePrincipal p, VentanaPrincipal v) {
-		this.p = p;
-		this.v = v;
-		this.mover = p.isEnMovimiento();
-		
+		this.personajePrincipal = p;
+		this.ventanaPrincipal = v;		
 	}
 	
 	public void run() {
 		
 		while(true) {
-			p.setPosX(p.getPosX() + p.getVelocidad());
-			if(p.getPosX() <= 0) {
-				p.setPosX(0);
-			}else if(p.getPosX() >= v.getWidth()-60) {
-				p.setPosX(v.getWidth()-60);
+			
+			personajePrincipal.setPosX(personajePrincipal.getPosX() + personajePrincipal.getVelocidad());
+			
+			if(personajePrincipal.getPosX() <= 0) {
+				personajePrincipal.setPosX(0);
+			}else if(personajePrincipal.getPosX() >= ventanaPrincipal.getWidth()-personajePrincipal.ANCHO_IMAGEN) {
+				personajePrincipal.setPosX(ventanaPrincipal.getWidth()-personajePrincipal.ANCHO_IMAGEN);
 			}
 			
 			try {
@@ -31,7 +30,8 @@ public class HiloPersonaje extends Thread{
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			v.repaint();
+			
+			ventanaPrincipal.repaint();
 		}
 		
 	}

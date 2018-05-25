@@ -72,7 +72,7 @@ public abstract class Personaje {
 	}
 	
 	public void moverPersonaje(int distancia) {
-		int xFuturo=posX+distancia;
+		int xFuturo = posX+distancia;
 		setPosX(xFuturo);
 		setHitBox();
 	}
