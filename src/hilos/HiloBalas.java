@@ -17,9 +17,15 @@ public class HiloBalas extends Thread{
 	
 	public void run() {
 		while(true) {
-			if(personajeP.getArma() instanceof ArmaTiro) {
-				ArmaTiro arma = (ArmaTiro) personajeP.getArma();
-				for(int i = 0; i < arma.getBala().length; i++) {
+			if(personajeP.getArmaElegida() instanceof ArmaTiro) {
+				ArmaTiro arma = (ArmaTiro) personajeP.getArmaElegida();
+				Bala balaDisparada = arma.getBala();
+				if(balaDisparada != null) {
+					
+					balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());
+				}
+				
+				/*for(int i = 0; i < arma.getBala().length; i++) {
 					Bala balaDisparada = arma.getBala()[i];
 					if(balaDisparada != null) {
 						balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());
@@ -29,7 +35,7 @@ public class HiloBalas extends Thread{
 							balaDisparada = null;
 						}
 					}
-				}
+				}*/
 				
 			}	
 			

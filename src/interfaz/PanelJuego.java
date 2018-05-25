@@ -35,8 +35,8 @@ public class PanelJuego extends JPanel{
 		g.drawImage(new ImageIcon(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getImagen()).getImage(), v.getJuegoModelo().getEscenario().getPersonajePrincipal().getPosX(),Personaje.POS_Y, null);
 		g.drawString("Score: " + v.getJuegoModelo().getScore() , 15, 20);
 		g.drawString("Nivel: " + v.getJuegoModelo().getNivel(), 15, 50);
-		if(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma() != null){
-			g.drawString("Arma: " + v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma().getNombre(),1150 , 20);
+		if(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida() != null){
+			g.drawString("Arma: " + v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida().getNombre(),1150 , 20);
 		}
 		pintarBalas(g);
 	
@@ -45,12 +45,12 @@ public class PanelJuego extends JPanel{
 	
 	public void pintarBalas(Graphics g) {
 		//ArmaTiro arma = (ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma();
-		for(int i = 0; i < 3; i ++) {
-			if(((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma()).getBala()[i] != null) {
-				Bala bala = ((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArma()).getBala()[i];
+		//for(int i = 0; i < 3; i ++) {
+			if(((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida()).getBala() != null) {
+				Bala bala = ((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida()).getBala();
 				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y +60, null);
 			}
-		}
+		//}
 		
 	}
 

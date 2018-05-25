@@ -55,4 +55,10 @@ public class Arma {
 	public void setImagenArma(String imagen) {
 		this.imagenArma = imagen;
 	}
+
+	
+
+	
+	
+	
 }
