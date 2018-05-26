@@ -49,6 +49,14 @@ public class Boss extends Personaje implements Disparar{
 		this.atacar = atacar;
 	}
 	
+	public Zombie getZombieIzq() {
+		return zombieIzq;
+	}
+	
+	public Zombie getZombieDer() {
+		return zombieDer;
+	}
+	
 	public void setZombieIzq(Zombie izq) {
 		zombieIzq = izq;
 	}
@@ -59,6 +67,10 @@ public class Boss extends Personaje implements Disparar{
 	
 	@Override
 	public void disparar(int direccion) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void generar() {
 		// TODO Auto-generated method stub
 		
 	}

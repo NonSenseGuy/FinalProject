@@ -20,6 +20,7 @@ public class Escenario implements Generar{
 			boss[0] = new Boss(Boss.VIDA+(50*nivel), getPosicionBoss(),Boss.IMAGEN_BOSS, Boss.DANO, Boss.RADIO_ATAQUE );
 		}
 		this.pPrincipal = p;
+		generar();
 	}
 	
 	public PersonajePrincipal getPersonajePrincipal() {
@@ -50,9 +51,9 @@ public class Escenario implements Generar{
 		double pos; 
 		pos = Math.random();
 		if(pos > 0.5) {
-			return FINAL_ESCENARIO;
+			return FINAL_ESCENARIO + (int) (Math.random()*200);
 		}else {
-			return INICIO_ESCENARIO;
+			return INICIO_ESCENARIO - (int) (Math.random()*200);
 		}
 	}
 	
