@@ -40,7 +40,7 @@ public class VentanaPrincipal extends JFrame{
 	public VentanaPrincipal(JuegoModelo jm2) {
 		jm = jm2;
 		setTitle("Zombies Pixel War");
-		setSize(1280,720);
+		setSize(ANCHO_VENTANA, ALTO_VENTANA);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));
