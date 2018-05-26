@@ -13,11 +13,32 @@ public class HiloEnemigos extends Thread {
 	}
 	
 	public void run() {
-		while(juegoM.getElegido().getBoss()) {
-			
-		}
+		
+		int i = 0;
+		
+		while(true) {
+			try {
+				Boss boss = juegoM.getEscenario().getBoss()[i];	
+				boss.setPosX(boss.getPosX() + boss.getVelocidad());
+				Zombie zombie = boss.getZombie();
+				avanzarZombie(zombie);				
+				
+			}catch(NullPointerException e) {
+				e.printStackTrace();
+			}
+		}	
 	}
 	
-	
-	
+	public void avanzarZombie(Zombie zombie) {
+		
+		zombie.setPosX(zombie.getPosX() + zombie.getVelocidad());
+		
+		if(zombie.getZombieIzq() != null) {
+			avanzarZombie(zombie.getZombieIzq());
+		}
+		
+		if(zombie.getZombieDer() != null) {
+			avanzarZombie(zombie.getZombieDer());
+		}
+	}
 }
