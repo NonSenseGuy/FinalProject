@@ -9,13 +9,16 @@ public class Escenario implements Generar{
 	public final static String[] ESCENARIOS = { "./img/background2.png", "./img/background3.png", "./img/background4.png"};
 	private String imagen;
 	private Escenario siguiente;
-	private Boss boss;
+	private Boss[] boss;
 	private PersonajePrincipal pPrincipal;
 
 	
 	public Escenario(String imagen, PersonajePrincipal p, int nivel){
 		this.imagen = imagen;
-		boss = new Boss(Boss.VIDA+(50*nivel), getPosicionBoss(),Boss.IMAGEN_BOSS, Boss.DANO, Boss.RADIO_ATAQUE );
+		boss = new Boss[nivel];
+		for(int i = 0; i < boss.length; i++) {
+			boss[0] = new Boss(Boss.VIDA+(50*nivel), getPosicionBoss(),Boss.IMAGEN_BOSS, Boss.DANO, Boss.RADIO_ATAQUE );
+		}
 		this.pPrincipal = p;
 	}
 	
@@ -53,18 +56,20 @@ public class Escenario implements Generar{
 		}
 	}
 	
-	public Boss getBoss() {
+	public Boss[] getBoss() {
 		return boss;
 	}
 	
-	public void setBoss(Boss b) {
+	public void setBoss(Boss[] b) {
 		boss = b;
 	}
 
 
 	@Override
 	public void generar() {
-		
+		for(int i = 0; i < boss.length; i++) {
+			boss[i].generar();
+		}
 		
 	}
 	
