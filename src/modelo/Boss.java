@@ -3,7 +3,7 @@ package modelo;
 public class Boss extends Personaje implements Disparar, Generar{
 
 	
-	public final static String IMAGEN_BOSS = "./img/boss.png";
+	public final static String IMAGEN_BOSS = "./img/Boss.png";
 	public final static int RADIO_ATAQUE = 400; 
 	public final static int DANO = 20;
 	public final static int VIDA = 100;
