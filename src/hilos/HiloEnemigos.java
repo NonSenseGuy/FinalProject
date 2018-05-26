@@ -25,7 +25,7 @@ public class HiloEnemigos extends Thread {
 				}
 				
 				try {
-					Thread.sleep(5);
+					Thread.sleep(50);
 				}catch(Exception e) {
 					e.printStackTrace();
 				}

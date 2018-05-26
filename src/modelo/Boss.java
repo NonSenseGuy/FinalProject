@@ -23,6 +23,11 @@ public class Boss extends Personaje implements Disparar, Generar{
 		atacar = false;
 		score = SCORE;
 		generar(4);
+		if(getPosX() < 1000 ) {
+			setVelocidad(5);
+		}else if(getPosX() > 1000) {
+			setVelocidad(-5);
+		}
 	}
 	public int getDamage() {
 		return damage;
