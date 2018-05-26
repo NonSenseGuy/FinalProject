@@ -36,6 +36,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 		elegida = arma;
 	}
 	
+	
 	public void agregarArma(Arma arma) {
 		if(primera == null) {
 			primera = arma;

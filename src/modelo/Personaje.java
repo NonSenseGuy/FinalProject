@@ -52,6 +52,7 @@ public abstract class Personaje {
 
 	public void setPosX(int posX) {
 		this.posX = posX;
+		setHitBox();
 	}
 
 	public String getImagen() {

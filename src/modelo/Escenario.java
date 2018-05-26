@@ -1,5 +1,7 @@
 package modelo;
 
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 public class Escenario {
@@ -73,7 +75,17 @@ public class Escenario {
 	public void setAnterior(Escenario anterior) {
 		this.anterior = anterior;
 	}
-
+	
+	public boolean intersecta(Personaje p) {
+		if(p instanceof Boss) {
+			Boss b = (Boss) p;
+			if(b.getHitBox().contains(pPrincipal.getPosX(), PersonajePrincipal.POS_Y)) {
+				return true;
+			}
+			//pPrincipal.setVida(pPrincipal.getVida() + b.getDamage());
+		}
+		return false;
+	}
 	
 	
 }

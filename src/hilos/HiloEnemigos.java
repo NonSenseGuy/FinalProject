@@ -1,4 +1,6 @@
 package hilos;
+import javax.swing.JOptionPane;
+
 import interfaz.VentanaPrincipal;
 import modelo.*;
 
@@ -20,6 +22,9 @@ public class HiloEnemigos extends Thread {
 					
 					Boss boss = juegoM.getElegido().getBoss()[i];	
 					boss.setPosX(boss.getPosX() + boss.getVelocidad());
+					if(juegoM.getElegido().intersecta(boss)) {
+						tick(boss.getDamage());
+					}
 					Zombie zombie = boss.getZombie();
 					avanzarZombie(zombie);			
 				}
@@ -49,5 +54,11 @@ public class HiloEnemigos extends Thread {
 		if(zombie.getZombieDer() != null) {
 			avanzarZombie(zombie.getZombieDer());
 		}
+	}
+	
+	public void tick(int dano) {
+		PersonajePrincipal p = juegoM.getElegido().getPersonajePrincipal();
+		p.setVida(p.getVida() - dano);
+		JOptionPane.showMessageDialog(null, p.getVida() + "");
 	}
 }
