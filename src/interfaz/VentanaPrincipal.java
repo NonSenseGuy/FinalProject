@@ -52,9 +52,9 @@ public class VentanaPrincipal extends JFrame{
 		
 		pj = new PanelJuego(this);
 		add(pj);
-		hiloPersonaje = new HiloPersonaje(jm.getEscenario().getPersonajePrincipal(), this);
+		hiloPersonaje = new HiloPersonaje(jm.getElegido().getPersonajePrincipal(), this);
 		hiloPersonaje.start();
-		hiloBalas = new HiloBalas(jm.getEscenario().getPersonajePrincipal(), this);
+		hiloBalas = new HiloBalas(jm.getElegido().getPersonajePrincipal(), this);
 		hiloBalas.start();
 		hiloEnemigos = new HiloEnemigos(jm, this);
 		hiloEnemigos.start();
@@ -73,17 +73,17 @@ public class VentanaPrincipal extends JFrame{
 	public void moverPersonajePrincipal(int keyCode) {
 		
 		if(keyCode == KeyEvent.VK_A) {
-			jm.getEscenario().getPersonajePrincipal().setVelocidad(-PersonajePrincipal.VELOCIDAD);
+			jm.getElegido().getPersonajePrincipal().setVelocidad(-PersonajePrincipal.VELOCIDAD);
 		}else if(keyCode == KeyEvent.VK_D){
-			jm.getEscenario().getPersonajePrincipal().setVelocidad(PersonajePrincipal.VELOCIDAD);;
+			jm.getElegido().getPersonajePrincipal().setVelocidad(PersonajePrincipal.VELOCIDAD);;
 		}
 	}
 
 	public void dispararPersonajePrincipal(int keyCode) {
 		if(keyCode == KeyEvent.VK_LEFT) {
-			jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
+			jm.getElegido().getPersonajePrincipal().disparar(keyCode);
 		}else if(keyCode == KeyEvent.VK_RIGHT) {
-			jm.getEscenario().getPersonajePrincipal().disparar(keyCode);
+			jm.getElegido().getPersonajePrincipal().disparar(keyCode);
 		}		
 	}
 }

@@ -30,17 +30,17 @@ public class PanelJuego extends JPanel{
 		
 		Font font = new Font("curier", Font.CENTER_BASELINE, 20);
 		g.setFont(font);
-		ImageIcon usuario = new ImageIcon(v.getJuegoModelo().getEscenario().getImagen());
+		ImageIcon usuario = new ImageIcon(v.getJuegoModelo().getElegido().getImagen());
 		Image newImg = usuario.getImage();
 		g.drawImage(newImg, 0, 0, null);
 
 		pintarEnemigos(g);
-		g.drawImage(new ImageIcon(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getImagen()).getImage(), v.getJuegoModelo().getEscenario().getPersonajePrincipal().getPosX(),Personaje.POS_Y, null);
+		g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getImagen()).getImage(), v.getJuegoModelo().getEscenario().getPersonajePrincipal().getPosX(),Personaje.POS_Y, null);
 		g.drawString("Score: " + v.getJuegoModelo().getScore() , 15, 20);
 		g.drawString("Nivel: " + v.getJuegoModelo().getNivel(), 15, 50);
 		
-		if(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida() != null){
-			g.drawString("Arma: " + v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida().getNombre(),1150 , 20);
+		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() != null){
+			g.drawString("Arma: " + v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getNombre(),1150 , 20);
 		}
 		pintarBalas(g);
 		
@@ -48,18 +48,18 @@ public class PanelJuego extends JPanel{
 	
 	public void pintarBalas(Graphics g) {
 		
-			if(((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida()).getBala() != null) {
-				Bala bala = ((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida()).getBala();
+			if(((ArmaTiro) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala() != null) {
+				Bala bala = ((ArmaTiro) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala();
 				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y +60, null);
 			}
 	}
 	
 	public void pintarEnemigos(Graphics g) {
-		for(int i = 0; i < v.getJuegoModelo().getEscenario().getBoss().length; i++) {
-			Image boss = new ImageIcon(v.getJuegoModelo().getEscenario().getBoss()[i].getImagen()).getImage();
-			g.drawImage(boss, v.getJuegoModelo().getEscenario().getBoss()[i].getPosX(),Personaje.POS_Y, null);
-			if(v.getJuegoModelo().getEscenario().getBoss()[i].getZombie() != null) {
-				pintarZombie(g, v.getJuegoModelo().getEscenario().getBoss()[i].getZombie());
+		for(int i = 0; i < v.getJuegoModelo().getElegido().getBoss().length; i++) {
+			Image boss = new ImageIcon(v.getJuegoModelo().getElegido().getBoss()[i].getImagen()).getImage();
+			g.drawImage(boss, v.getJuegoModelo().getElegido().getBoss()[i].getPosX(),Personaje.POS_Y, null);
+			if(v.getJuegoModelo().getElegido().getBoss()[i].getZombie() != null) {
+				pintarZombie(g, v.getJuegoModelo().getElegido().getBoss()[i].getZombie());
 			}
 		}
 	}
