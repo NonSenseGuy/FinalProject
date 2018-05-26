@@ -21,7 +21,13 @@ public class HiloEnemigos extends Thread {
 					Boss boss = juegoM.getEscenario().getBoss()[i];	
 					boss.setPosX(boss.getPosX() + boss.getVelocidad());
 					Zombie zombie = boss.getZombie();
-					avanzarZombie(zombie);					
+					avanzarZombie(zombie);			
+				}
+				
+				try {
+					Thread.sleep(5);
+				}catch(Exception e) {
+					e.printStackTrace();
 				}
 				
 			}catch(NullPointerException e) {
