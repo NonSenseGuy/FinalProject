@@ -89,14 +89,11 @@ public class Boss extends Personaje implements Disparar, Generar{
 	}
 	
 	public void eliminarZombie(Zombie zombieAEliminar) {
-		if(zombie.getPosX() == zombieAEliminar.getPosX()) {
-			Zombie izq = zombie.getZombieIzq();
-			Zombie der = zombie.getZombieDer();
-			zombie.setZombieIzq(null);
-			zombie.setZombieDer(null);
-			zombie = izq;
-			
-			
-		}
+		
+	}
+	
+	public boolean quitarVidaZombies(int pos, int damageBala) {
+		boolean pendejo = false;
+		return pendejo;
 	}
 }

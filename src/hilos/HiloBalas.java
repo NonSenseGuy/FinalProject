@@ -4,6 +4,7 @@ import interfaz.VentanaPrincipal;
 import modelo.ArmaTiro;
 import modelo.Bala;
 import modelo.PersonajePrincipal;
+import modelo.Zombie;
 
 public class HiloBalas extends Thread{
 	
@@ -27,6 +28,10 @@ public class HiloBalas extends Thread{
 					if(balaDisparada.getPosX() < 0 || balaDisparada.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
 						((ArmaTiro)arma).setBala(null);
 					}
+					
+					
+					
+					
 				}				
 			}	
 			
@@ -37,5 +42,11 @@ public class HiloBalas extends Thread{
 			}
 			ventana.repaint();
 		}
+	}
+	
+	public void golpeaZombie(Bala balaDisparada, Zombie zombie) {
+		/*if(balaDisparada.getHitBox().intersects()) {
+			
+		}*/
 	}
 }

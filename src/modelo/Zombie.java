@@ -77,6 +77,14 @@ public class Zombie extends Personaje{
 		}
 		
 	}
+
+	public void eliminarZombie(Zombie eliminar) {
+		
+		if(true) {
+			
+		}
+		
+	}
 	
 	
 	
