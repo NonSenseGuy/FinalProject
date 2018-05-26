@@ -95,23 +95,23 @@ public class Zombie extends Personaje{
 		return leDio;
 	}
 
-	public boolean eliminarZombie() {
-		boolean zombieEliminado = false;
-		
-		if(getVida() <= 0) {
-			zombieEliminado = true;
-			if() {
-				
-			}
-						
-		}else if(zombieIzq != null && zombieDer == null) {
-			return zombieIzq.eliminarZombie();
-		}else if(zombieIzq == null && zombieDer != null) {
-			return zombieDer.eliminarZombie();
-		}else if(zombieIzq != null && zombieDer != null){
-			return !zombieIzq.eliminarZombie() ? zombieDer.eliminarZombie(): true;
-		}		
-		return zombieEliminado;
-	}
+//	public boolean eliminarZombie() {
+//		boolean zombieEliminado = false;
+//		
+//		if(getVida() <= 0) {
+//			zombieEliminado = true;
+//			if() {
+//				
+//			}
+//						
+//		}else if(zombieIzq != null && zombieDer == null) {
+//			return zombieIzq.eliminarZombie();
+//		}else if(zombieIzq == null && zombieDer != null) {
+//			return zombieDer.eliminarZombie();
+//		}else if(zombieIzq != null && zombieDer != null){
+//			return !zombieIzq.eliminarZombie() ? zombieDer.eliminarZombie(): true;
+//		}		
+//		return zombieEliminado;
+//	}
 	
 }

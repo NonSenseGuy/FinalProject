@@ -1,5 +1,6 @@
 package interfaz;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -33,7 +34,12 @@ public class PanelJuego extends JPanel{
 		ImageIcon usuario = new ImageIcon(v.getJuegoModelo().getElegido().getImagen());
 		Image newImg = usuario.getImage();
 		g.drawImage(newImg, 0, 0, null);
-
+		g.setColor(Color.RED);
+		g.fillRect(300, 25, 600, 50);
+		g.setColor(Color.GREEN);
+		g.fillRect(300, 25, v.getJuegoModelo().getElegido().getPersonajePrincipal().getVida()*6, 50);
+		
+		g.setColor(Color.WHITE);
 		pintarEnemigos(g);
 		g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getImagen()).getImage(), v.getJuegoModelo().getEscenario().getPersonajePrincipal().getPosX(),Personaje.POS_Y, null);
 		g.drawString("Score: " + v.getJuegoModelo().getScore() , 15, 20);

@@ -83,6 +83,11 @@ public class Escenario {
 				return true;
 			}
 			//pPrincipal.setVida(pPrincipal.getVida() + b.getDamage());
+		}else if(p instanceof Zombie) {
+			Zombie z = (Zombie) p;
+			if(z.getHitBox().contains(pPrincipal.getPosX(), PersonajePrincipal.POS_Y)) {
+				return true;
+			}
 		}
 		return false;
 	}

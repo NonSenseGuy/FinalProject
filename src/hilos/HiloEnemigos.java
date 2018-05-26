@@ -26,6 +26,7 @@ public class HiloEnemigos extends Thread {
 						tick(boss.getDamage());
 					}
 					Zombie zombie = boss.getZombie();
+					
 					avanzarZombie(zombie);			
 				}
 				
@@ -46,7 +47,9 @@ public class HiloEnemigos extends Thread {
 	public void avanzarZombie(Zombie zombie) {
 		
 		zombie.setPosX(zombie.getPosX() + zombie.getVelocidad());
-		
+		if(juegoM.getElegido().intersecta(zombie)) {
+			tick(zombie.getDamage());
+		}
 		if(zombie.getZombieIzq() != null) {
 			avanzarZombie(zombie.getZombieIzq());
 		}
@@ -60,5 +63,6 @@ public class HiloEnemigos extends Thread {
 		PersonajePrincipal p = juegoM.getElegido().getPersonajePrincipal();
 		p.setVida(p.getVida() - dano);
 		JOptionPane.showMessageDialog(null, p.getVida() + "");
+		
 	}
 }
