@@ -25,10 +25,11 @@ public class HiloEnemigos extends Thread {
 				}
 				
 			}catch(NullPointerException e) {
-				if() {
+				
 					
-				}
+				
 			}
+			
 		}	
 	}
 	

@@ -50,6 +50,7 @@ public class PanelJuego extends JPanel{
 				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y +60, null);
 			}
 	}
+	
 
 	
 	public void keyPressed(KeyEvent arg0) {		
