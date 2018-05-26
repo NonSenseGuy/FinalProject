@@ -20,8 +20,9 @@ public class Objeto implements Generar{
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
+
 	@Override
-	public void generar() {
+	public void generar(int cant) {
 		// TODO Auto-generated method stub
 		
 	}

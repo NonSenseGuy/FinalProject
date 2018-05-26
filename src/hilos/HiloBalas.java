@@ -20,6 +20,7 @@ public class HiloBalas extends Thread{
 			if(personajeP.getArmaElegida() instanceof ArmaTiro) {
 				ArmaTiro arma = (ArmaTiro) personajeP.getArmaElegida();
 				Bala balaDisparada = arma.getBala();
+				//CAMBIAR POR UN TRY-CATCH NULL POINTER 
 				if(balaDisparada != null) {
 					
 					balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());

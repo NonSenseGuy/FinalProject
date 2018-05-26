@@ -1,5 +1,6 @@
 package interfaz;
 
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -23,6 +24,7 @@ public class DialogoPuntajes extends JDialog{
 	public DialogoPuntajes(VentanaPrincipal v) {
 		this.setLocation(v.getLocation());
 		setTitle("Highscores");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));
 		setSize(v.getWidth() /2, v.getHeight() /2);
 		setResizable(false);
 		setVisible(true);

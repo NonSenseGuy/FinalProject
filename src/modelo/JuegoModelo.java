@@ -5,16 +5,17 @@ public class JuegoModelo{
 	private String nickname;
 	private int score;
 	private int nivel;
-	private Escenario escenario;
+	private Escenario primero;
+	private Escenario elegido;
 	
 	public JuegoModelo(String nickname, int score, int nivel) {
 		this.nickname = nickname;
 		this.score = score;
 		this.nivel = nivel;
 		PersonajePrincipal p = new PersonajePrincipal(640, PersonajePrincipal.IMAGEN);
-		p.agregarArma(new ArmaTiro("Gun", 20, 50, " ", 1));
+		p.agregarArma(new ArmaTiro("9mm", 20, 50, " ", 1));
 		p.setArmaElegida(p.getArmaPrimera());
-		escenario = new Escenario(Escenario.ESCENARIOS[0],p, 1);
+		primero = new Escenario(Escenario.ESCENARIOS[0],p, 1);
 
 	}
 	public String getNickname() {
@@ -35,18 +36,27 @@ public class JuegoModelo{
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	
+	//VOLVER ESCENARIOS UNA LISTA CICLICA
 	public Escenario getEscenario() {
 		if(nivel <= 2) {
-			return escenario;
+			return primero;
 		}else{
-			escenario = escenario.getSiguiente();
-			return escenario;
+			primero = primero.getSiguiente();
+			return primero;
 		}
 	}
-	
-	public void setEscenario(Escenario escenario) {
-		this.escenario = escenario;
+	public Escenario getPrimero() {
+		return primero;
 	}
+	public void setPrimero(Escenario primero) {
+		this.primero = primero;
+	}
+	public Escenario getElegido() {
+		return elegido;
+	}
+	public void setElegido(Escenario elegido) {
+		this.elegido = elegido;
+	}
+	
 	
 }

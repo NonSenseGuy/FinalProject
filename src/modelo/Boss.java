@@ -1,6 +1,7 @@
 package modelo;
 
-public class Boss extends Personaje implements Disparar{
+public class Boss extends Personaje implements Disparar, Generar{
+
 	
 	public final static String IMAGEN_BOSS = "./img/boss.png";
 	public final static int RADIO_ATAQUE = 400; 
@@ -11,8 +12,7 @@ public class Boss extends Personaje implements Disparar{
 	private int radioDistanciaAtaque;
 	private boolean atacar;
 	private int score;
-	private Zombie zombieIzq; 
-	private Zombie zombieDer;
+	private Zombie zombie;
 	
 	
 	public Boss(int vida, int posX, String imagen, int damage, int radioDistanciaAtaque) {
@@ -22,6 +22,7 @@ public class Boss extends Personaje implements Disparar{
 		setHitBox();
 		atacar = false;
 		score = SCORE;
+		generar(4);
 	}
 	public int getDamage() {
 		return damage;
@@ -49,20 +50,8 @@ public class Boss extends Personaje implements Disparar{
 		this.atacar = atacar;
 	}
 	
-	public Zombie getZombieIzq() {
-		return zombieIzq;
-	}
-	
-	public Zombie getZombieDer() {
-		return zombieDer;
-	}
-	
-	public void setZombieIzq(Zombie izq) {
-		zombieIzq = izq;
-	}
-	
-	public void setZombieDer(Zombie der) {
-		zombieDer = der;
+	public Zombie getZombie() {
+		return zombie;
 	}
 	
 	@Override
@@ -70,8 +59,27 @@ public class Boss extends Personaje implements Disparar{
 		// TODO Auto-generated method stub
 		
 	}
-	public void generar() {
-		// TODO Auto-generated method stub
-		
+	@Override
+	public void generar(int cant) {
+		if(cant != 0) {
+			Zombie z = generarZombie();
+			agregarZombie(z);
+			generar(cant-1);
+		}
+	}
+	
+	public Zombie generarZombie() {
+		boolean positivo = Math.random() > 0.5;
+		int rango = positivo ? 1 : -1;
+		Zombie z = new Zombie(getPosX() + (int) (Math.random()*300 *rango),Zombie.IMAGEN_ZOMBIE,Zombie.DANO );
+		return z;
+	}
+	
+	public void agregarZombie(Zombie z) {
+		if(zombie == null) {
+			zombie = z;
+		}else {
+			zombie.agregarZombie(z);
+		}
 	}
 }

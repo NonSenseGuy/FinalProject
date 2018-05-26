@@ -2,10 +2,10 @@ package modelo;
 
 import java.util.ArrayList;
 
-public class Escenario implements Generar{
+public class Escenario {
 	
-	public final int FINAL_ESCENARIO = 1200;
-	public final int INICIO_ESCENARIO = -50;
+	public final int FINAL_ESCENARIO = 1300;
+	public final int INICIO_ESCENARIO = -100;
 	public final static String[] ESCENARIOS = { "./img/background2.png", "./img/background3.png", "./img/background4.png"};
 	private String imagen;
 	private Escenario siguiente;
@@ -20,7 +20,7 @@ public class Escenario implements Generar{
 			boss[0] = new Boss(Boss.VIDA+(50*nivel), getPosicionBoss(),Boss.IMAGEN_BOSS, Boss.DANO, Boss.RADIO_ATAQUE );
 		}
 		this.pPrincipal = p;
-		generar();
+		
 	}
 	
 	public PersonajePrincipal getPersonajePrincipal() {
@@ -51,9 +51,9 @@ public class Escenario implements Generar{
 		double pos; 
 		pos = Math.random();
 		if(pos > 0.5) {
-			return FINAL_ESCENARIO + (int) (Math.random()*200);
+			return FINAL_ESCENARIO + (int) (Math.random()*300);
 		}else {
-			return INICIO_ESCENARIO - (int) (Math.random()*200);
+			return INICIO_ESCENARIO - (int) (Math.random()*300);
 		}
 	}
 	
@@ -65,14 +65,6 @@ public class Escenario implements Generar{
 		boss = b;
 	}
 
-
-	@Override
-	public void generar() {
-		for(int i = 0; i < boss.length; i++) {
-			boss[i].generar();
-		}
-		
-	}
 	
 	
 }
