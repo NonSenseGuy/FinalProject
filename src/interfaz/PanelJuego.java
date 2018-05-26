@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import modelo.ArmaTiro;
 import modelo.Bala;
 import modelo.Personaje;
+import modelo.Zombie;
 
 @SuppressWarnings("serial")
 public class PanelJuego extends JPanel{
@@ -32,14 +33,16 @@ public class PanelJuego extends JPanel{
 		ImageIcon usuario = new ImageIcon(v.getJuegoModelo().getEscenario().getImagen());
 		Image newImg = usuario.getImage();
 		g.drawImage(newImg, 0, 0, null);
+
+		pintarEnemigos(g);
 		g.drawImage(new ImageIcon(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getImagen()).getImage(), v.getJuegoModelo().getEscenario().getPersonajePrincipal().getPosX(),Personaje.POS_Y, null);
 		g.drawString("Score: " + v.getJuegoModelo().getScore() , 15, 20);
 		g.drawString("Nivel: " + v.getJuegoModelo().getNivel(), 15, 50);
+		
 		if(v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida() != null){
 			g.drawString("Arma: " + v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida().getNombre(),1150 , 20);
 		}
 		pintarBalas(g);
-	
 		
 	}
 	
@@ -49,6 +52,29 @@ public class PanelJuego extends JPanel{
 				Bala bala = ((ArmaTiro) v.getJuegoModelo().getEscenario().getPersonajePrincipal().getArmaElegida()).getBala();
 				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y +60, null);
 			}
+	}
+	
+	public void pintarEnemigos(Graphics g) {
+		for(int i = 0; i < v.getJuegoModelo().getEscenario().getBoss().length; i++) {
+			Image boss = new ImageIcon(v.getJuegoModelo().getEscenario().getBoss()[i].getImagen()).getImage();
+			g.drawImage(boss, v.getJuegoModelo().getEscenario().getBoss()[i].getPosX(),Personaje.POS_Y, null);
+			if(v.getJuegoModelo().getEscenario().getBoss()[i].getZombie() != null) {
+				pintarZombie(g, v.getJuegoModelo().getEscenario().getBoss()[i].getZombie());
+			}
+		}
+	}
+	
+	public void pintarZombie(Graphics g, Zombie zombie) {
+		Image imagenZombie = new ImageIcon(zombie.getImagen()).getImage();
+		g.drawImage(imagenZombie, zombie.getPosX(), Personaje.POS_Y, null);
+		
+		if(zombie.getZombieIzq() != null) {
+			pintarZombie(g, zombie.getZombieIzq());
+		}
+		
+		if(zombie.getZombieDer() != null) {
+			pintarZombie(g, zombie.getZombieDer());
+		}
 	}
 	
 
