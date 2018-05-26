@@ -78,15 +78,40 @@ public class Zombie extends Personaje{
 		
 	}
 
-	public void eliminarZombie(Zombie eliminar) {
+	public boolean quitarVidaZombie(int pos, int damageBala) {
+		boolean leDio = false;
 		
-		if(true) {
-			
-		}
-		
+		if(getPosX() == pos) {
+			leDio = true;
+			setVida(getVida() - damageBala);
+			return leDio;
+		}else if(zombieIzq != null && zombieDer == null) {
+			return zombieIzq.quitarVidaZombie(pos, damageBala);
+		}else if(zombieIzq == null && zombieDer != null) {
+			return zombieDer.quitarVidaZombie(pos, damageBala);
+		}else if(zombieIzq != null && zombieDer != null){
+			return !zombieIzq.quitarVidaZombie(pos, damageBala) ? zombieDer.quitarVidaZombie(pos, damageBala): true;
+		}		
+		return leDio;
 	}
-	
-	
-	
+
+	public boolean eliminarZombie() {
+		boolean zombieEliminado = false;
+		
+		if(getVida() <= 0) {
+			zombieEliminado = true;
+			if() {
+				
+			}
+						
+		}else if(zombieIzq != null && zombieDer == null) {
+			return zombieIzq.eliminarZombie();
+		}else if(zombieIzq == null && zombieDer != null) {
+			return zombieDer.eliminarZombie();
+		}else if(zombieIzq != null && zombieDer != null){
+			return !zombieIzq.eliminarZombie() ? zombieDer.eliminarZombie(): true;
+		}		
+		return zombieEliminado;
+	}
 	
 }
