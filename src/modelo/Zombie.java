@@ -18,6 +18,11 @@ public class Zombie extends Personaje{
 		setHitBox();
 		atacar = false;
 		score = 20;
+		if(getPosX() < 0 ) {
+			setVelocidad(5);
+		}else if(getPosX() > 1200) {
+			setVelocidad(-5);
+		}
 	}
 
 	public int getDamage() {
