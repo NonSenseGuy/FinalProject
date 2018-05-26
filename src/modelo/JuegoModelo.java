@@ -18,7 +18,7 @@ public class JuegoModelo{
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[0],p, 1));
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[1],p, 2));
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[2],p, 3));
-		elegido = primero.getSiguiente();
+		elegido = primero;
 
 	}
 	public String getNickname() {
