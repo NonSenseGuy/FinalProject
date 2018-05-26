@@ -49,8 +49,16 @@ public class Zombie extends Personaje{
 		return zombieIzq;
 	}
 	
+	public void setZombieIzq(Zombie e) {
+		zombieIzq = e;
+	}
+	
 	public Zombie getZombieDer() {
 		return zombieDer;
+	}
+	
+	public void setZombieDer(Zombie e) {
+		zombieDer = e;
 	}
 
 	public void agregarZombie(Zombie z) {
