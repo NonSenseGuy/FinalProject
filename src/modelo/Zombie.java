@@ -7,6 +7,8 @@ public class Zombie extends Personaje{
 	private int damage;
 	private boolean atacar;
 	private int score;
+	private Zombie zombieIzq;
+	private Zombie zombieDer;
 	
 	public Zombie(int posX, String imagen, int damage) {
 		super(VIDA, posX, imagen);
@@ -35,4 +37,16 @@ public class Zombie extends Personaje{
 	public void setAtacar(boolean atacar) {
 		this.atacar = atacar;
 	}
+	
+	public Zombie getZombieIzq() {
+		return zombieIzq;
+	}
+	
+	public Zombie getZombieDer() {
+		return zombieDer;
+	}
+	
+	
+	
+	
 }

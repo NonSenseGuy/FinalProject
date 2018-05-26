@@ -14,8 +14,7 @@ public class JuegoModelo{
 		PersonajePrincipal p = new PersonajePrincipal(640, PersonajePrincipal.IMAGEN);
 		p.agregarArma(new ArmaTiro("Gun", 20, 50, " ", 1));
 		p.setArmaElegida(p.getArmaPrimera());
-		escenario = new Escenario(Escenario.ESCENARIOS[0],p);
-		escenario.setSiguiente(new Escenario(Escenario.ESCENARIOS[1], p));
+		escenario = new Escenario(Escenario.ESCENARIOS[0],p, 1);
 	}
 	public String getNickname() {
 		return nickname;

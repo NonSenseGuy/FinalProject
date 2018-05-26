@@ -4,15 +4,18 @@ import java.util.ArrayList;
 
 public class Escenario implements Generar{
 	
+	public final int FINAL_ESCENARIO = 1200;
+	public final int INICIO_ESCENARIO = -50;
 	public final static String[] ESCENARIOS = { "./img/background2.png", "./img/background3.png", "./img/background4.png"};
 	private String imagen;
 	private Escenario siguiente;
-	private ArrayList<Personaje> enemigos;
+	private Boss boss;
 	private PersonajePrincipal pPrincipal;
+
 	
-	public Escenario(String imagen, PersonajePrincipal p){
+	public Escenario(String imagen, PersonajePrincipal p, int nivel){
 		this.imagen = imagen;
-		enemigos = new ArrayList<Personaje>();
+		boss = new Boss(Boss.VIDA+(50*nivel), getPosicionBoss(),Boss.IMAGEN_BOSS, Boss.DANO, Boss.RADIO_ATAQUE );
 		this.pPrincipal = p;
 	}
 	
@@ -22,14 +25,6 @@ public class Escenario implements Generar{
 	
 	public void setPersonajePrincipal(PersonajePrincipal p) {
 		pPrincipal = p;
-	}
-
-	public ArrayList<Personaje> getEnemigos() {
-		return enemigos;
-	}
-
-	public void setEnemigos(ArrayList<Personaje> enemigos) {
-		this.enemigos = enemigos;
 	}
 
 	public Escenario getSiguiente() {
@@ -47,11 +42,29 @@ public class Escenario implements Generar{
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
+	
+	public int getPosicionBoss() {
+		double pos; 
+		pos = Math.random();
+		if(pos > 0.5) {
+			return FINAL_ESCENARIO;
+		}else {
+			return INICIO_ESCENARIO;
+		}
+	}
+	
+	public Boss getBoss() {
+		return boss;
+	}
+	
+	public void setBoss(Boss b) {
+		boss = b;
+	}
 
 
 	@Override
 	public void generar() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
