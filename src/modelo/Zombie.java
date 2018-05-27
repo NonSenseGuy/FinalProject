@@ -81,9 +81,9 @@ public class Zombie extends Personaje{
 	public boolean quitarVidaZombie(int pos, int damageBala) {
 		boolean leDio = false;
 		
-		if(getPosX() == pos) {
+		if(getHitBox().contains(pos, PersonajePrincipal.POS_Y)) {
 			leDio = true;
-			setVida(getVida() - damageBala);
+			setVida(getVida() - damageBala);			
 			return leDio;
 		}else if(zombieIzq != null && zombieDer == null) {
 			return zombieIzq.quitarVidaZombie(pos, damageBala);
@@ -95,23 +95,70 @@ public class Zombie extends Personaje{
 		return leDio;
 	}
 
-//	public boolean eliminarZombie() {
-//		boolean zombieEliminado = false;
-//		
-//		if(getVida() <= 0) {
-//			zombieEliminado = true;
-//			if() {
-//				
-//			}
-//						
-//		}else if(zombieIzq != null && zombieDer == null) {
-//			return zombieIzq.eliminarZombie();
-//		}else if(zombieIzq == null && zombieDer != null) {
-//			return zombieDer.eliminarZombie();
-//		}else if(zombieIzq != null && zombieDer != null){
-//			return !zombieIzq.eliminarZombie() ? zombieDer.eliminarZombie(): true;
-//		}		
-//		return zombieEliminado;
-//	}
+	public boolean eliminarZombie() {
+		boolean zombieEliminado = false;
+		
+		if(getVida() <= 0) {
+			
+			zombieEliminado = true;
+			Zombie anterior = localizarAnterior(getPosX());
+			
+			if(getZombieIzq() == null && getZombieDer() == null) {
+				if(anterior.getZombieIzq() != null && anterior.getZombieIzq().getPosX() == getPosX()) {
+					anterior.setZombieIzq(null);
+				}else {
+					anterior.setZombieDer(null);
+				}
+			}else if(getZombieIzq() != null && getZombieDer() == null) {
+				Zombie izq = getZombieIzq();
+				
+				if(anterior.getZombieIzq() != null && anterior.getZombieIzq().getPosX() == getPosX()) {
+					anterior.setZombieIzq(izq);
+				}else {
+					anterior.setZombieDer(izq);
+				}
+				
+				setZombieIzq(null);
+			}else if(getZombieIzq() == null && getZombieDer() != null) {
+				Zombie der = getZombieIzq();
+				
+				if(anterior.getZombieIzq() != null && anterior.getZombieIzq().getPosX() == getPosX()) {
+					anterior.setZombieIzq(der);
+				}else {
+					anterior.setZombieDer(der);
+				}
+				
+				setZombieDer(null);
+			}else if (getZombieIzq() != null && getZombieDer() != null){
+				
+			}			
+						
+		}else if(zombieIzq != null && zombieDer == null) {
+			return zombieIzq.eliminarZombie();
+		}else if(zombieIzq == null && zombieDer != null) {
+			return zombieDer.eliminarZombie();
+		}else if(zombieIzq != null && zombieDer != null){
+			return !zombieIzq.eliminarZombie() ? zombieDer.eliminarZombie(): true;
+		}		
+		return zombieEliminado;
+	}
+	
+	public Zombie localizarAnterior(int pos) {
+		
+		Zombie der = getZombieDer() == null ? null: getZombieDer();
+		Zombie izq = getZombieIzq() == null ? null: getZombieIzq();
+		
+		if(izq != null) {
+			if(izq.getPosX() == pos) return this;
+			return izq.localizarAnterior(pos);
+		}
+		
+		if(der != null) {
+			if(der.getPosX() == pos) return this;
+			der.localizarAnterior(pos);
+		}
+		
+		return null;
+	}
 	
 }
