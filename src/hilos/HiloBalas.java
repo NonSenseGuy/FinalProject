@@ -50,13 +50,16 @@ public class HiloBalas extends Thread{
 		for(int i = 0; i < bosses.length; i++) {
 			Zombie primero = bosses[i].getZombie();
 			
-			boolean hizoDamageBoss = bosses[i].quitarVidaBoss(balaDisparada.getPosX(), balaDisparada.getDamage());
-			boolean hizoDamage = primero.quitarVidaZombie(balaDisparada.getPosX(), balaDisparada.getDamage());
-			
-			if(hizoDamage || hizoDamageBoss) {
+			try {
+				boolean hizoDamageBoss = bosses[i].quitarVidaBoss(balaDisparada.getPosX(), balaDisparada.getDamage());
+				boolean hizoDamage = primero.quitarVidaZombie(balaDisparada.getPosX(), balaDisparada.getDamage());
 				
-				balaDisparada.setImagen("");
-				balaDisparada.setDamage(0);
+				if(hizoDamage || hizoDamageBoss) {				
+					balaDisparada.setImagen("");
+					balaDisparada.setDamage(0);
+				}
+			}catch(NullPointerException e) {
+				
 			}
 		}
 	}

@@ -88,14 +88,6 @@ public class Boss extends Personaje implements Disparar, Generar{
 		}
 	}
 	
-//	public boolean eliminarZombie() {
-//		boolean zombieEliminado = false;
-//		
-//		zombieEliminado = zombie.eliminarZombie();
-//		
-//		return zombieEliminado;
-//	}
-	
 	public boolean quitarVidaBoss(int pos, int damageBala) {
 		
 		boolean golpeado = false;
@@ -106,5 +98,29 @@ public class Boss extends Personaje implements Disparar, Generar{
 		}
 		
 		return golpeado;
+	}
+	
+	public boolean eliminarZombie(int pos) {
+		boolean elimino = false;
+		
+		Zombie a = buscarZombie(pos);
+		if (a != null) {
+			elimino = true;
+			zombie = zombie.eliminarZombie(a.getPosX());
+		}
+		return elimino;
+	}
+	
+	public Zombie buscarZombie(int pos) {
+		if(zombie == null) {
+			return null;
+		}else {
+			return zombie.buscarZombie(pos);
+		}
+	}
+	
+	public Zombie localizarZombieMuerto() {
+		if(zombie != null) 	return zombie.localizarZombieMuerto();		
+		return null;
 	}
 }
