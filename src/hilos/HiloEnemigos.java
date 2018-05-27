@@ -1,8 +1,9 @@
 package hilos;
-import javax.swing.JOptionPane;
-
 import interfaz.VentanaPrincipal;
-import modelo.*;
+import modelo.Boss;
+import modelo.JuegoModelo;
+import modelo.PersonajePrincipal;
+import modelo.Zombie;
 
 public class HiloEnemigos extends Thread {
 	
@@ -18,16 +19,27 @@ public class HiloEnemigos extends Thread {
 		
 		while(true) {
 			try {
+				
 				for(int i = 0; i < juegoM.getElegido().getBoss().length; i++) {
-					
 					Boss boss = juegoM.getElegido().getBoss()[i];	
 					boss.setPosX(boss.getPosX() + boss.getVelocidad());
+					
 					if(juegoM.getElegido().intersecta(boss)) {
 						tick(boss.getDamage());
 					}
-					Zombie zombie = boss.getZombie();
 					
-					avanzarZombie(zombie);			
+					if(boss.localizarZombieMuerto() != null) {
+						Zombie muerto = boss.localizarZombieMuerto();
+						juegoM.setScore(juegoM.getScore() + muerto.getScore());
+						boss.eliminarZombie(muerto.getPosX());
+					}
+					
+					try {
+						Zombie zombie = boss.getZombie();
+						avanzarZombie(zombie);
+					}catch (NullPointerException e) {
+						
+					}
 				}
 				
 				try {

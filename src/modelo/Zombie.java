@@ -94,53 +94,20 @@ public class Zombie extends Personaje{
 		}		
 		return leDio;
 	}
-
-	public boolean eliminarZombie() {
-		boolean zombieEliminado = false;
+	
+	public Zombie localizarZombieMuerto() {
 		
 		if(getVida() <= 0) {
-			
-			zombieEliminado = true;
-			Zombie anterior = localizarAnterior(getPosX());
-			
-			if(getZombieIzq() == null && getZombieDer() == null) {
-				if(anterior.getZombieIzq() != null && anterior.getZombieIzq().getPosX() == getPosX()) {
-					anterior.setZombieIzq(null);
-				}else {
-					anterior.setZombieDer(null);
-				}
-			}else if(getZombieIzq() != null && getZombieDer() == null) {
-				Zombie izq = getZombieIzq();
-				
-				if(anterior.getZombieIzq() != null && anterior.getZombieIzq().getPosX() == getPosX()) {
-					anterior.setZombieIzq(izq);
-				}else {
-					anterior.setZombieDer(izq);
-				}
-				
-				setZombieIzq(null);
-			}else if(getZombieIzq() == null && getZombieDer() != null) {
-				Zombie der = getZombieIzq();
-				
-				if(anterior.getZombieIzq() != null && anterior.getZombieIzq().getPosX() == getPosX()) {
-					anterior.setZombieIzq(der);
-				}else {
-					anterior.setZombieDer(der);
-				}
-				
-				setZombieDer(null);
-			}else if (getZombieIzq() != null && getZombieDer() != null){
-				
-			}			
-						
+			return this;
 		}else if(zombieIzq != null && zombieDer == null) {
-			return zombieIzq.eliminarZombie();
+			return zombieIzq.localizarZombieMuerto();
 		}else if(zombieIzq == null && zombieDer != null) {
-			return zombieDer.eliminarZombie();
+			return zombieDer.localizarZombieMuerto();
 		}else if(zombieIzq != null && zombieDer != null){
-			return !zombieIzq.eliminarZombie() ? zombieDer.eliminarZombie(): true;
-		}		
-		return zombieEliminado;
+			return zombieIzq.localizarZombieMuerto() == null ? zombieDer.localizarZombieMuerto(): zombieIzq.localizarZombieMuerto();
+		}
+		
+		return null;
 	}
 	
 	public Zombie localizarAnterior(int pos) {
@@ -159,6 +126,52 @@ public class Zombie extends Personaje{
 		}
 		
 		return null;
+	}
+
+	public Zombie buscarZombie(int pos) {
+		if(getHitBox().contains(pos, PersonajePrincipal.POS_Y)) {
+			return this;			
+		}else{
+			if (zombieIzq != null && zombieIzq.buscarZombie(pos) != null) {
+				return zombieIzq.buscarZombie(pos);
+			}
+			if (zombieDer != null && zombieDer.buscarZombie(pos) != null) {
+				return zombieDer.buscarZombie(pos);
+			}
+			return null;
+		}
+	}
+	
+	public Zombie darMenor() {
+		if (zombieIzq == null) {
+			return this;
+		} else {
+			return zombieIzq.darMenor();
+		}
+	}
+
+	public Zombie eliminarZombie(int pos) {
+		
+		if (getHitBox().contains(pos, PersonajePrincipal.POS_Y)) {
+			if (zombieIzq == null) {
+				return zombieDer == null ? null : zombieDer;
+			} else if (zombieDer == null) {
+				return zombieIzq;
+			}
+
+			Zombie succesor = zombieDer.darMenor();
+			zombieDer = zombieDer.eliminarZombie(succesor.getPosX());
+			succesor.zombieIzq = zombieIzq;
+			succesor.zombieDer = zombieDer;
+			return succesor;
+
+		} else if (getPosX() > pos) {
+			zombieIzq = zombieIzq.eliminarZombie(pos);
+		} else {
+			zombieDer = zombieDer.eliminarZombie(pos);
+		}
+
+		return this;
 	}
 	
 }
