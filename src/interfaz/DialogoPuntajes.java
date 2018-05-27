@@ -2,6 +2,7 @@ package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.ScrollPane;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,7 +25,7 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 	private JButton organizarPorPuntaje;
 	private JButton organizarPorNivel;
 	private JTextField busquedaBinaria;
-	private JButton buscar;
+	//private JButton buscar;
 	private JLabel puntajes;
 	private JLabel organizar;
 	
@@ -40,16 +41,22 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		organizarPorNombre = new JButton("Nombre");
 		organizarPorPuntaje = new JButton("Puntaje");
 		organizarPorNivel = new JButton("nivel");
-		busquedaBinaria = new JTextField();
-		buscar = new JButton("Buscar");	
+		busquedaBinaria = new JTextField("Ingrese el puntaje que desea buscar");
+		//buscar = new JButton("Buscar");	
 		puntajes = new JLabel();
 		jp.add(organizar);
 		jp.add(organizarPorNombre);
 		jp.add(organizarPorPuntaje);
 		jp.add(organizarPorNivel);
-		add(puntajes);
 		add(jp, BorderLayout.SOUTH);
+		busquedaBinaria.addActionListener(this);
+		ScrollPane panelDesplazable = new ScrollPane();
+	    panelDesplazable.add(puntajes);
+	    add(busquedaBinaria, BorderLayout.NORTH);
+	    add(panelDesplazable, BorderLayout.CENTER);
+	    cargarPuntajes();
 		setVisible(true);
+		pack();
 	}
 	
 	public void cargarPuntajes() {

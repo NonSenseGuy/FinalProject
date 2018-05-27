@@ -70,6 +70,9 @@ public class VentanaPrincipal extends JFrame{
 		return jm;
 	}	
 	
+	public PanelJuego getPanelJuego() {
+		return pj;
+	}
 	public static void main(String[] args) {
 		VentanaPrincipal v = new VentanaPrincipal();
 		v.setVisible(true);
@@ -100,7 +103,6 @@ public class VentanaPrincipal extends JFrame{
 	}
 
 	public void guardarPuntaje() {
-		// TODO Auto-generated method stub
-		
+		jm.guardarPuntaje();
 	}
 }
