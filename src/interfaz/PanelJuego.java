@@ -35,6 +35,8 @@ public class PanelJuego extends JPanel{
 		ImageIcon usuario = new ImageIcon(v.getJuegoModelo().getElegido().getImagen());
 		Image newImg = usuario.getImage();
 		g.drawImage(newImg, 0, 0, null);
+		g.setColor(Color.darkGray);
+		g.fillRect(0, 0, 1280, 100);
 		g.setColor(Color.RED);
 		g.fillRect(300, 25, 600, 50);
 		g.setColor(Color.GREEN);
@@ -47,6 +49,7 @@ public class PanelJuego extends JPanel{
 		g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getImagen()).getImage(), v.getJuegoModelo().getEscenario().getPersonajePrincipal().getPosX(),Personaje.POS_Y, null);
 		g.drawString("Score: " + v.getJuegoModelo().getScore() , 15, 20);
 		g.drawString("Nivel: " + v.getJuegoModelo().getNivel(), 15, 50);
+		g.drawString(v.getJuegoModelo().getNickname(), 15, 80);
 		
 		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() != null){
 			g.drawString("Arma: " + v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getNombre(),1150 , 20);
@@ -57,6 +60,8 @@ public class PanelJuego extends JPanel{
 			Botiquin b = v.getJuegoModelo().getElegido().getBotiquin();
 			g.drawImage(new ImageIcon(b.getImg()).getImage(), b.getPosX(), b.getPosY(), null);
 		}
+		
+		pintarArma(g);
 	}
 	
 	public void pintarBalas(Graphics g) {
@@ -75,6 +80,10 @@ public class PanelJuego extends JPanel{
 				pintarZombie(g, v.getJuegoModelo().getElegido().getBoss()[i].getZombie());
 			}
 		}
+	}
+	
+	public void pintarArma(Graphics g) {
+		g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, -10, null);
 	}
 	
 	public void pintarZombie(Graphics g, Zombie zombie) {

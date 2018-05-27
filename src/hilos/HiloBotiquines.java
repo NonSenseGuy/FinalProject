@@ -17,12 +17,12 @@ public class HiloBotiquines extends Thread{
 	
 	public void run() {
 		while(true) {
-			Botiquin b = new Botiquin(600, PersonajePrincipal.POS_Y);
+			Botiquin b = new Botiquin(600, PersonajePrincipal.POS_Y + 50);
 			juegoM.getElegido().setBotiquin(b);
-			if(juegoM.getElegido().getPersonajePrincipal().getHitBox().contains(b.getPosX(), b.getPosY())) {
+			/*if(juegoM.getElegido().getPersonajePrincipal().getHitBox().contains(b.getPosX(), b.getPosY())) {
 				juegoM.getElegido().getPersonajePrincipal().setVida(juegoM.getElegido().getPersonajePrincipal().getVida() + b.getVida());
 				juegoM.getElegido().setBotiquin(null);
-			}
+			}*/
 			
 			try {
 				Thread.sleep(30000);

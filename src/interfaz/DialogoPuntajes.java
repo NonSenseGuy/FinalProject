@@ -1,6 +1,10 @@
 package interfaz;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,9 +12,10 @@ import java.io.FileReader;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class DialogoPuntajes extends JDialog{
+public class DialogoPuntajes extends JDialog implements ActionListener{
 	
 	public final String PUNTAJES = "./data/puntajes.txt";
 	
@@ -19,16 +24,32 @@ public class DialogoPuntajes extends JDialog{
 	private JButton organizarPorPuntaje;
 	private JButton organizarPorNivel;
 	private JTextField busquedaBinaria;
+	private JButton buscar;
 	private JLabel puntajes;
+	private JLabel organizar;
 	
 	public DialogoPuntajes(VentanaPrincipal v) {
 		this.setLocation(v.getLocation());
 		setTitle("Highscores");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));
-		setSize(v.getWidth() /2, v.getHeight() /2);
+		setSize(860, 600);
 		setResizable(false);
+		setLayout(new BorderLayout());
+		JPanel jp = new JPanel(new GridLayout(1, 4));
+		organizar = new JLabel("Organizar por");
+		organizarPorNombre = new JButton("Nombre");
+		organizarPorPuntaje = new JButton("Puntaje");
+		organizarPorNivel = new JButton("nivel");
+		busquedaBinaria = new JTextField();
+		buscar = new JButton("Buscar");	
+		puntajes = new JLabel();
+		jp.add(organizar);
+		jp.add(organizarPorNombre);
+		jp.add(organizarPorPuntaje);
+		jp.add(organizarPorNivel);
+		add(puntajes);
+		add(jp, BorderLayout.SOUTH);
 		setVisible(true);
-		
 	}
 	
 	public void cargarPuntajes() {
@@ -50,5 +71,11 @@ public class DialogoPuntajes extends JDialog{
 		}catch(Exception e) {
 			
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

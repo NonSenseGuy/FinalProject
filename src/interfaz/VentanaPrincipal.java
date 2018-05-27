@@ -98,4 +98,9 @@ public class VentanaPrincipal extends JFrame{
 		v.setVisible(true);
 		
 	}
+
+	public void guardarPuntaje() {
+		// TODO Auto-generated method stub
+		
+	}
 }

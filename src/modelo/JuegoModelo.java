@@ -1,4 +1,10 @@
 package modelo;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * @since 2018
  * @author Alejandro Barrera Lozano
@@ -7,6 +13,7 @@ package modelo;
  */
 public class JuegoModelo{
 	
+	public final String PUNTAJES = "./data/puntajes.txt";
 	private String nickname;
 	private int score;
 	private int nivel;
@@ -23,7 +30,7 @@ public class JuegoModelo{
 		this.score = score;
 		this.nivel = nivel;
 		PersonajePrincipal p = new PersonajePrincipal(640, PersonajePrincipal.IMAGEN);
-		p.agregarArma(new ArmaTiro("9mm", 20, 50, " ", 1));
+		p.agregarArma(new ArmaTiro("9mm", 20, 50, "./img/gun.png", 1));
 		p.setArmaElegida(p.getArmaPrimera());
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[0],p, 1));
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[1],p, 2));
@@ -119,6 +126,30 @@ public class JuegoModelo{
 			escenario.setSiguiente(primero);
 			escenario.setAnterior(anterior);
 			anterior.setSiguiente(escenario);
+		}
+	}
+	
+	public void guardarPuntaje() {
+		File file = new File(PUNTAJES);
+		FileWriter fw = null;
+		BufferedWriter bw = null;
+		
+		try {
+			fw = new FileWriter(file);
+			bw = new BufferedWriter(fw);
+			bw.append(nickname + " " + nivel + " " + score);
+			
+			try {
+				if(bw != null) {
+					bw.close();
+				}if(fw != null) {
+					fw.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
