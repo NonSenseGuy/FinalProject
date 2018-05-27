@@ -38,7 +38,9 @@ public class PanelJuego extends JPanel{
 		g.setColor(Color.RED);
 		g.fillRect(300, 25, 600, 50);
 		g.setColor(Color.GREEN);
-		g.fillRect(300, 25, v.getJuegoModelo().getElegido().getPersonajePrincipal().getVida()*6, 50);
+		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getVida() >= 0) {
+			g.fillRect(300, 25, v.getJuegoModelo().getElegido().getPersonajePrincipal().getVida()*6, 50);			
+		}
 		
 		g.setColor(Color.WHITE);
 		pintarEnemigos(g);
