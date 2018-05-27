@@ -5,7 +5,7 @@ import modelo.Botiquin;
 import modelo.JuegoModelo;
 import modelo.PersonajePrincipal;
 
-public class HiloBotiquines {
+public class HiloBotiquines extends Thread{
 	
 	private VentanaPrincipal ventanaPrincipal;
 	private JuegoModelo juegoM;
@@ -25,10 +25,12 @@ public class HiloBotiquines {
 			}
 			
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(30000);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
+			
+			ventanaPrincipal.repaint();
 		}
 	}
 }
