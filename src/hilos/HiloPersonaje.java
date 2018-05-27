@@ -1,4 +1,6 @@
 package hilos;
+import javax.swing.JOptionPane;
+
 import interfaz.VentanaPrincipal;
 import modelo.PersonajePrincipal;
 
@@ -17,6 +19,10 @@ public class HiloPersonaje extends Thread{
 		
 		while(true) {
 			
+			if(personajePrincipal.getVida() <= 0) {
+				JOptionPane.showMessageDialog(null, "Perdiste, tu score ha sido guardado puedes verlo en puntajes");
+				ventanaPrincipal = new VentanaPrincipal();
+			}
 			personajePrincipal.setPosX(personajePrincipal.getPosX() + personajePrincipal.getVelocidad());
 			
 			if(personajePrincipal.getPosX() <= 0) {
