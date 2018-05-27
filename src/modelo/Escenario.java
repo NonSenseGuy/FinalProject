@@ -14,8 +14,17 @@ public class Escenario {
 	private Escenario siguiente;
 	private Boss[] boss;
 	private PersonajePrincipal pPrincipal;
+	private Botiquin botiquin;
 
 	
+	public Botiquin getBotiquin() {
+		return botiquin;
+	}
+
+	public void setBotiquin(Botiquin botiquin) {
+		this.botiquin = botiquin;
+	}
+
 	public Escenario(String imagen, PersonajePrincipal p, int nivel){
 		this.imagen = imagen;
 		boss = new Boss[nivel];

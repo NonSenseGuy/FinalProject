@@ -5,7 +5,7 @@ public class Zombie extends Personaje{
 	public final static String IMAGEN_ZOMBIE = "./img/zombieE.png";
 	public final static int VIDA = 50;
 	public final static int SCORE = 20;
-	public final static int DANO = 15;
+	public final static int DANO = 2;
 	private int damage;
 	private boolean atacar;
 	private int score;

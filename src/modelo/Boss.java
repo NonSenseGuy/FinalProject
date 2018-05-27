@@ -5,7 +5,7 @@ public class Boss extends Personaje implements Disparar, Generar{
 	
 	public final static String IMAGEN_BOSS = "./img/Boss.png";
 	public final static int RADIO_ATAQUE = 400; 
-	public final static int DANO = 20;
+	public final static int DANO = 10;
 	public final static int VIDA = 100;
 	public final static int SCORE = 60;
 	private int damage;

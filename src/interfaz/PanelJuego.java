@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import modelo.ArmaTiro;
 import modelo.Bala;
+import modelo.Botiquin;
 import modelo.Personaje;
 import modelo.Zombie;
 
@@ -50,6 +51,10 @@ public class PanelJuego extends JPanel{
 		}
 		pintarBalas(g);
 		
+		if(v.getJuegoModelo().getElegido().getBotiquin() != null) {
+			Botiquin b = v.getJuegoModelo().getElegido().getBotiquin();
+			g.drawImage(new ImageIcon(b.getImg()).getImage(), b.getPosX(), b.getPosY(), null);
+		}
 	}
 	
 	public void pintarBalas(Graphics g) {
