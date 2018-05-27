@@ -16,12 +16,14 @@ public class HiloPersonaje extends Thread{
 	}
 	
 	public void run() {
-		
-		while(true) {
+		boolean vivo = true;
+		while(vivo) {
 			
 			if(personajePrincipal.getVida() <= 0) {
-				JOptionPane.showMessageDialog(null, "Perdiste, tu score ha sido guardado puedes verlo en puntajes");
-				ventanaPrincipal = new VentanaPrincipal();
+				personajePrincipal.setVida(1);
+				vivo = false;
+				JOptionPane.showMessageDialog(null, "Perdiste, Tu puntaje ha sido guardado puedes verlo en la tabla de puntajes en el menu");
+				ventanaPrincipal.reset();
 			}
 			personajePrincipal.setPosX(personajePrincipal.getPosX() + personajePrincipal.getVelocidad());
 			

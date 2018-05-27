@@ -62,7 +62,6 @@ public class HiloEnemigos extends Thread {
 	public void tick(int dano) {
 		PersonajePrincipal p = juegoM.getElegido().getPersonajePrincipal();
 		p.setVida(p.getVida() - dano);
-		JOptionPane.showMessageDialog(null, p.getVida() + "");
 		
 	}
 }

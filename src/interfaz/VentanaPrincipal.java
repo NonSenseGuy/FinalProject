@@ -86,4 +86,11 @@ public class VentanaPrincipal extends JFrame{
 			jm.getElegido().getPersonajePrincipal().disparar(keyCode);
 		}		
 	}
+
+	public void reset() {
+		VentanaPrincipal v = new VentanaPrincipal();
+		this.dispose();
+		v.setVisible(true);
+		
+	}
 }
