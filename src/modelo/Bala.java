@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  * 
  *  Clase que permite inicializar una bala que cambia su aspecto,d año y velocidad dependiendo del arma
  */
-public class Bala implements Serializable {
+public class Bala implements Mover,Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -112,14 +112,8 @@ public class Bala implements Serializable {
 		this.posX = posX;
 		setHitBox();
 	}
-	/**
-	 * Permite mover la bala respecto a una distancia pasada por parametro
-	 * 
-	 * <b>post: </b> La bala se desplaza en el eje X una cierta distancia
-	 * 
-	 * @param distancia:  distancia que va a recorrer la bala
-	 */
-	public void moverBala(int distancia) {
+	@Override
+	public void mover(int distancia) {
 		setPosX(getPosX() + distancia);
 		setHitBox();
 	}
