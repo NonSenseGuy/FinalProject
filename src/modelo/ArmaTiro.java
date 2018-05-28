@@ -3,9 +3,7 @@ package modelo;
 public class ArmaTiro extends Arma {
 	
 	public final int VELOCIDAD_BALA = 5;
-	private int cadencia;
-	
-	
+	private int cadencia;	
 	private Bala bala;
 
 	public ArmaTiro(String nombre,int damage, int ammo, String imagen, int cadencia) {
@@ -22,11 +20,10 @@ public class ArmaTiro extends Arma {
 		this.cadencia = cadencia;
 	}
 	
+	@Override
 	public void dispararBala(int posX) {
 		if(bala == null)
 		bala = new Bala("./img/disparoHorizontal.png", posX, getDamage());
-		
-		
 	}
 	
 	public Bala getBala() {

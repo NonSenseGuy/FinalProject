@@ -1,6 +1,6 @@
 package modelo;
 
-public class Arma {
+public class Arma implements Disparar{
 	
 	private String nombre;
 	private int damage;
@@ -54,6 +54,18 @@ public class Arma {
 	}
 	public void setImagenArma(String imagen) {
 		this.imagenArma = imagen;
+	}
+
+	@Override
+	public void disparar(int direccion) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dispararBala(int posX) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
