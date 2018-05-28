@@ -1,7 +1,13 @@
 package modelo;
 
-public class Arma implements Disparar{
+import java.io.Serializable;
+
+public class Arma implements Disparar, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private int damage;
 	private int ammo;

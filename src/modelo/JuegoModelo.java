@@ -2,8 +2,14 @@ package modelo;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 /**
  * @since 2018
@@ -11,8 +17,13 @@ import java.io.IOException;
  * @author Luis Alfredo Rodriguez
  * Clase que controla todo el juego
  */
-public class JuegoModelo{
+public class JuegoModelo implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public final static String GUARDAR_PARTIDA = "data/cargarPartida.dat";
 	public final String PUNTAJES = "data/puntajes.txt";
 	private String nickname;
 	private int score;
@@ -135,7 +146,6 @@ public class JuegoModelo{
 	
 	/**
 	 * Guarda el nickname, nivel y puntaje alcanzados en un archivo de texto
-	 * 
 	 */
 	public void guardarPuntaje() {
 		File file = new File(PUNTAJES);
@@ -180,7 +190,70 @@ public class JuegoModelo{
 		elegido = elegido.getSiguiente();
 		elegido.generarBosses(nivel);
 		elegido.setPersonajePrincipal(p);
+		guardarPartida();
 		
 	}
+	
+	public void guardarPartida() {
+		File file = new File(GUARDAR_PARTIDA);
+		if(file.exists()) {
+			file.delete();
+		}
+		FileOutputStream fs = null;
+		ObjectOutputStream  os = null;
+		try {
+			fs = new FileOutputStream(file);
+			os = new ObjectOutputStream(fs);
+			elegido.setBotiquin(null);
+			os.writeObject(this);
+			
+			try {
+				if(os != null) {
+					os.close();
+				}
+				if(fs != null) {
+					fs.close();
+				}
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static JuegoModelo cargarPartida() {
+		File file = new File(GUARDAR_PARTIDA);
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		JuegoModelo jm = null;
+		
+		try {
+			if(file.exists()) {
+				fis = new FileInputStream(file);
+				ois = new ObjectInputStream(fis);
+				jm = (JuegoModelo) ois.readObject();
+				try {
+					if(ois != null) {
+						ois.close();
+					}
+					if(fis != null) {
+						fis.close();
+					}
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return jm;
+	}
+	
+	
 	
 }

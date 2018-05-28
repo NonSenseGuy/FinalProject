@@ -2,6 +2,10 @@ package modelo;
 
 public class RayGun extends Arma{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final static int DAMAGE_RAYGUN = 5;
 	public final static int VELOCIDAD_BALA = 10;
 	public final static String IMAGEN_RAYGUN = "./img/RayGun.png";

@@ -2,6 +2,11 @@ package modelo;
 
 public class Rocket extends Arma {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public final static int DAMAGE_ROCKET = 100;
 	public final static int VELOCIDAD_BALA = 2;
 	public final static String IMAGEN_ROCKET = "./img/rocket.png";

@@ -116,4 +116,6 @@ public class VentanaPrincipal extends JFrame{
 			jm.getElegido().getPersonajePrincipal().setArmaElegida(jm.getElegido().getPersonajePrincipal().getArmaElegida().getSiguiente());
 		}
 	}
+
+
 }

@@ -9,6 +9,10 @@ package modelo;
  */
 public class Zombie extends Personaje{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final static String IMAGEN_ZOMBIE = "./img/zombieE.png";
 	public final static int VIDA = 50;
 	public final static int SCORE = 20;

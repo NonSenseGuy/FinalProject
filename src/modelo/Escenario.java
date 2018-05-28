@@ -1,6 +1,8 @@
 package modelo;
 
-public class Escenario {
+import java.io.Serializable;
+
+public class Escenario implements Serializable {
 	
 	public final int FINAL_ESCENARIO = 1300;
 	public final int INICIO_ESCENARIO = -100;
@@ -60,9 +62,9 @@ public class Escenario {
 	
 	public int getPosicionBoss(boolean pos) {
 		if(pos) {
-			return FINAL_ESCENARIO + (int) (Math.random()*300);
+			return FINAL_ESCENARIO + 200 + (int) (Math.random()*400);
 		}else {
-			return INICIO_ESCENARIO - (int) (Math.random()*300);
+			return INICIO_ESCENARIO - 200 - (int) (Math.random()*400);
 		}
 	}
 	

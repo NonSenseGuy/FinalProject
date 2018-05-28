@@ -3,6 +3,10 @@ package modelo;
 public class Boss extends Personaje implements Generar{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final static String IMAGEN_BOSS = "./img/Boss.png";
 	public final static int DANO = 10;
 	public final static int VIDA = 100;
@@ -81,7 +85,7 @@ public class Boss extends Personaje implements Generar{
 	public Zombie generarZombie() {
 		boolean positivo = Math.random() > 0.5;
 		int rango = positivo ? 1 : -1;
-		Zombie z = new Zombie(getPosX() + (int) (Math.random()*300 *rango),Zombie.IMAGEN_ZOMBIE,Zombie.DANO );
+		Zombie z = new Zombie(getPosX() + (int) (Math.random()*400 *rango),Zombie.IMAGEN_ZOMBIE,Zombie.DANO );
 		return z;
 	}
 	

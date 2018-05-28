@@ -1,7 +1,13 @@
 package modelo;
 
-public class Botiquin extends Objeto{
+import java.io.Serializable;
+
+public class Botiquin extends Objeto implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final String IMAGEN_BOTIQUIN = "./img/botiquin.png";
 	public final int VIDA = 20;
 	private int vida;

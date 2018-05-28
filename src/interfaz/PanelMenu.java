@@ -98,8 +98,13 @@ public class PanelMenu extends JPanel implements MouseListener{
 	}
 
 	private void cargarPartida() {
-		JOptionPane.showMessageDialog(null, "Aqui carga una partida");
-		
+		if(JuegoModelo.cargarPartida() != null) {
+			VentanaPrincipal v = new VentanaPrincipal(JuegoModelo.cargarPartida());
+			this.v.dispose();
+			v.setVisible(true);
+		}else {
+			JOptionPane.showMessageDialog(null, "No hay partidas guardadas");
+		}
 	}
 
 	@Override
