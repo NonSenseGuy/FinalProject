@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 
  *  Clase padre de personaje principal, zombie y boss
  */
-public abstract class Personaje implements Serializable{
+public abstract class Personaje implements Mover,Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	public final static int ANCHO = 60;
@@ -86,7 +86,7 @@ public abstract class Personaje implements Serializable{
 		return imagen;
 	}
 	/**
-	 * Permite modificar la ruta de la imagend el personaje
+	 * Permite modificar la ruta de la imagen del personaje
 	 * @param imagen: Nueva ruta de la imagen que se muestra en la interfaz grafica, imagen != null y imagen != ""
 	 */
 	public void setImagen(String imagen) {
@@ -105,11 +105,9 @@ public abstract class Personaje implements Serializable{
 	public Rectangle2D getHitBox() {
 		return hitBox;
 	}
-	/**
-	 * Permite mover le personaje por el eje X y reacomodar su hitBox deacuerdo a su nueva posicion
-	 * @param distancia: Distancia deseada que se quiere que recorra el personaje, distancia != null
-	 */
-	public void moverPersonaje(int distancia) {
+	
+	@Override
+	public void mover(int distancia) {
 		setPosX(getPosX() + distancia);
 		setHitBox();
 	}

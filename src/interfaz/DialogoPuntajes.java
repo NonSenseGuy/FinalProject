@@ -171,7 +171,7 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 				buscarPorPuntaje(Integer.valueOf(busquedaBinaria.getText()));
 				busquedaBinaria.setText("");
 			}catch(NumberFormatException ex) {
-				JOptionPane.showMessageDialog(null, "Ingrese un parametro entero");
+				JOptionPane.showMessageDialog(null, "Ingrese un parametro entero ");
 			}
 			
 		}else if(comando.equals("buscarPorNivel")) {
