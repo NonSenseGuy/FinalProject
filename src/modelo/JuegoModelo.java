@@ -14,8 +14,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 /**
  * @since 2018
  * @author Alejandro Barrera Lozano
@@ -192,13 +190,9 @@ public class JuegoModelo implements Serializable{
 		if(getNivel() == 2) {
 			p.agregarArma(new Rocket("Rocket", Rocket.IMAGEN_ROCKET, 200));
 		}else if(getNivel() == 4) {
-<<<<<<< HEAD
-			p.agregarArma(new RayGun("RayGun", 30, RayGun.IMAGEN_RAYGUN));
+			p.agregarArma(new RayGun("RayGun", RayGun.IMAGEN_RAYGUN));
 		}else if(getNivel() == 9) {
 			p.getArmaElegida().setDamage(p.getArmaElegida().getDamage() + 5);
-=======
-			p.agregarArma(new RayGun("RayGun", RayGun.IMAGEN_RAYGUN));
->>>>>>> 1c1522f51537915973a5cf36954ca75b605835dd
 		}
 		
 		elegido = elegido.getSiguiente();
