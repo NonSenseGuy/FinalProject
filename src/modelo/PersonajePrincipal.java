@@ -77,8 +77,9 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 		}	
 	}
 
-	
-	
-	
-	
+	@Override
+	public void dispararBala(int posX) {
+		// TODO Auto-generated method stub
+		
+	}	
 }

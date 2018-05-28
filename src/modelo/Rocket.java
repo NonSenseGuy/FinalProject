@@ -1,21 +1,29 @@
 package modelo;
 
-public class Rocket extends Explosivo {
+public class Rocket extends Arma {
 	
-	private int tiempoRecarga;
+	public final static int DAMAGE_ROCKET = 100;
+	
+	private int radioExplocion;
+	private Bala bala;
 
-	public Rocket(String nombre,int damage, int ammo, String imagen, int radioExplosion, int tiempoRecarga) {
-		super(nombre,damage, ammo, imagen, radioExplosion);
-		this.tiempoRecarga = tiempoRecarga;
+	public Rocket(String nombre, int ammo, String imagen, int radioExplosion) {
+		super(nombre,DAMAGE_ROCKET, ammo, imagen);
+		this.radioExplocion = radioExplosion;
 	}
 
-	public int getTiempoRecarga() {
-		return tiempoRecarga;
+	public int getRadioExplocion() {
+		return radioExplocion;
 	}
 
-	public void setTiempoRecarga(int tiempoRecarga) {
-		this.tiempoRecarga = tiempoRecarga;
+	public void setRadioExplocion(int radioExplocion) {
+		this.radioExplocion = radioExplocion;
 	}
 	
+	@Override
+	public void dispararBala(int posX) {
+		if(bala == null)
+		bala = new Bala("./img/disparoRocket.png", posX, getDamage());
+	}	
 	
 }

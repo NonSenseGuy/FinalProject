@@ -21,9 +21,7 @@ public class Escenario {
 	}
 
 	public Escenario(String imagen){
-		this.imagen = imagen;
-		
-		
+		this.imagen = imagen;		
 	}
 	
 	public void generarBosses(int nivel) {
@@ -31,7 +29,7 @@ public class Escenario {
 		boolean pos = true;
 		for(int i = 0; i < boss.length; i++) {
 			pos = pos ? false:true;
-			boss[i] = new Boss(Boss.VIDA+(50*nivel), getPosicionBoss(pos),Boss.IMAGEN_BOSS, Boss.DANO, Boss.RADIO_ATAQUE );
+			boss[i] = new Boss(Boss.VIDA+(50*nivel), getPosicionBoss(pos),Boss.IMAGEN_BOSS, Boss.DANO);
 		}
 	}
 	

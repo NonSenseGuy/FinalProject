@@ -131,9 +131,15 @@ public class JuegoModelo{
 			anterior.setSiguiente(escenario);
 		}
 	}
+<<<<<<< HEAD
 	
 	/**
 	 * Guarda el nickname, nivel y puntaje alcanzados en un archivo de texto
+=======
+	/**
+	 * Permite guardar el puntaje del juego
+	 * 
+>>>>>>> 6c661b357cdc3dc760748df5aa65ec9d28b9cde3
 	 */
 	public void guardarPuntaje() {
 		File file = new File(PUNTAJES);
@@ -146,7 +152,7 @@ public class JuegoModelo{
 			}
 			fw = new FileWriter(file);
 			bw = new BufferedWriter(fw);
-			bw.append(nickname + " " + nivel + " " + score);
+			bw.append(nickname + "  " + nivel + "  " + score);
 			
 			try {
 				if(bw != null) {
@@ -168,9 +174,17 @@ public class JuegoModelo{
 	 */
 	public void subirNivel() {
 		PersonajePrincipal p = elegido.getPersonajePrincipal();
+		
+		if(getNivel() == 2) {
+			p.agregarArma(new RayGun("RayGun", 30, ",/img/rayGun.png"));
+		}else if(getNivel() == 3) {
+			p.agregarArma(new Rocket("Rocket", 15, "./img/rocket.png", 150));
+		}
+		
 		elegido = elegido.getSiguiente();
 		elegido.generarBosses(nivel);
 		elegido.setPersonajePrincipal(p);
+		
 	}
 	
 }
