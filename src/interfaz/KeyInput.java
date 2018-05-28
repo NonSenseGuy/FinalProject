@@ -17,4 +17,6 @@ public class KeyInput extends KeyAdapter {
 	public void keyReleased(KeyEvent e) {
 		pj.keyReleased(e);
 	}
+	
+	
 }

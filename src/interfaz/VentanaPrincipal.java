@@ -105,4 +105,13 @@ public class VentanaPrincipal extends JFrame{
 	public void guardarPuntaje() {
 		jm.guardarPuntaje();
 	}
+
+	public void cambiarArmaPersonajePrincipal(int keyCode) {
+		
+		if(keyCode == KeyEvent.VK_Q) {
+			jm.getElegido().getPersonajePrincipal().setArmaElegida(jm.getElegido().getPersonajePrincipal().getArmaElegida().getSiguiente());
+		}else if(keyCode == KeyEvent.VK_E) {
+			jm.getElegido().getPersonajePrincipal().setArmaElegida(jm.getElegido().getPersonajePrincipal().getArmaElegida().getAnterior());
+		}
+	}
 }
