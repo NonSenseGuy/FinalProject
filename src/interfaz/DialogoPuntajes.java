@@ -13,11 +13,13 @@ import java.io.FileReader;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import modelo.JuegoModelo;
+import modelo.Puntaje;
 
 public class DialogoPuntajes extends JDialog implements ActionListener{
 	
@@ -30,6 +32,8 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 	private JButton organizarPorPuntaje;
 	private JButton organizarPorNivel;
 	private JTextField busquedaBinaria;
+	private JButton buscarPorNivel;
+	private JButton buscarPorPuntaje;
 	private JTextArea puntajes;
 	private JLabel organizar;
 	
@@ -50,10 +54,27 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		organizarPorPuntaje = new JButton("Puntaje");
 		organizarPorPuntaje.setActionCommand(ORGANIZAR_PUNTAJE);
 		organizarPorPuntaje.addActionListener(this);
+		
 		organizarPorNivel = new JButton("Nivel");
 		organizarPorNivel.setActionCommand(ORGANIZAR_NIVEL);
 		organizarPorNivel.addActionListener(this);
-		busquedaBinaria = new JTextField("Ingrese el puntaje que desea buscar");
+		
+		busquedaBinaria = new JTextField();
+		busquedaBinaria.setToolTipText("Buscar por: ");
+		buscarPorNivel = new JButton("Nivel");
+		buscarPorNivel.setEnabled(false);
+		buscarPorNivel.setActionCommand("buscarPorNivel");
+		buscarPorNivel.addActionListener(this);
+		buscarPorPuntaje = new JButton("Puntaje");
+		buscarPorPuntaje.setEnabled(false);
+		buscarPorPuntaje.setActionCommand("buscarPorPuntaje");
+		buscarPorPuntaje.addActionListener(this);
+		JPanel panelBusqueda = new JPanel(new GridLayout(1,3));
+		panelBusqueda.add(busquedaBinaria);
+		panelBusqueda.add(buscarPorNivel);
+		panelBusqueda.add(buscarPorPuntaje);
+		add(panelBusqueda, BorderLayout.NORTH);
+		
 		puntajes = new JTextArea();
 		puntajes.setEditable(false);
 		jp.add(organizar);
@@ -61,10 +82,8 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		jp.add(organizarPorPuntaje);
 		jp.add(organizarPorNivel);
 		add(jp, BorderLayout.SOUTH);
-		busquedaBinaria.addActionListener(this);
 		ScrollPane panelDesplazable = new ScrollPane();
 	    panelDesplazable.add(puntajes);
-	    add(busquedaBinaria, BorderLayout.NORTH);
 	    add(panelDesplazable, BorderLayout.CENTER);
 	    cargarPuntajes();
 		setVisible(true);
@@ -111,6 +130,25 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		cargarPuntajes();
 	}
 	
+	public void buscarPorPuntaje(int puntaje) {
+		Puntaje p = JuegoModelo.busquedaBinariaPuntaje(puntaje, JuegoModelo.leerPuntajes());
+		if(p != null) {
+			puntajes.setText(p.getNickname() + " " + p.getNivel() + " " + p.getPuntaje());
+		}else {
+			puntajes.setText("No se ha encontrado ningun jugador con ese puntaje");
+		}
+		
+	}
+	
+	public void buscarPorNivel(int nivel) {
+		Puntaje p = JuegoModelo.busquedaBinariaPorNivel(nivel, JuegoModelo.leerPuntajes());
+		try {
+			puntajes.setText(p.getNickname() + " " + p.getNivel() + " " + p.getPuntaje());
+		}catch(NullPointerException e) {
+			puntajes.setText("No se ha encontrado ningun jugador con ese nivel");
+		}
+	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -118,13 +156,34 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		
 		if(comando.equals(ORGANIZAR_PUNTAJE)) {
 			organizarPorPuntaje();
+			buscarPorPuntaje.setEnabled(true);
+			buscarPorNivel.setEnabled(false);
 		}else if(comando.equals(ORGANIZAR_NIVEL)) {
 			organizarPorNivel();
+			buscarPorPuntaje.setEnabled(false);
+			buscarPorNivel.setEnabled(true);
 		}else if(comando.equals(ORGANIZAR_NOMBRE)) {
 			organizarPorNombre();
-		}else {
+			buscarPorPuntaje.setEnabled(false);
+			buscarPorNivel.setEnabled(false);
+		}else if(comando.equals("buscarPorPuntaje")){
+			try {
+				buscarPorPuntaje(Integer.valueOf(busquedaBinaria.getText()));
+				busquedaBinaria.setText("");
+			}catch(NumberFormatException ex) {
+				JOptionPane.showMessageDialog(null, "Ingrese un parametro entero");
+			}
 			
+		}else if(comando.equals("buscarPorNivel")) {
+			try {
+				buscarPorNivel(Integer.valueOf(busquedaBinaria.getText()));
+				busquedaBinaria.setText("");
+			}catch(NumberFormatException ex) {
+				JOptionPane.showMessageDialog(null, "Ingrese un parametro entero");
+			}
 		}
 		
 	}
+
+
 }

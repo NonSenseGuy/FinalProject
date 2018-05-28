@@ -2,5 +2,5 @@ Pelele 20 23740
 Alejandro 4 1120
 ASd 3 660
 asd 2 140
-Fredo 1 0
 NonSense 1 40
+Fredo 1 0

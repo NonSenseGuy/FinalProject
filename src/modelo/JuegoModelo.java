@@ -192,13 +192,11 @@ public class JuegoModelo implements Serializable{
 		if(getNivel() == 2) {
 			p.agregarArma(new Rocket("Rocket", Rocket.IMAGEN_ROCKET, 200));
 		}else if(getNivel() == 4) {
-<<<<<<< HEAD
-			p.agregarArma(new RayGun("RayGun", 30, RayGun.IMAGEN_RAYGUN));
+			p.agregarArma(new RayGun("RayGun",RayGun.IMAGEN_RAYGUN));
 		}else if(getNivel() == 9) {
 			p.getArmaElegida().setDamage(p.getArmaElegida().getDamage() + 5);
-=======
 			p.agregarArma(new RayGun("RayGun", RayGun.IMAGEN_RAYGUN));
->>>>>>> 1c1522f51537915973a5cf36954ca75b605835dd
+
 		}
 		
 		elegido = elegido.getSiguiente();
@@ -360,7 +358,7 @@ public class JuegoModelo implements Serializable{
 			pos = i;
 			for(j = i+1; j < puntajesOrganizados.length; j++) {
 				if(puntajesOrganizados[j].getNivel() > menor.getNivel()) {
-					menor = puntajesOrganizados[i];
+					menor = puntajesOrganizados[j];
 					pos = j;					
 				}
 			}
@@ -400,5 +398,43 @@ public class JuegoModelo implements Serializable{
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static Puntaje busquedaBinariaPuntaje(int puntaje, ArrayList<Puntaje> puntajes) {
+		Puntaje[] arrayPuntaje = new Puntaje[puntajes.size()];
+		arrayPuntaje = puntajes.toArray(arrayPuntaje);
+		
+		int n = arrayPuntaje.length;
+		int centro, inf = 0, sup = n-1;
+		while(inf <= sup) {
+			centro = (sup+inf)/2;
+			if(arrayPuntaje[centro].getPuntaje() == puntaje) {
+				return arrayPuntaje[centro];
+			}else if(puntaje > arrayPuntaje[centro].getPuntaje()) {
+				sup = centro -1;
+			}else{
+				inf = centro + 1;
+			}
+		}
+		return null;
+	}
+	
+	public static Puntaje busquedaBinariaPorNivel(int nivel, ArrayList<Puntaje> puntajes) {
+		Puntaje[] arrayPuntaje = new Puntaje[puntajes.size()];
+		arrayPuntaje = puntajes.toArray(arrayPuntaje);
+		
+		int n = arrayPuntaje.length;
+		int centro, inf = 0, sup = n-1;
+		while(inf <= sup) {
+			centro = (sup+inf)/2;
+			if(arrayPuntaje[centro].getNivel() == nivel) {
+				return arrayPuntaje[centro];
+			}else if(nivel > arrayPuntaje[centro].getNivel()) {
+				sup = centro -1;
+			}else{
+				inf = centro + 1;
+			}
+		}
+		return null;
 	}
 }
