@@ -8,12 +8,21 @@ import modelo.PersonajePrincipal;
 import modelo.RayGun;
 import modelo.Rocket;
 import modelo.Zombie;
-
+/**
+ * @since 2018
+ * @author Alejandro Barrera Lozano
+ * @author Luis Alfredo Rodriguez
+ * Clase que controla el movimiento de las balas de acuerdo al tipo de arma
+ */
 public class HiloBalas extends Thread{
 	
 	private PersonajePrincipal personajeP;
 	private VentanaPrincipal ventana;
-	
+	/**
+	 * Cosntructor que permite intstanciar el hilo para que se puedan mover las balas
+	 * @param p: Personaje principal actual
+	 * @param v: ventana Principal del juego actual donde se ejecuta el juego
+	 */
 	public HiloBalas(PersonajePrincipal p, VentanaPrincipal v) {
 		personajeP = p;
 		ventana = v;
@@ -78,7 +87,11 @@ public class HiloBalas extends Thread{
 			ventana.repaint();
 		}
 	}
-	
+	/**
+	 * Permite que cuando un zombie o boss sea tocado por una bala, este reciba daño y si su vida es menor a cero entonces desaparezca de la interfaz
+	 * grafica. Tambien hace que la bala desaparezca cuando toca a un enemigo
+	 * @param balaDisparada: Bala que fue disparada de un arma tipo ArmaTiro
+	 */
 	public void golpeaZombieArmaTiro(Bala balaDisparada) {
 		
 		Boss[] bosses = ventana.getJuegoModelo().getElegido().getBoss();
@@ -104,7 +117,11 @@ public class HiloBalas extends Thread{
 			}
 		}
 	}
-	
+	/**
+	 * Permite que cuando un zombie o boss sea tocado por una bala, este reciba daño y si su vida es menor a cero entonces desaparezca de la interfaz
+	 * grafica. En este caso la bala no desaparece sino que sigue haciendo daño a los zombies que intersecte hasta que se acabe la ventana
+	 * @param balaDisparada: Bala que fue disparada de un arma tipo RayGun
+	 */
 	public void golpeaZombieRayGun(Bala balaDisparada) {
 		Boss[] bosses = ventana.getJuegoModelo().getElegido().getBoss();
 		
@@ -121,7 +138,12 @@ public class HiloBalas extends Thread{
 			}
 		}
 	}
-	
+	/**
+	 * Permite que cuando un zombie o boss sea tocado por una bala, este reciba daño y si su vida es menor a cero entonces desaparezca de la interfaz
+	 * grafica. En este caso la bala desaparece cuando toca un enemigo, pero de acuerdo al radio de explosion del arma daña a los enemigos con  que estan 
+	 * en ese radio.
+	 * @param balaDisparada: Bala que fue disparada de un arma tipo Rocket
+	 */
 	public void golpeaZombieRocket(Bala balaDisparada, int radioExplosion) {
 		Boss[] bosses = ventana.getJuegoModelo().getElegido().getBoss();
 		

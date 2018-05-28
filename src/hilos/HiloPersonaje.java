@@ -6,7 +6,12 @@ import excepciones.NoCurarException;
 import interfaz.VentanaPrincipal;
 import modelo.Botiquin;
 import modelo.PersonajePrincipal;
-
+/**
+ * @since 2018
+ * @author Alejandro Barrera Lozano
+ * @author Luis Alfredo Rodriguez
+ * Clase que controla el movimiento de el personaje principal 
+ */
 public class HiloPersonaje extends Thread{
 	
 	private PersonajePrincipal personajePrincipal;

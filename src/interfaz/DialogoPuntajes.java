@@ -21,12 +21,14 @@ import javax.swing.JTextField;
 import modelo.JuegoModelo;
 import modelo.Puntaje;
 
+@SuppressWarnings("serial")
 public class DialogoPuntajes extends JDialog implements ActionListener{
 	
 	public final String PUNTAJES = "./data/puntajes.txt";
 	public final String ORGANIZAR_PUNTAJE = "OrganizarPuntaje";
 	public final String ORGANIZAR_NOMBRE = "OrganizarNickname";
 	public final String ORGANIZAR_NIVEL = "OrganizarNivel";
+	
 	private VentanaPrincipal v;
 	private JButton organizarPorNombre;
 	private JButton organizarPorPuntaje;
@@ -39,7 +41,7 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 	
 	public DialogoPuntajes(VentanaPrincipal v) {
 		this.v = v;
-		this.setLocation(v.getLocation());
+		this.setLocation(this.v.getLocation());
 		setTitle("Highscores");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));
 		setSize(860, 600);
