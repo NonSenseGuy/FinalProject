@@ -101,7 +101,8 @@ public class Boss extends Personaje implements Generar{
 	
 	/**
 	 * Agrega un zombie en estructura de arbol binario
-	 * Si la raiz es nula 
+	 * Si la raiz es nula, agrega el zombie en la raiz
+	 * Si no lo agrega en orden segun su posicion en X
 	 * @param z
 	 */
 	public void agregarZombie(Zombie z) {
@@ -112,6 +113,13 @@ public class Boss extends Personaje implements Generar{
 		}
 	}
 	
+	/**
+	 * Verifica si el disparo del jugador principal le pego al boss 
+	 * En caso de que le haya pegado le quita vida segun el daño de la bala
+	 * @param pos
+	 * @param damageBala
+	 * @return golpeado
+	 */
 	public boolean quitarVidaBoss(int pos, int damageBala) {
 		
 		boolean golpeado = false;
@@ -123,10 +131,18 @@ public class Boss extends Personaje implements Generar{
 		
 		return golpeado;
 	}
-	
+	/**
+	 * Modifica el score que puede dar el boss
+	 * @param score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
+	/**
+	 * Elimina un zombie que este en la posicion pasada por parametro
+	 * @param pos
+	 * @return eliminado
+	 */
 	public boolean eliminarZombie(int pos) {
 		boolean elimino = false;
 		
@@ -138,6 +154,12 @@ public class Boss extends Personaje implements Generar{
 		return elimino;
 	}
 	
+	/**
+	 * Busca un zombie que esta en la posicion pasada por parametro
+	 * Si no encuentra al zombie retorna null
+	 * @param pos
+	 * @return zombie
+	 */
 	public Zombie buscarZombie(int pos) {
 		if(zombie == null) {
 			return null;
@@ -145,7 +167,10 @@ public class Boss extends Personaje implements Generar{
 			return zombie.buscarZombie(pos);
 		}
 	}
-	
+	/**
+	 * Localiza zombies que tengan vida menor o igual a 0
+	 * @return Zombie
+	 */
 	public Zombie localizarZombieMuerto() {
 		if(zombie != null) 	return zombie.localizarZombieMuerto();		
 		return null;
