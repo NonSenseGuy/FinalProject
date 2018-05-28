@@ -50,6 +50,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 			primera.setAnterior(arma);
 			arma.setAnterior(anterior);
 			arma.setSiguiente(primera);
+			anterior.setSiguiente(arma);
 		}
 	}
 	
@@ -69,7 +70,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 					if(((RayGun)elegida).getBala() == null) {
 						((RayGun)elegida).dispararBala(getPosX()+5);
 						Bala balaDisparada = ((RayGun)elegida).getBala();
-						balaDisparada.setVelocidad(8);
+						balaDisparada.setVelocidad(RayGun.VELOCIDAD_BALA);
 					}
 				}
 				 
@@ -85,7 +86,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 					if(((RayGun)elegida).getBala() == null) {
 						((RayGun)elegida).dispararBala(getPosX()-5);
 						Bala balaDisparada = ((RayGun)elegida).getBala();
-						balaDisparada.setVelocidad(-8);
+						balaDisparada.setVelocidad(-RayGun.VELOCIDAD_BALA);
 					}
 				}
 				 

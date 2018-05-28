@@ -25,7 +25,7 @@ public class HiloBotiquines extends Thread{
 			}*/
 			
 			try {
-				Thread.sleep(30000);
+				Thread.sleep(6000);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
