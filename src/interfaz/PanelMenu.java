@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import excepciones.PartidaNoGuardadaException;
 import modelo.JuegoModelo;
 
 @SuppressWarnings("serial")
@@ -78,7 +79,12 @@ public class PanelMenu extends JPanel implements MouseListener{
 			if(y > posicionBoton && y < posicionBoton + TAMANO_BOTON - 60) {
 				crearPartida();
 			}else if(y > posicionBoton+TAMANO_BOTON && y < posicionBoton+TAMANO_BOTON+50) {
-				cargarPartida();
+				try {
+					cargarPartida();
+				}catch(PartidaNoGuardadaException e){
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+				
 			}else if(y > 460 && y < 500 ) {
 				instrucciones();
 			}else if(y > 550 && y < 620) {
@@ -97,13 +103,15 @@ public class PanelMenu extends JPanel implements MouseListener{
 		
 	}
 
-	private void cargarPartida() {
+	private void cargarPartida()throws PartidaNoGuardadaException {
 		if(JuegoModelo.cargarPartida() != null) {
 			VentanaPrincipal v = new VentanaPrincipal(JuegoModelo.cargarPartida());
 			this.v.dispose();
 			v.setVisible(true);
 		}else {
-			JOptionPane.showMessageDialog(null, "No hay partidas guardadas");
+			PartidaNoGuardadaException e = new PartidaNoGuardadaException();
+			throw e;
+			
 		}
 	}
 
