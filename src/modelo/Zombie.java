@@ -4,7 +4,7 @@ package modelo;
  * @author Alejandro Barrera Lozano
  * @author Luis Alfredo Rodriguez
  * 
- *  Clase que crea los zombies con una imagen, vida, damage y una posicion en el juego, como tambien el arbol binario
+ *  Clase que crea los zombies con una imagen, vida, damage y una posicion en el juego
  */
 public class Zombie extends Personaje{
 	
@@ -51,35 +51,35 @@ public class Zombie extends Personaje{
 		this.damage = damage;
 	}
 	/**
-	 * Permite retornar el zombie de la posicion izquierda del zombie seleccionado
+	 * Permite retornar el zombie de la posicion izquierda del zombie seleccionado en el arbol binario
 	 * @return zombieIzq: Zombie que esta en la posicion izquierda del zombie instanciado.
 	 */
 	public Zombie getZombieIzq() {
 		return zombieIzq;
 	}
 	/**
-	 * Permite retornar el zombie de la posicion izquierda del zombie seleccionado
+	 * Permite modificar el zombie de la posicion izquierda del zombie seleccionado en el arbol binario
 	 * @param e: Zombie que se desea colocar en el lado izquierda del arbol binario al zombie seleccionado
 	 */
 	public void setZombieIzq(Zombie e) {
 		zombieIzq = e;
 	}
 	/**
-	 * Permite retornar el zombie de la posicion derecha del zombie seleccionado
+	 * Permite retornar el zombie de la posicion derecha del zombie seleccionado en el arbol binario
 	 * @return zombieDer: Zombie que esta en la posicion derecha del zombie instanciado.
 	 */
 	public Zombie getZombieDer() {
 		return zombieDer;
 	}
 	/**
-	 * Permite retornar el zombie de la posicion izquierda del zombie seleccionado
+	 * Permite modificar el zombie de la posicion izquierda del zombie seleccionado
 	 * @param e: Zombie que se desea colocar en el lado derecho del arbol binario al zombie seleccionado
 	 */
 	public void setZombieDer(Zombie e) {
 		zombieDer = e;
 	}
 	/**
-	 * Permite agregar un zombie al arbol binari de zombies
+	 * Permite agregar un zombie al arbol binario de zombies
 	 * @param z: Zombie que se desea agregar al arbol binario de los zombies, donde  z != null
 	 */
 	public void agregarZombie(Zombie z) {

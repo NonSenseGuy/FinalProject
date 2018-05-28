@@ -41,12 +41,12 @@ public class JuegoModelo implements Serializable{
 		this.score = score;
 		this.nivel = nivel;
 		PersonajePrincipal p = new PersonajePrincipal(640, PersonajePrincipal.IMAGEN);
-		p.agregarArma(new ArmaTiro("9mm", 20, 50, "./img/gun.png", 1));
+		p.agregarArma(new ArmaTiro("9mm", 20, "./img/gun.png", 1));
 		p.setArmaElegida(p.getArmaPrimera());
 		//p.setArmaElegida(new RayGun("RayGun", 30, RayGun.IMAGEN_RAYGUN));
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[0]));
 		primero.setPersonajePrincipal(p);
-		primero.generarBosses(1);
+		primero.generar(1);
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[1]));
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[2]));
 		elegido = primero;
@@ -183,13 +183,13 @@ public class JuegoModelo implements Serializable{
 		PersonajePrincipal p = elegido.getPersonajePrincipal();
 		
 		if(getNivel() == 2) {
-			p.agregarArma(new Rocket("Rocket", 15, Rocket.IMAGEN_ROCKET, 200));
+			p.agregarArma(new Rocket("Rocket", Rocket.IMAGEN_ROCKET, 200));
 		}else if(getNivel() == 4) {
-			p.agregarArma(new RayGun("RayGun", 30, RayGun.IMAGEN_RAYGUN));
+			p.agregarArma(new RayGun("RayGun", RayGun.IMAGEN_RAYGUN));
 		}
 		
 		elegido = elegido.getSiguiente();
-		elegido.generarBosses(nivel);
+		elegido.generar(nivel);
 		elegido.setPersonajePrincipal(p);
 		guardarPartida();
 		

@@ -2,16 +2,14 @@ package modelo;
 
 public class ArmaTiro extends Arma {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	public final int VELOCIDAD_BALA = 5;
+	public final static int VELOCIDAD_BALA = 8;
+	
 	private int cadencia;	
 	private Bala bala;
 
-	public ArmaTiro(String nombre,int damage, int ammo, String imagen, int cadencia) {
-		super(nombre,damage, ammo, imagen);
+	public ArmaTiro(String nombre,int damage, String imagen, int cadencia) {
+		super(nombre,damage, imagen);
 		this.cadencia = cadencia;
 		
 	}

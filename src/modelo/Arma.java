@@ -4,22 +4,18 @@ import java.io.Serializable;
 
 public class Arma implements Disparar, Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private String nombre;
 	private int damage;
-	private int ammo;
 	private String imagenArma;
 	private Arma siguiente;
 	private Arma anterior;
 	
 	
-	public Arma(String nombre,int damage, int ammo, String imagenArma) {
+	public Arma(String nombre,int damage, String imagenArma) {
 		this.nombre = nombre;
 		this.damage = damage;
-		this.ammo = ammo;
 		this.imagenArma = imagenArma;
 	}
 	
@@ -48,12 +44,6 @@ public class Arma implements Disparar, Serializable{
 	}
 	public void setDamage(int damage) {
 		this.damage = damage;
-	}
-	public int getAmmo() {
-		return ammo;
-	}
-	public void setAmmo(int ammo) {
-		this.ammo = ammo;
 	}
 	public String getImagenArma() {
 		return imagenArma;

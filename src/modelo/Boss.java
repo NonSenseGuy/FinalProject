@@ -1,5 +1,11 @@
 package modelo;
-
+/**
+ * @since 2018
+ * @author Alejandro Barrera Lozano
+ * @author Luis Alfredo Rodriguez
+ * 
+ *  Clase que permite inicializar un Boss que aparece en el juego y sus respectivos zombies
+ */
 public class Boss extends Personaje implements Generar{
 
 	private static final long serialVersionUID = 1L;
@@ -11,16 +17,15 @@ public class Boss extends Personaje implements Generar{
 	private int damage;
 	private int score;
 	private Zombie zombie;
-	
-
 	/**
-	 * <b>pre:</b>; La clase JuegoModelo y Escenario ya deben estar inicializadas
 	 * Constructor que inicializa la clase Boss
-	 * @param vida
-	 * @param posX
-	 * @param imagen
-	 * @param damage
-	 * @param radioDistanciaAtaque
+	 * 
+	 * <b>pre:</b>; La clase JuegoModelo y Escenario ya deben estar inicializadas
+	 *
+	 * @param vida: Vida total del boss
+	 * @param posX:  posicion actuald el Boss
+	 * @param imagen: ruta de imagen del boss
+	 * @param damage: Daño que infllinge el boss
 	 */	
 	public Boss(int vida, int posX, String imagen, int damage) {
 		super(vida, posX, imagen);
@@ -38,7 +43,7 @@ public class Boss extends Personaje implements Generar{
 	
 	/**
 	 * Retorna el daño que hace el boss por tick de contacto con el personaje principal
-	 * @return damage
+	 * @return damage: Daño que hace el Boss
 	 */
 	public int getDamage() {
 		return damage;
@@ -46,14 +51,14 @@ public class Boss extends Personaje implements Generar{
 	
 	/**
 	 * Retorna el score que da el Boss cuando el jugador lo mata
-	 * @return score
+	 * @return score: Score que se le da al jugador por matar al boss
 	 */
 	public int getScore() {
 		return score;
 	}
 	/**
 	 * Modifica el daño del boss
-	 * @param damage
+	 * @param damage: Nuevo dañod el boss, damage != null
 	 */
 	public void setDamage(int damage) {
 		this.damage = damage;
@@ -61,7 +66,7 @@ public class Boss extends Personaje implements Generar{
 	
 	/**
 	 * Zombie que acompaña al boss y raiz de un arbol binario de zombies
-	 * @return zombies
+	 * @return zombies: Raiz del arbol bianrio de zombies
 	 */
 	public Zombie getZombie() {
 		return zombie;
@@ -77,7 +82,7 @@ public class Boss extends Personaje implements Generar{
 	}
 	/**
 	 * Genera un zombie en una posicion aleatoria dentro de un rango dado
-	 * @return zombie generado
+	 * @return z: Zombie generado en una posicion aleatoria respecto a un rango
 	 */
 	public Zombie generarZombie() {
 		boolean positivo = Math.random() > 0.5;
@@ -87,10 +92,13 @@ public class Boss extends Personaje implements Generar{
 	}
 	
 	/**
-	 * Agrega un zombie en estructura de arbol binario
-	 * Si la raiz es nula, agrega el zombie en la raiz
+	 * Agrega un zombie en la estructura de arbol binario
+	 * Si la raiz es nula, agrega el zombie en la raiz,
 	 * Si no lo agrega en orden segun su posicion en X
-	 * @param z
+	 * 
+	 * <b>pos: </b> Se ha agregado un zombie al arbol binario
+	 * 
+	 * @param z: Zombie a agregar en el arbol binario z != null
 	 */
 	public void agregarZombie(Zombie z) {
 		if(zombie == null) {
@@ -103,32 +111,29 @@ public class Boss extends Personaje implements Generar{
 	/**
 	 * Verifica si el disparo del jugador principal le pego al boss 
 	 * En caso de que le haya pegado le quita vida segun el daño de la bala
-	 * @param pos
-	 * @param damageBala
-	 * @return golpeado
+	 * @param pos: Poscision la cual la bala se encuentra
+	 * @param damageBala: daño del arma de la bala
+	 * @return golpeado: Si golpeo a un boss,  golepado =  true, sino golpeado = false
 	 */
-	public boolean quitarVidaBoss(int pos, int damageBala) {
-		
-		boolean golpeado = false;
-		
+	public boolean quitarVidaBoss(int pos, int damageBala) {		
+		boolean golpeado = false;		
 		if(getHitBox().contains(pos, PersonajePrincipal.POS_Y)) {
 			golpeado = true;
 			setVida(getVida() - damageBala);
-		}
-		
+		}		
 		return golpeado;
 	}
 	/**
 	 * Modifica el score que puede dar el boss
-	 * @param score
+	 * @param score: Nuevo Score que el boss al ser eliminado
 	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
 	/**
-	 * Elimina un zombie que este en la posicion pasada por parametro
-	 * @param pos
-	 * @return eliminado
+	 * Elimina un zombie del arbol binario que este en la posicion pasada por parametro
+	 * @param pos: Posicion del boss el cual se quiere eliminar
+	 * @return eliminado: eliminado = true si el zombie fue eliminado o eliminado = false si no se ha eliminado el zombie que se buscaba
 	 */
 	public boolean eliminarZombie(int pos) {
 		boolean elimino = false;
@@ -142,10 +147,9 @@ public class Boss extends Personaje implements Generar{
 	}
 	
 	/**
-	 * Busca un zombie que esta en la posicion pasada por parametro
-	 * Si no encuentra al zombie retorna null
-	 * @param pos
-	 * @return zombie
+	 * Busca un zombie que esta en la posicion pasada por parametro y si no encuentra al zombie retorna null
+	 * @param pos: Posicion que se desea saber si hay un zombie
+	 * @return zombie: retorna el zombie buscado y si no lo encuentra, retorna null
 	 */
 	public Zombie buscarZombie(int pos) {
 		if(zombie == null) {
@@ -155,8 +159,8 @@ public class Boss extends Personaje implements Generar{
 		}
 	}
 	/**
-	 * Localiza zombies que tengan vida menor o igual a 0
-	 * @return Zombie
+	 * Localiza zombies que tengan vida menor o igual a 0 y si no no hay un zombie con esas condiciones, retorna null
+	 * @return Zombie:  retorna el zombie que tiene vida <= 0
 	 */
 	public Zombie localizarZombieMuerto() {
 		if(zombie != null) 	return zombie.localizarZombieMuerto();		
