@@ -131,15 +131,10 @@ public class JuegoModelo{
 			anterior.setSiguiente(escenario);
 		}
 	}
-<<<<<<< HEAD
 	
 	/**
 	 * Guarda el nickname, nivel y puntaje alcanzados en un archivo de texto
-=======
-	/**
-	 * Permite guardar el puntaje del juego
 	 * 
->>>>>>> 6c661b357cdc3dc760748df5aa65ec9d28b9cde3
 	 */
 	public void guardarPuntaje() {
 		File file = new File(PUNTAJES);
