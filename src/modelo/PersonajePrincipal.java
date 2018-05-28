@@ -58,20 +58,39 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 	//quitar el da;o de la bala y la imagen despues de que colisione con el primer zombie
 	@Override
 	public void disparar(int direccion) {
-		if(elegida instanceof ArmaTiro) {
+		
 			if(direccion == KeyEvent.VK_RIGHT) {
-				if(((ArmaTiro)elegida).getBala() == null) {
-					((ArmaTiro)elegida).dispararBala(getPosX());
-					Bala balaDisparada = ((ArmaTiro) elegida).getBala();
-					balaDisparada.setVelocidad(balaDisparada.VELOCIDAD_BALA);
+				if(elegida instanceof ArmaTiro) {
+					if(((ArmaTiro)elegida).getBala() == null) {
+						((ArmaTiro)elegida).dispararBala(getPosX());
+						Bala balaDisparada = ((ArmaTiro) elegida).getBala();
+						balaDisparada.setVelocidad(balaDisparada.VELOCIDAD_BALA);
+					}
+				}else if(elegida instanceof RayGun) {
+					if(((RayGun)elegida).getBala() == null) {
+						((RayGun)elegida).dispararBala(getPosX()+5);
+						Bala balaDisparada = ((RayGun)elegida).getBala();
+						balaDisparada.setVelocidad(8);
+					}
 				}
+				 
 				
 			}else if(direccion == KeyEvent.VK_LEFT){
-				if(((ArmaTiro)elegida).getBala() == null) {
-					((ArmaTiro)elegida).dispararBala(getPosX()-5);
-					Bala balaDisparada = ((ArmaTiro)elegida).getBala();
-					balaDisparada.setVelocidad(- balaDisparada.VELOCIDAD_BALA);
+
+				if(elegida instanceof ArmaTiro) {
+					if(((ArmaTiro)elegida).getBala() == null) {
+						((ArmaTiro)elegida).dispararBala(getPosX()-5);
+						Bala balaDisparada = ((ArmaTiro)elegida).getBala();
+						balaDisparada.setVelocidad(-balaDisparada.VELOCIDAD_BALA);
+					}
+				}else if(elegida instanceof RayGun) {
+					if(((RayGun)elegida).getBala() == null) {
+						((RayGun)elegida).dispararBala(getPosX()-5);
+						Bala balaDisparada = ((RayGun)elegida).getBala();
+						balaDisparada.setVelocidad(-8);
+					}
 				}
+				 
 				
 			}
 		}	

@@ -96,7 +96,8 @@ public class PanelJuego extends JPanel{
 	
 	public void pintarArma(Graphics g) {
 		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() != null)
-		g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, -10, null);
+			g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, -10, null);
+		
 	}
 	
 	public void pintarZombie(Graphics g, Zombie zombie) {

@@ -4,6 +4,7 @@ public class RayGun extends Arma{
 	
 	public final static int DAMAGE_RAYGUN = 15;
 	public final static int VELOCIDAD_BALA = 10;
+	public final static String IMAGEN_RAYGUN = "./img/RayGun.png";
 	
 	private Bala bala;
 	

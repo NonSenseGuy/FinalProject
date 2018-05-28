@@ -27,7 +27,7 @@ public class HiloBalas extends Thread{
 				ArmaTiro arma = (ArmaTiro) personajeP.getArmaElegida();
 				Bala balaDisparada = arma.getBala();
 				
-				try {					
+				if(balaDisparada != null) {
 					
 					balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());
 					golpeaZombieArmaTiro(balaDisparada);
@@ -36,20 +36,19 @@ public class HiloBalas extends Thread{
 						((ArmaTiro)arma).setBala(null);
 					}
 					
-				}catch (NullPointerException e) {
-					System.out.println("No entra en el otro else if");
 				}
+					
 				
 			}else if (personajeP.getArmaElegida() instanceof RayGun) {
-				RayGun arma = (RayGun) personajeP.getArmaElegida();
-				Bala balaDisparada = arma.getBala();
+				RayGun rayGun = (RayGun) personajeP.getArmaElegida();
+				Bala balaRayGun = rayGun.getBala();
 				
 				try {
-					balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());
-					golpeaZombieRayGun(balaDisparada);
+					balaRayGun.setPosX(balaRayGun.getPosX() + balaRayGun.getVelocidad());
+					golpeaZombieRayGun(balaRayGun);
 					
-					if(balaDisparada.getPosX() < 0 || balaDisparada.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
-						((RayGun)arma).setBala(null);
+					if(balaRayGun.getPosX() < 0 || balaRayGun.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
+						((RayGun)rayGun).setBala(null);
 					}
 				}catch(NullPointerException e) {
 					
@@ -109,6 +108,7 @@ public class HiloBalas extends Thread{
 				}
 			}
 		}
+	
 	}
 	
 }
