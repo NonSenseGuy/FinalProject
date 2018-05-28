@@ -70,7 +70,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 				if(((ArmaTiro)elegida).getBala() == null) {
 					((ArmaTiro)elegida).dispararBala(getPosX()-5);
 					Bala balaDisparada = ((ArmaTiro)elegida).getBala();
-					balaDisparada.setVelocidad(-balaDisparada.VELOCIDAD_BALA);
+					balaDisparada.setVelocidad(- balaDisparada.VELOCIDAD_BALA);
 				}
 				
 			}
