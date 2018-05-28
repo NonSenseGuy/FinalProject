@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class DialogoPuntajes extends JDialog implements ActionListener{
@@ -25,11 +26,11 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 	private JButton organizarPorPuntaje;
 	private JButton organizarPorNivel;
 	private JTextField busquedaBinaria;
-	//private JButton buscar;
-	private JLabel puntajes;
+	private JTextArea puntajes;
 	private JLabel organizar;
 	
 	public DialogoPuntajes(VentanaPrincipal v) {
+		this.v = v;
 		this.setLocation(v.getLocation());
 		setTitle("Highscores");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/zombie.png"));
@@ -39,11 +40,18 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		JPanel jp = new JPanel(new GridLayout(1, 4));
 		organizar = new JLabel("Organizar por");
 		organizarPorNombre = new JButton("Nombre");
+		organizarPorNombre.setActionCommand("organizarPorNombre");
+		organizarPorNombre.addActionListener(this);
+		
 		organizarPorPuntaje = new JButton("Puntaje");
-		organizarPorNivel = new JButton("nivel");
+		organizarPorPuntaje.setActionCommand("organizarPorPuntaje");
+		organizarPorPuntaje.addActionListener(this);
+		organizarPorNivel = new JButton("Nivel");
+		organizarPorNivel.setActionCommand("organizarNivel");
+		organizarPorNivel.addActionListener(this);
 		busquedaBinaria = new JTextField("Ingrese el puntaje que desea buscar");
-		//buscar = new JButton("Buscar");	
-		puntajes = new JLabel();
+		puntajes = new JTextArea();
+		puntajes.setEditable(false);
 		jp.add(organizar);
 		jp.add(organizarPorNombre);
 		jp.add(organizarPorPuntaje);
@@ -68,6 +76,7 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 			br = new BufferedReader(fr);
 			StringBuilder sb = new StringBuilder();
 			String text = "";
+			sb.append("Nickname / Nivel / Score" + "\n");
 			while((text = br.readLine()) != null) {
 				sb.append(text);
 				sb.append(System.lineSeparator());
@@ -81,8 +90,18 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		String comando = e.getActionCommand();
+		
+		if(e.equals("organizarPorPuntaje")) {
+			
+		}else if(e.equals("organizarPorNivel")) {
+			
+		}else if(e.equals("organizarPorScore")) {
+			
+		}else {
+			
+		}
 		
 	}
 }
