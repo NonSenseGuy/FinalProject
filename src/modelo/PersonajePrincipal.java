@@ -58,7 +58,6 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 	//quitar el da;o de la bala y la imagen despues de que colisione con el primer zombie
 	@Override
 	public void disparar(int direccion) {
-		if(elegida instanceof ArmaTiro) {
 			if(direccion == KeyEvent.VK_RIGHT) {
 				if(elegida instanceof ArmaTiro) {
 					if(((ArmaTiro)elegida).getBala() == null) {
@@ -91,8 +90,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 				}
 				 
 				
-			}
-		}	
+			}	
 	}
 
 	@Override
