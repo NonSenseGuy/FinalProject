@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * @since 2018
  * @author Alejandro Barrera Lozano
- *@author Luis Alfredo Rodriguez
+ * @author Luis Alfredo Rodriguez
  *Clase que controla todo el juego
  */
 public class JuegoModelo{
@@ -57,7 +57,7 @@ public class JuegoModelo{
 	}
 	/**
 	 * Retorna el score que lleva el usuario hasta el momento
-	 * @return score
+	 * @return score: El score actual del juego.
 	 */
 	public int getScore() {
 		return score;
