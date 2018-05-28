@@ -8,7 +8,8 @@ public class Rocket extends Arma {
 	private static final long serialVersionUID = 1L;
 
 	public final static int DAMAGE_ROCKET = 100;
-	
+	public final static int VELOCIDAD_BALA = 2;
+	public final static String IMAGEN_ROCKET = "./img/rocket.png";
 	private int radioExplocion;
 	private Bala bala;
 
@@ -29,5 +30,13 @@ public class Rocket extends Arma {
 	public void dispararBala(int posX) {
 		if(bala == null)
 		bala = new Bala("./img/disparoRocket.png", posX, getDamage());
-	}	
+	}
+	
+	public Bala getBala() {
+		return bala;
+	}
+
+	public void setBala(Bala bala) {
+		this.bala = bala;
+	}
 }

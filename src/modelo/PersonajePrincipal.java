@@ -57,10 +57,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 			anterior.setSiguiente(arma);
 		}
 	}
-	
-	
-	//Para mantener el tiempo entre bala y bala
-	//quitar el dano de la bala y la imagen despues de que colisione con el primer zombie
+
 	@Override
 	public void disparar(int direccion) {
 			if(direccion == KeyEvent.VK_RIGHT) {
@@ -75,6 +72,12 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 						((RayGun)elegida).dispararBala(getPosX()+5);
 						Bala balaDisparada = ((RayGun)elegida).getBala();
 						balaDisparada.setVelocidad(RayGun.VELOCIDAD_BALA);
+					}
+				}else if(elegida instanceof Rocket) {
+					if(((Rocket)elegida).getBala() == null) {
+						((Rocket)elegida).dispararBala(getPosX()+5);
+						Bala balaDisparada = ((Rocket)elegida).getBala();
+						balaDisparada.setVelocidad(Rocket.VELOCIDAD_BALA);
 					}
 				}
 				 
@@ -92,15 +95,17 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 						Bala balaDisparada = ((RayGun)elegida).getBala();
 						balaDisparada.setVelocidad(-RayGun.VELOCIDAD_BALA);
 					}
+				}else if(elegida instanceof Rocket) {
+					if(((Rocket)elegida).getBala() == null) {
+						((Rocket)elegida).dispararBala(getPosX()-5);
+						Bala balaDisparada = ((Rocket)elegida).getBala();
+						balaDisparada.setVelocidad(-Rocket.VELOCIDAD_BALA);
+					}
 				}
-				 
-				
-			}	
-	}
+			}
+		}
 
 	@Override
-	public void dispararBala(int posX) {
-		// TODO Auto-generated method stub
-		
+	public void dispararBala(int posX) {		
 	}	
 }

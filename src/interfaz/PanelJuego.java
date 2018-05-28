@@ -14,6 +14,7 @@ import modelo.Bala;
 import modelo.Botiquin;
 import modelo.Personaje;
 import modelo.RayGun;
+import modelo.Rocket;
 import modelo.Zombie;
 
 @SuppressWarnings("serial")
@@ -79,6 +80,12 @@ public class PanelJuego extends JPanel{
 				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y + 60, null);
 				
 			}
+		}else if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() instanceof Rocket) {
+			if(((Rocket) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala() != null) {
+				Bala bala = ((Rocket) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala();
+				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y + 60, null);
+				
+			}
 		}
 	}
 	
@@ -95,22 +102,22 @@ public class PanelJuego extends JPanel{
 	}
 	
 	public void pintarArma(Graphics g) {
-		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() != null)
-			g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, -10, null);
-		
+		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() != null) {
+			if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() instanceof Rocket) {
+				g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, 20, null);
+			}else {
+				g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, -10, null);	
+			}
+		}
 	}
 	
 	public void pintarZombie(Graphics g, Zombie zombie) {
 		Image imagenZombie = new ImageIcon(zombie.getImagen()).getImage();
 		g.drawImage(imagenZombie, zombie.getPosX(), Personaje.POS_Y, null);
 		
-		if(zombie.getZombieIzq() != null) {
-			pintarZombie(g, zombie.getZombieIzq());
-		}
+		if(zombie.getZombieIzq() != null) pintarZombie(g, zombie.getZombieIzq());
 		
-		if(zombie.getZombieDer() != null) {
-			pintarZombie(g, zombie.getZombieDer());
-		}
+		if(zombie.getZombieDer() != null) pintarZombie(g, zombie.getZombieDer());
 	}
 	
 	
