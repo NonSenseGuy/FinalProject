@@ -54,7 +54,7 @@ public class PanelJuego extends JPanel{
 		g.drawString(v.getJuegoModelo().getNickname(), 15, 80);
 		
 		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() != null){
-			g.drawString("Arma: " + v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getNombre(),1150 , 20);
+			g.drawString("Arma: " + v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getNombre(),1100 , 20);
 		}
 		pintarBalas(g);
 		
@@ -106,7 +106,7 @@ public class PanelJuego extends JPanel{
 			if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() instanceof Rocket) {
 				g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, 20, null);
 			}else {
-				g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, -10, null);	
+				g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 950, -10, null);	
 			}
 		}
 	}
