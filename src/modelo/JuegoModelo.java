@@ -9,7 +9,7 @@ import java.io.IOException;
  * @since 2018
  * @author Alejandro Barrera Lozano
  * @author Luis Alfredo Rodriguez
- *Clase que controla todo el juego
+ * Clase que controla todo el juego
  */
 public class JuegoModelo{
 	
@@ -172,9 +172,9 @@ public class JuegoModelo{
 		PersonajePrincipal p = elegido.getPersonajePrincipal();
 		
 		if(getNivel() == 2) {
+			p.agregarArma(new Rocket("Rocket", 15, Rocket.IMAGEN_ROCKET, 140));
+		}else if(getNivel() == 4) {
 			p.agregarArma(new RayGun("RayGun", 30, RayGun.IMAGEN_RAYGUN));
-		}else if(getNivel() == 3) {
-			p.agregarArma(new Rocket("Rocket", 15, "./img/rocket.png", 150));
 		}
 		
 		elegido = elegido.getSiguiente();

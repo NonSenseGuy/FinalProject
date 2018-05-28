@@ -1,7 +1,5 @@
 package hilos;
 
-import javax.swing.JOptionPane;
-
 import interfaz.VentanaPrincipal;
 import modelo.ArmaTiro;
 import modelo.Bala;
@@ -36,9 +34,7 @@ public class HiloBalas extends Thread{
 					
 					if(balaDisparada.getPosX() < 0 || balaDisparada.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
 						((ArmaTiro)arma).setBala(null);
-					}
-
-					
+					}				
 			
 				}
 					
@@ -58,7 +54,19 @@ public class HiloBalas extends Thread{
 					
 				}
 			}else if(personajeP.getArmaElegida() instanceof Rocket) {
+				Rocket rocket = (Rocket) personajeP.getArmaElegida();
+				Bala balaRocket = rocket.getBala();
 				
+				try {
+					balaRocket.setPosX(balaRocket.getPosX() + balaRocket.getVelocidad());
+					golpeaZombieRocket(balaRocket, rocket.getRadioExplocion());
+					
+					if(balaRocket.getPosX() < 0 || balaRocket.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
+						((Rocket)rocket).setBala(null);
+					}
+				}catch(NullPointerException e) {
+					
+				}
 			}
 			
 			try {
@@ -112,7 +120,50 @@ public class HiloBalas extends Thread{
 				}
 			}
 		}
+	}
 	
+	public void golpeaZombieRocket(Bala balaDisparada, int radioExplosion) {
+		Boss[] bosses = ventana.getJuegoModelo().getElegido().getBoss();
+		
+		for(int i = 0; i < bosses.length; i++) {
+			
+			if(bosses[i] != null) {
+				Zombie primero = bosses[i].getZombie();
+				
+				try {
+					boolean hizoDamageBoss = bosses[i].quitarVidaBoss(balaDisparada.getPosX(), balaDisparada.getDamage());
+					boolean hizoDamage = primero.quitarVidaZombie(balaDisparada.getPosX(), balaDisparada.getDamage());
+										
+					if(hizoDamage || hizoDamageBoss) {
+						
+						balaDisparada.setImagen("");
+						
+						for(int j = 0; j < radioExplosion; j++) {
+							
+							j += 20;
+							int radio = j;
+							int posicionActualBala = balaDisparada.getPosX();
+							balaDisparada.setPosX(balaDisparada.getPosX() + radio);							
+							bosses[i].quitarVidaBoss(balaDisparada.getPosX(), balaDisparada.getDamage());
+							primero.quitarVidaZombie(balaDisparada.getPosX(), balaDisparada.getDamage());
+							
+							balaDisparada.setPosX(posicionActualBala);
+							balaDisparada.setPosX(balaDisparada.getPosX() - radio);							
+							bosses[i].quitarVidaBoss(balaDisparada.getPosX(), balaDisparada.getDamage());
+							primero.quitarVidaZombie(balaDisparada.getPosX(), balaDisparada.getDamage());
+							
+							balaDisparada.setPosX(posicionActualBala);
+						}
+						
+
+						balaDisparada.setDamage(0);
+					}
+					
+				}catch(NullPointerException e) {
+					
+				}				
+			}
+		}
 	}
 	
 }
