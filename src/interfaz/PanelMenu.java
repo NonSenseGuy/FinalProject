@@ -23,6 +23,7 @@ public class PanelMenu extends JPanel implements MouseListener{
 	
 	private VentanaPrincipal v;
 	
+	@SuppressWarnings("unused")
 	private DialogoPuntajes dp; 
 	
 	public PanelMenu(VentanaPrincipal v) {
@@ -38,34 +39,24 @@ public class PanelMenu extends JPanel implements MouseListener{
 		g.drawString("Dead Pixels", v.getWidth()/2 - 175, 100);
 		
 		int y = 250;
-		for(int i = 0; i < 3; i++) {
-			
-			
+		for(int i = 0; i < 3; i++) {			
 			Font font = new Font("curier" , Font.BOLD, 30);
 			g.setFont(font);
 			g.drawString(BOTONES[i], VentanaPrincipal.ANCHO_VENTANA/2 -100, y);
 			y+= TAMANO_BOTON;
-			
-		}
-		
+		}	
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		
-		
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseEntered(MouseEvent arg0) {	
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -88,8 +79,6 @@ public class PanelMenu extends JPanel implements MouseListener{
 				
 			}else if(y > 460 && y < 500 ) {
 				cargarPuntajes();
-			}else if(y > 550 && y < 620) {
-			//	cargarPuntajes();
 			}
 		}
 		
@@ -97,10 +86,6 @@ public class PanelMenu extends JPanel implements MouseListener{
 
 	private void cargarPuntajes() {
 		dp = new DialogoPuntajes(v);
-		
-	}
-
-	private void instrucciones() {
 		
 	}
 

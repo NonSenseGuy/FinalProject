@@ -21,13 +21,11 @@ import java.util.ArrayList;
  * Clase que controla todo el juego
  */
 public class JuegoModelo implements Serializable{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	public final static String GUARDAR_PARTIDA = "data/cargarPartida.dat";
 	public final static String PUNTAJES = "data/puntajes.txt";
+
 	private String nickname;
 	private int score;
 	private int nivel;
@@ -36,10 +34,11 @@ public class JuegoModelo implements Serializable{
 	private Puntaje raiz;
 	private ArrayList<Puntaje> puntajes;
 	/**
+	 * Constructor que permite inizialiar el JuegoModelo
 	 * 
-	 * @param nickname - Nombre del usuario que va a jugar
-	 * @param score - puntaje del usuario que aumentara por cada zombie que mata
-	 * @param nivel - nivel en el que esta jugando
+	 * @param nickname: Nombre del usuario que va a jugar
+	 * @param score: puntaje del usuario que aumentara por cada zombie que mata
+	 * @param nivel: nivel en el que esta jugando
 	 */
 	public JuegoModelo(String nickname, int score, int nivel) {
 		this.nickname = nickname;
@@ -48,25 +47,23 @@ public class JuegoModelo implements Serializable{
 		PersonajePrincipal p = new PersonajePrincipal(640, PersonajePrincipal.IMAGEN);
 		p.agregarArma(new ArmaTiro("9mm", 20, "./img/gun.png", 1));
 		p.setArmaElegida(p.getArmaPrimera());
-		//p.setArmaElegida(new RayGun("RayGun", 30, RayGun.IMAGEN_RAYGUN));
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[0]));
 		primero.setPersonajePrincipal(p);
 		primero.generar(1);
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[1]));
 		agregarEscenario(new Escenario(Escenario.ESCENARIOS[2]));
 		elegido = primero;
-
 	}
 	/**
-	 * Cambia el nombre del usuario
-	 * @return nickname
+	 * Permite retonar el nickName del jugador
+	 * @return nickname: Nombre del jugador
 	 */
 	public String getNickname() {
 		return nickname;
 	}
 	/**
 	 * Cambia el nombre del usuario
-	 * @param nickname
+	 * @param nickname: Nuevo Nombre del jugador
 	 */
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
@@ -79,22 +76,22 @@ public class JuegoModelo implements Serializable{
 		return score;
 	}
 	/**
-	 * Modifica el score del juego
-	 * @param score 
+	 * Modifica el puntaje actuald el juagador
+	 * @param score: puntaje nuevo del jugador
 	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
 	/**
-	 * Retorna el nivel del juego 
-	 * @return nivel 
+	 * Retorna el nivel actual del juego
+	 * @return nive:  El nivel actual del juego
 	 */
 	public int getNivel() {
 		return nivel;
 	}
 	/**
-	 * Modifica el nivel del juego
-	 * @param nivel
+	 * Permite modificar el nivel actual del juego
+	 * @param nivel:  Nuevo nivel del juego
 	 */
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
@@ -102,35 +99,35 @@ public class JuegoModelo implements Serializable{
 	}
 	 /**
 	  * Retorna el primer escenario del juego
-	  * @return primero
+	  * @return primero: Raiz de la lista enlazada de escenarios
 	  */
 	public Escenario getEscenario() {
 		return primero;
 	}
 	/**
 	 * modifica el primero escenario del juego
-	 * @param primero
+	 * @param primero:  Nueva raiz de la lalista enlazada de escenarios
 	 */
 	public void setPrimero(Escenario primero) {
 		this.primero = primero;
 	}
 	/**
 	 * Retorna el escenario que esta elegido actualmente en el juego
-	 * @return elegido
+	 * @return elegido:  Escenario actual del juego
 	 */
 	public Escenario getElegido() {
 		return elegido;
 	}
 	/**
-	 * Cambia el escenario elegido en el juego
-	 * @param elegido
+	 * permite modificar el escenario actual elegido en el juego
+	 * @param elegido: nuevo escenario elegido para el juego actual donde elegido != null
 	 */
 	public void setElegido(Escenario elegido) {
 		this.elegido = elegido;
 	}
 	/**
 	 * Agrega un escenario a la lista doblemente enlazada ciclica de escenarios
-	 * @param escenario
+	 * @param escenario: Nuevo escenario a agregar a la lista donde escenario != null
 	 */
 	public void agregarEscenario(Escenario escenario) {
 		if(primero == null) {
@@ -150,7 +147,8 @@ public class JuegoModelo implements Serializable{
 	}
 	
 	/**
-	 * Guarda el nickname, nivel y puntaje alcanzados en un archivo de texto
+	 * Guarda el nickname, nivel y puntaje alcanzados por el jugador en en un archivo de texto plano
+	 * <b>post: </b> Se ha guardado los datos del jugador exitosamente y hay caso contrario, el metodo lo hara saber
 	 */
 	public void guardarPuntaje() {
 		File file = new File(PUNTAJES);
@@ -181,8 +179,8 @@ public class JuegoModelo implements Serializable{
 	}
 	
 	/**
-	 *Cambia el escenario y pasa el personaje principal al nuevo escenario
-	 *Este metodo se llama unicamente al subir de nivel;
+	 * Cambia el escenario y pasa el personaje principal al nuevo escenario ademas se subir el nivel al juego modelo
+	 * Este metodo se llama unicamente al subir de nivel
 	 */
 	public void subirNivel() {
 		PersonajePrincipal p = elegido.getPersonajePrincipal();
@@ -201,7 +199,10 @@ public class JuegoModelo implements Serializable{
 		guardarPartida();
 		
 	}
-	
+	/**
+	 * Permite guardar la partida actual del jugador con serializable, la partida se guarda cada vez que el jugador pasa de nivel
+	 * <b>post: </b> Se guarda la partida en los archivos del juego, en caso de error, el metodo lo hace saber
+	 */
 	public void guardarPartida() {
 		File file = new File(GUARDAR_PARTIDA);
 		if(file.exists()) {
@@ -231,6 +232,10 @@ public class JuegoModelo implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Permite cargar una partida guardada en la aplicacion
+	 * @return partida: Parida guardada en la aplicacion para ejecutarla en la interfaz
+	 */
 	
 	public static JuegoModelo cargarPartida() {
 		File file = new File(GUARDAR_PARTIDA);
@@ -261,19 +266,24 @@ public class JuegoModelo implements Serializable{
 		
 		return jm;
 	}
+	/**
+	 * Permite retornar la raiz del arbol binario de puntajes de la clase puntajes
+	 * @return raiz: Retorna la raiz del arbol bianrio de puntajes
+	 */
 	public Puntaje getRaiz() {
 		return raiz;
 	}
-	public void setRaiz(Puntaje raiz) {
-		this.raiz = raiz;
-	}
+	/**
+	 * Permite retornar el ArrayList con todos los puntajes guardados
+	 * @return puntajes: Puntajes gurdados para mostrarlos en una tabla de puntajes
+	 */
 	public ArrayList<Puntaje> getPuntajes() {
 		return puntajes;
 	}
-	public void setPuntajes(ArrayList<Puntaje> puntajes) {
-		this.puntajes = puntajes;
-	}
-	
+	/**
+	 * Permite leer los puntajes guardados en la aplicacion y retornarlos como un ArrayList
+	 * @return puntajes: Puntajes guardados enla aplicacion
+	 */
 	public static ArrayList<Puntaje> leerPuntajes(){
 		File file = new File(PUNTAJES);
 		FileReader fr = null;
@@ -308,7 +318,11 @@ public class JuegoModelo implements Serializable{
 		}
 		return puntajes;
 	}
-	
+	/**
+	 * Permite organizar los puntajes de manera alfabetica segun el nombre del jugador 
+	 * @param puntajes: Arreglo de puntajes guardados en la aplicacion
+	 * @return puntaje: arreglo de puntajes quee estan organizados de manera alfabetica
+	 */
 	public static Puntaje[] organizarPorNickname(ArrayList<Puntaje> puntajes) {
 		Puntaje[] puntajesOrganizados = new Puntaje[puntajes.size()];
 		puntajesOrganizados = puntajes.toArray(puntajesOrganizados);
@@ -324,7 +338,11 @@ public class JuegoModelo implements Serializable{
 		
 		return puntajesOrganizados;
 	}
-	
+	/**
+	 * Permite organizar los puntajes de manera descendente segun el puntaje de cada jugador
+	 * @param puntajes: Arreglo de puntajes guardados en la aplicacion
+	 * @return puntaje: Arreglo de puntajes que estan organizados de manera descencente de acuerdo al puntaje
+	 */
 	public static Puntaje[] organizarPorPuntaje(ArrayList<Puntaje> puntajes) {
 		Puntaje[] puntajesOrganizados = new Puntaje[puntajes.size()];
 		puntajesOrganizados = puntajes.toArray(puntajesOrganizados);
@@ -343,7 +361,11 @@ public class JuegoModelo implements Serializable{
 		
 		return puntajesOrganizados;
 	}
-	
+	/**
+	 * Permite organizar los puntajes de manera descendente segun el nivel de cada jugador
+	 * @param puntajes: Arreglo de puntajes guardados en la aplicacion
+	 * @return puntaje: Arreglo de puntajes organizados de manera descendente de acuerdo al nivel
+	 */
 	public static Puntaje[] organizarPorNivel(ArrayList<Puntaje> puntajes) {
 		Puntaje[] puntajesOrganizados = new Puntaje[puntajes.size()];
 		puntajesOrganizados = puntajes.toArray(puntajesOrganizados);
@@ -368,7 +390,10 @@ public class JuegoModelo implements Serializable{
 		
 		return puntajesOrganizados;
 	}
-	
+	/**
+	 * Permite reescribir los puntajes guardados y los orgniza de manera descendente de acuerdo al puntaje
+	 * @param puntajes: Arreglo de puntajes ya organizadosde manera descendente de acuerdo al nivel
+	 */
 	public static void guardarPuntajeOrganizado(Puntaje[] puntajes) {
 		File file = new File(PUNTAJES);
 		FileWriter fw = null;
@@ -395,7 +420,13 @@ public class JuegoModelo implements Serializable{
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Permite buscar un puntaje en una lista de puntajes dadas por parametro y retorna una instancia de clase puntaje que tiene ese puntaje
+	 * de lo contrario retorna null
+	 * @param puntaje: Puntaje a buscar en un arreglo, puntaje >= 0
+	 * @param puntajes: Arreglo de puntajes donde se desea encontrar el jugador con ese puntaje, donde puntajes != null
+	 * @return puntajeBuscado: instancia de la Clase puntaje que tiene todos los datos del jugaodor con ese score
+	 */
 	public static Puntaje busquedaBinariaPuntaje(int puntaje, ArrayList<Puntaje> puntajes) {
 		Puntaje[] arrayPuntaje = new Puntaje[puntajes.size()];
 		arrayPuntaje = puntajes.toArray(arrayPuntaje);
@@ -414,7 +445,13 @@ public class JuegoModelo implements Serializable{
 		}
 		return null;
 	}
-	
+	/**
+	 * Permite buscar un nivel en una lista de puntajes dadas por parametro y retorna una instancia de clase puntaje que tiene ese nivel
+	 * de lo contrario retorna null
+	 * @param nviel: Nivel a buscar en un arreglo, nivel > 0
+	 * @param puntajes: Arreglo de puntajes donde se desea encontrar el jugador con ese nivel, donde puntajes != null
+	 * @return nivelBuscado: instancia de la Clase puntaje que tiene todos los datos del jugaodor con ese nivel
+	 */
 	public static Puntaje busquedaBinariaPorNivel(int nivel, ArrayList<Puntaje> puntajes) {
 		Puntaje[] arrayPuntaje = new Puntaje[puntajes.size()];
 		arrayPuntaje = puntajes.toArray(arrayPuntaje);
