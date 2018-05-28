@@ -11,7 +11,6 @@ public class Escenario {
 	private Boss[] boss;
 	private PersonajePrincipal pPrincipal;
 	private Botiquin botiquin;
-
 	
 	public Botiquin getBotiquin() {
 		return botiquin;
@@ -21,17 +20,21 @@ public class Escenario {
 		this.botiquin = botiquin;
 	}
 
-	public Escenario(String imagen, PersonajePrincipal p, int nivel){
+	public Escenario(String imagen){
 		this.imagen = imagen;
+		
+		
+	}
+	
+	public void generarBosses(int nivel) {
 		boss = new Boss[nivel];
 		boolean pos = true;
 		for(int i = 0; i < boss.length; i++) {
 			pos = pos ? false:true;
 			boss[i] = new Boss(Boss.VIDA+(50*nivel), getPosicionBoss(pos),Boss.IMAGEN_BOSS, Boss.DANO, Boss.RADIO_ATAQUE );
 		}
-		this.pPrincipal = p;
-		
 	}
+	
 	
 	public PersonajePrincipal getPersonajePrincipal() {
 		return pPrincipal;

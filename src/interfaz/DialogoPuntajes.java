@@ -88,6 +88,7 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 			
 		}
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
