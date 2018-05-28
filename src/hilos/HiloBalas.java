@@ -1,5 +1,7 @@
 package hilos;
 
+import javax.swing.JOptionPane;
+
 import interfaz.VentanaPrincipal;
 import modelo.ArmaTiro;
 import modelo.Bala;
@@ -28,7 +30,7 @@ public class HiloBalas extends Thread{
 				ArmaTiro arma = (ArmaTiro) personajeP.getArmaElegida();
 				Bala balaDisparada = arma.getBala();
 				
-				try {					
+				if(balaDisparada != null) {
 					
 					balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());
 					golpeaZombieArmaTiro(balaDisparada);
@@ -36,21 +38,19 @@ public class HiloBalas extends Thread{
 					if(balaDisparada.getPosX() < 0 || balaDisparada.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
 						((ArmaTiro)arma).setBala(null);
 					}
-					
-				}catch (NullPointerException e) {
-					
 				}
+					
 				
 			}else if (personajeP.getArmaElegida() instanceof RayGun) {
-				RayGun arma = (RayGun) personajeP.getArmaElegida();
-				Bala balaDisparada = arma.getBala();
+				RayGun rayGun = (RayGun) personajeP.getArmaElegida();
+				Bala balaRayGun = rayGun.getBala();
 				
 				try {
-					balaDisparada.setPosX(balaDisparada.getPosX() + balaDisparada.getVelocidad());
-					golpeaZombieRayGun(balaDisparada);
+					balaRayGun.setPosX(balaRayGun.getPosX() + balaRayGun.getVelocidad());
+					golpeaZombieRayGun(balaRayGun);
 					
-					if(balaDisparada.getPosX() < 0 || balaDisparada.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
-						((RayGun)arma).setBala(null);
+					if(balaRayGun.getPosX() < 0 || balaRayGun.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
+						((RayGun)rayGun).setBala(null);
 					}
 				}catch(NullPointerException e) {
 					
@@ -110,6 +110,7 @@ public class HiloBalas extends Thread{
 				}
 			}
 		}
+	
 	}
 	
 }
