@@ -11,7 +11,7 @@ public class Boss extends Personaje implements Generar{
 	private int score;
 	private Zombie zombie;
 	
-<<<<<<< HEAD
+
 	/**
 	 * <b>pre:</b>; La clase JuegoModelo y Escenario ya deben estar inicializadas
 	 * Constructor que inicializa la clase Boss
@@ -20,12 +20,8 @@ public class Boss extends Personaje implements Generar{
 	 * @param imagen
 	 * @param damage
 	 * @param radioDistanciaAtaque
-	 */
-	public Boss(int vida, int posX, String imagen, int damage, int radioDistanciaAtaque) {
-=======
-	
+	 */	
 	public Boss(int vida, int posX, String imagen, int damage) {
->>>>>>> 6c661b357cdc3dc760748df5aa65ec9d28b9cde3
 		super(vida, posX, imagen);
 		this.damage = damage;
 		setHitBox();
@@ -61,7 +57,7 @@ public class Boss extends Personaje implements Generar{
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
-<<<<<<< HEAD
+	
 	/**
 	 * Zombie que acompaña al boss y raiz de un arbol binario de zombies
 	 * @return zombies
@@ -69,17 +65,7 @@ public class Boss extends Personaje implements Generar{
 	public Zombie getZombie() {
 		return zombie;
 	}
-	/**
-	 * Genera zombies segun una cantidad y los agrega a un arbol binario
-	 * @param cant
-	 */
-=======
-	
-	public Zombie getZombie() {
-		return zombie;
-	}
-	
->>>>>>> 6c661b357cdc3dc760748df5aa65ec9d28b9cde3
+
 	@Override
 	public void generar(int cant) {
 		if(cant != 0) {
