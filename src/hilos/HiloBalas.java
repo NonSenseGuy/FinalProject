@@ -20,7 +20,6 @@ public class HiloBalas extends Thread{
 	}
 	
 	public void run() {
-		
 		while(true) {
 			
 			if(personajeP.getArmaElegida() instanceof ArmaTiro) {
@@ -38,7 +37,7 @@ public class HiloBalas extends Thread{
 					}
 					
 				}catch (NullPointerException e) {
-					
+					System.out.println("No entra en el otro else if");
 				}
 				
 			}else if (personajeP.getArmaElegida() instanceof RayGun) {

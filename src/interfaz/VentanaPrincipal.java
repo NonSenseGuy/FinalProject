@@ -109,8 +109,10 @@ public class VentanaPrincipal extends JFrame{
 	public void cambiarArmaPersonajePrincipal(int keyCode) {
 		
 		if(keyCode == KeyEvent.VK_Q) {
+			if(jm.getElegido().getPersonajePrincipal().getArmaElegida().getAnterior() != null) 
 			jm.getElegido().getPersonajePrincipal().setArmaElegida(jm.getElegido().getPersonajePrincipal().getArmaElegida().getAnterior());
 		}else if(keyCode == KeyEvent.VK_E) {
+			if(jm.getElegido().getPersonajePrincipal().getArmaElegida().getSiguiente() != null)
 			jm.getElegido().getPersonajePrincipal().setArmaElegida(jm.getElegido().getPersonajePrincipal().getArmaElegida().getSiguiente());
 		}
 	}

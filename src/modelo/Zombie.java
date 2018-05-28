@@ -1,5 +1,12 @@
 package modelo;
-
+/**
+ * 
+ * @since 2018
+ * @author Alejandro Barrera Lozano
+ * @author Luis Alfredo Rodriguez
+ * 
+ *  Clase que crea los zombies con una imagen, vida, damage y una posicion en el juego, como tambien el arbol bianrio
+ */
 public class Zombie extends Personaje{
 	
 	public final static String IMAGEN_ZOMBIE = "./img/zombieE.png";
@@ -7,7 +14,6 @@ public class Zombie extends Personaje{
 	public final static int SCORE = 20;
 	public final static int DANO = 2;
 	private int damage;
-	private boolean atacar;
 	private int score;
 	private Zombie zombieIzq;
 	private Zombie zombieDer;
@@ -16,7 +22,6 @@ public class Zombie extends Personaje{
 		super(VIDA, posX, imagen);
 		this.damage= damage;
 		setHitBox();
-		atacar = false;
 		score = 20;
 		if(getPosX() < 1000 ) {
 			setVelocidad(5);
@@ -24,31 +29,37 @@ public class Zombie extends Personaje{
 			setVelocidad(-5);
 		}
 	}
-
+	/**
+	 * Permite retornar el daño que ejecuta el zombie.
+	 * @return damage: Retorna un entero que es el daño que ejecuta el zombie.
+	 */
 	public int getDamage() {
 		return damage;
 	}
-	
+	/**
+	 * Permite retornar los puntos que otorga el zombie cuando muere.
+	 * @return score: Puntos que da el zombie por su muerte.
+	 */
 	public int getScore() {
 		return score;
 	}
-
+	/*
+	 * Permite cambier el daño que ejecuta el zombie
+	 */
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
-	
-	public boolean getAtacar() {
-		return atacar;
-	}
-	
-	public void setAtacar(boolean atacar) {
-		this.atacar = atacar;
-	}
-	
+	/**
+	 * Permite retornar el zombie de la posicion izquierda del zombie seleccionado
+	 * @return zombieIzq: Zombie que esta en la posicion izquierda del zombie instanciado.
+	 */
 	public Zombie getZombieIzq() {
 		return zombieIzq;
 	}
-	
+	/**
+	 * Permite retornar el zombie de la posicion izquierda del zombie seleccionado
+	 * @param e: 
+	 */
 	public void setZombieIzq(Zombie e) {
 		zombieIzq = e;
 	}
