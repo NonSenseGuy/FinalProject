@@ -102,16 +102,19 @@ public class Escenario {
 	
 	public void eliminarBoss() {
 		for(int i = 0; i < boss.length; i++) {
-			if(boss[i].getVida() <= 0) {
-				if(boss[i].getZombie() != null) {
-					boss[i].setImagen("");
-					boss[i].setDamage(0);
-					boss[i].setPosX(5000);
-					boss[i].setScore(0);
-				}else {
-					boss[i] = null;
-				}				
+			if(boss[i] != null) {
+				if(boss[i].getVida() <= 0) {
+					if(boss[i].getZombie() != null) {
+						boss[i].setImagen("");
+						boss[i].setDamage(0);
+						boss[i].setPosX(5000);
+						boss[i].setScore(0);
+					}else {
+						boss[i] = null;
+					}				
+				}
 			}
+			
 		}
 	}
 	

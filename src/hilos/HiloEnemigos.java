@@ -18,33 +18,35 @@ public class HiloEnemigos extends Thread {
 	public void run() {
 		
 		while(true) {
-			try {
 				subirNivel();
 				for(int i = 0; i < juegoM.getElegido().getBoss().length; i++) {
-					Boss boss = juegoM.getElegido().getBoss()[i];	
-					boss.setPosX(boss.getPosX() + boss.getVelocidad());
-					
-					if(boss.getVida() <= 0) {
-						juegoM.setScore(juegoM.getScore() + boss.getScore());
-						juegoM.getElegido().eliminarBoss();
-					}
-					
-					if(juegoM.getElegido().intersecta(boss)) {
-						tick(boss.getDamage());
-					}
-					
-					if(boss.localizarZombieMuerto() != null) {
-						Zombie muerto = boss.localizarZombieMuerto();
-						juegoM.setScore(juegoM.getScore() + muerto.getScore());
-						boss.eliminarZombie(muerto.getPosX());
-					}
-					
-					try {
-						Zombie zombie = boss.getZombie();
-						avanzarZombie(zombie);
-					}catch (NullPointerException e) {
+					if(juegoM.getElegido().getBoss()[i] != null) {
+						Boss boss = juegoM.getElegido().getBoss()[i];	
+						boss.setPosX(boss.getPosX() + boss.getVelocidad());
 						
+						if(boss.getVida() <= 0) {
+							juegoM.setScore(juegoM.getScore() + boss.getScore());
+							juegoM.getElegido().eliminarBoss();
+						}
+						
+						if(juegoM.getElegido().intersecta(boss)) {
+							tick(boss.getDamage());
+						}
+						
+						if(boss.localizarZombieMuerto() != null) {
+							Zombie muerto = boss.localizarZombieMuerto();
+							juegoM.setScore(juegoM.getScore() + muerto.getScore());
+							boss.eliminarZombie(muerto.getPosX());
+						}
+						
+						try {
+							Zombie zombie = boss.getZombie();
+							avanzarZombie(zombie);
+						}catch (NullPointerException e) {
+							
+						}
 					}
+				
 				}
 				
 				try {
@@ -52,11 +54,7 @@ public class HiloEnemigos extends Thread {
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
-				
-			}catch(NullPointerException e) {
 			
-				
-			}
 			ventana.repaint();
 		}	
 	}
