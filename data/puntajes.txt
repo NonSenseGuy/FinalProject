@@ -1,3 +1,6 @@
-Fredo  2  300
-A  1  0
-as  8  4560
+Pelele 20 23740
+Alejandro 4 1120
+ASd 3 660
+asd 2 140
+Fredo 1 0
+NonSense 1 40

@@ -1,15 +1,20 @@
 package modelo;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 /**
  * @since 2018
@@ -24,12 +29,14 @@ public class JuegoModelo implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	public final static String GUARDAR_PARTIDA = "data/cargarPartida.dat";
-	public final String PUNTAJES = "data/puntajes.txt";
+	public final static String PUNTAJES = "data/puntajes.txt";
 	private String nickname;
 	private int score;
 	private int nivel;
 	private Escenario primero;
 	private Escenario elegido;
+	private Puntaje raiz;
+	private ArrayList<Puntaje> puntajes;
 	/**
 	 * 
 	 * @param nickname - Nombre del usuario que va a jugar
@@ -158,7 +165,7 @@ public class JuegoModelo implements Serializable{
 			}*/
 			fw = new FileWriter(file.getAbsoluteFile(), true);
 			bw = new BufferedWriter(fw);
-			bw.append(nickname + "  " + nivel + "  " + score);
+			bw.append(nickname + " " + nivel + " " + score);
 			bw.newLine();
 			
 			try {
@@ -186,6 +193,8 @@ public class JuegoModelo implements Serializable{
 			p.agregarArma(new Rocket("Rocket", 15, Rocket.IMAGEN_ROCKET, 200));
 		}else if(getNivel() == 4) {
 			p.agregarArma(new RayGun("RayGun", 30, RayGun.IMAGEN_RAYGUN));
+		}else if(getNivel() == 9) {
+			p.getArmaElegida().setDamage(p.getArmaElegida().getDamage() + 5);
 		}
 		
 		elegido = elegido.getSiguiente();
@@ -254,7 +263,138 @@ public class JuegoModelo implements Serializable{
 		
 		return jm;
 	}
+	public Puntaje getRaiz() {
+		return raiz;
+	}
+	public void setRaiz(Puntaje raiz) {
+		this.raiz = raiz;
+	}
+	public ArrayList<Puntaje> getPuntajes() {
+		return puntajes;
+	}
+	public void setPuntajes(ArrayList<Puntaje> puntajes) {
+		this.puntajes = puntajes;
+	}
 	
+	public static ArrayList<Puntaje> leerPuntajes(){
+		File file = new File(PUNTAJES);
+		FileReader fr = null;
+		BufferedReader br  = null;
+		ArrayList<Puntaje> puntajes = new ArrayList<Puntaje>();
+		try {
+			fr = new FileReader(file);
+			br = new BufferedReader(fr);
+			String text = "";
+			//br.readLine();
+			while((text = br.readLine()) != null) {
+				String[] datos = text.split(" ");
+				String nickname = datos[0];
+				int nivel = Integer.valueOf(datos[1]);
+				int score = Integer.valueOf(datos[2]);
+				Puntaje puntaje = new Puntaje(nickname, nivel, score);
+				puntajes.add(puntaje);
+			}
+			
+			try {
+				if(br != null) {
+					br.close();
+				}
+				if(fr != null) {
+					fr.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return puntajes;
+	}
 	
+	public static Puntaje[] organizarPorNickname(ArrayList<Puntaje> puntajes) {
+		Puntaje[] puntajesOrganizados = new Puntaje[puntajes.size()];
+		puntajesOrganizados = puntajes.toArray(puntajesOrganizados);
+		for(int i = puntajesOrganizados.length; i > 0; i--) {
+			for(int j = 0; j < i - 1; j++) {
+				if(puntajesOrganizados[j].getNickname().compareTo(puntajesOrganizados[j+1].getNickname()) > 0) {
+					Puntaje temp = puntajesOrganizados[j];
+					puntajesOrganizados[j] = puntajesOrganizados[j+1];
+					puntajesOrganizados[j+1] = temp;
+				}
+			}
+		}
+		
+		return puntajesOrganizados;
+	}
 	
+	public static Puntaje[] organizarPorPuntaje(ArrayList<Puntaje> puntajes) {
+		Puntaje[] puntajesOrganizados = new Puntaje[puntajes.size()];
+		puntajesOrganizados = puntajes.toArray(puntajesOrganizados);
+		int j;
+		Puntaje temp;
+		
+		for(int i = 1; i < puntajesOrganizados.length; i++) {
+			temp = puntajesOrganizados[i];
+			j = i - 1;
+			while(j >= 0 && temp.getPuntaje() > puntajesOrganizados[j].getPuntaje()) {
+				puntajesOrganizados[j+1] = puntajesOrganizados[j];
+				j--;
+			}
+			puntajesOrganizados[j+1] = temp;
+		}
+		
+		return puntajesOrganizados;
+	}
+	
+	public static Puntaje[] organizarPorNivel(ArrayList<Puntaje> puntajes) {
+		Puntaje[] puntajesOrganizados = new Puntaje[puntajes.size()];
+		puntajesOrganizados = puntajes.toArray(puntajesOrganizados);
+		int i,j,pos;
+		Puntaje tmp , menor;
+		for(i = 0; i < puntajesOrganizados.length -1 ; i++) {
+			menor = puntajesOrganizados[i];
+			pos = i;
+			for(j = i+1; j < puntajesOrganizados.length; j++) {
+				if(puntajesOrganizados[j].getNivel() > menor.getNivel()) {
+					menor = puntajesOrganizados[i];
+					pos = j;					
+				}
+			}
+			if(pos != i) {
+				tmp = puntajesOrganizados[i];
+				puntajesOrganizados[i] = puntajesOrganizados[pos];
+				puntajesOrganizados[pos] = tmp;
+				
+			}
+		}
+		
+		return puntajesOrganizados;
+	}
+	
+	public static void guardarPuntajeOrganizado(Puntaje[] puntajes) {
+		File file = new File(PUNTAJES);
+		FileWriter fw = null;
+		BufferedWriter bw = null;
+		
+		try {
+			fw = new FileWriter(file);
+			bw = new BufferedWriter(fw);
+			for(int i = 0; i < puntajes.length; i++) {
+				bw.append(puntajes[i].getNickname() + " " + puntajes[i].getNivel() + " " + puntajes[i].getPuntaje());
+				bw.newLine();
+			}
+			
+			try {
+				if(bw != null) {
+					bw.close();
+				}if(fw != null) {
+					fw.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

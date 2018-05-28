@@ -17,7 +17,7 @@ public class PanelMenu extends JPanel implements MouseListener{
 	
 	public final String IMAGEN_FONDO = "./img/background1.png";
 	
-	public final String[] BOTONES = { "Iniciar Juego", "Cargar Juego", "Instrucciones", "Puntajes" };
+	public final String[] BOTONES = { "Iniciar Juego", "Cargar Juego", "Puntajes" };
 	
 	public final int TAMANO_BOTON = 120;
 	
@@ -30,14 +30,15 @@ public class PanelMenu extends JPanel implements MouseListener{
 		addMouseListener(this);
 	}
 	
+	@Override
 	public void paintComponent(Graphics g) {
 		g.drawImage(new ImageIcon(IMAGEN_FONDO).getImage(),0,0,null);
 		Font f = new Font("curier", Font.BOLD, 60);
 		g.setFont(f);
-		g.drawString("Zombie Pixel Wars", v.getWidth()/2 -260, 100);
+		g.drawString("Dead Pixels", v.getWidth()/2 - 175, 100);
 		
 		int y = 250;
-		for(int i = 0; i < 4; i++) {
+		for(int i = 0; i < 3; i++) {
 			
 			
 			Font font = new Font("curier" , Font.BOLD, 30);
@@ -86,9 +87,9 @@ public class PanelMenu extends JPanel implements MouseListener{
 				}
 				
 			}else if(y > 460 && y < 500 ) {
-				instrucciones();
-			}else if(y > 550 && y < 620) {
 				cargarPuntajes();
+			}else if(y > 550 && y < 620) {
+			//	cargarPuntajes();
 			}
 		}
 		

@@ -27,7 +27,7 @@ public class VentanaPrincipal extends JFrame{
 	private HiloBotiquines hiloBotiquines;
 	
 	public VentanaPrincipal() {
-		setTitle("Zombies Pixel War");
+		setTitle("Dead Pixels");
 		setSize(ANCHO_VENTANA, ALTO_VENTANA);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -43,7 +43,7 @@ public class VentanaPrincipal extends JFrame{
 	
 	public VentanaPrincipal(JuegoModelo jm2) {
 		jm = jm2;
-		setTitle("Zombies Pixel War");
+		setTitle("Dead Pixels");
 		setSize(ANCHO_VENTANA, ALTO_VENTANA);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

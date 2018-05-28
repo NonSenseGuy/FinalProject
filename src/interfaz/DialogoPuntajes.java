@@ -17,10 +17,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import modelo.JuegoModelo;
+
 public class DialogoPuntajes extends JDialog implements ActionListener{
 	
 	public final String PUNTAJES = "./data/puntajes.txt";
-	
+	public final String ORGANIZAR_PUNTAJE = "OrganizarPuntaje";
+	public final String ORGANIZAR_NOMBRE = "OrganizarNickname";
+	public final String ORGANIZAR_NIVEL = "OrganizarNivel";
 	private VentanaPrincipal v;
 	private JButton organizarPorNombre;
 	private JButton organizarPorPuntaje;
@@ -40,14 +44,14 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		JPanel jp = new JPanel(new GridLayout(1, 4));
 		organizar = new JLabel("Organizar por");
 		organizarPorNombre = new JButton("Nombre");
-		organizarPorNombre.setActionCommand("organizarPorNombre");
+		organizarPorNombre.setActionCommand(ORGANIZAR_NOMBRE);
 		organizarPorNombre.addActionListener(this);
 		
 		organizarPorPuntaje = new JButton("Puntaje");
-		organizarPorPuntaje.setActionCommand("organizarPorPuntaje");
+		organizarPorPuntaje.setActionCommand(ORGANIZAR_PUNTAJE);
 		organizarPorPuntaje.addActionListener(this);
 		organizarPorNivel = new JButton("Nivel");
-		organizarPorNivel.setActionCommand("organizarNivel");
+		organizarPorNivel.setActionCommand(ORGANIZAR_NIVEL);
 		organizarPorNivel.addActionListener(this);
 		busquedaBinaria = new JTextField("Ingrese el puntaje que desea buscar");
 		puntajes = new JTextArea();
@@ -91,17 +95,33 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		}
 	}
 	
+	public void organizarPorPuntaje() {
+		JuegoModelo.guardarPuntajeOrganizado(JuegoModelo.organizarPorPuntaje(JuegoModelo.leerPuntajes()));
+		cargarPuntajes();
+		
+	}
+	
+	public void organizarPorNivel() {
+		JuegoModelo.guardarPuntajeOrganizado(JuegoModelo.organizarPorNivel(JuegoModelo.leerPuntajes()));
+		cargarPuntajes();
+	}
+	
+	public void organizarPorNombre() {
+		JuegoModelo.guardarPuntajeOrganizado(JuegoModelo.organizarPorNickname(JuegoModelo.leerPuntajes()));
+		cargarPuntajes();
+	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		
-		if(e.equals("organizarPorPuntaje")) {
-			
-		}else if(e.equals("organizarPorNivel")) {
-			
-		}else if(e.equals("organizarPorScore")) {
-			
+		if(comando.equals(ORGANIZAR_PUNTAJE)) {
+			organizarPorPuntaje();
+		}else if(comando.equals(ORGANIZAR_NIVEL)) {
+			organizarPorNivel();
+		}else if(comando.equals(ORGANIZAR_NOMBRE)) {
+			organizarPorNombre();
 		}else {
 			
 		}
