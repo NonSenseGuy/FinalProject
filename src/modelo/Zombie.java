@@ -58,20 +58,29 @@ public class Zombie extends Personaje{
 	}
 	/**
 	 * Permite retornar el zombie de la posicion izquierda del zombie seleccionado
-	 * @param e: 
+	 * @param e: Zombie que se desea colocar en el lado izquierda del arbol binario al zombie seleccionado
 	 */
 	public void setZombieIzq(Zombie e) {
 		zombieIzq = e;
 	}
-	
+	/**
+	 * Permite retornar el zombie de la posicion derecha del zombie seleccionado
+	 * @return zombieDer: Zombie que esta en la posicion derecha del zombie instanciado.
+	 */
 	public Zombie getZombieDer() {
 		return zombieDer;
 	}
-	
+	/**
+	 * Permite retornar el zombie de la posicion izquierda del zombie seleccionado
+	 * @param e: Zombie que se desea colocar en el lado derecho del arbol binario al zombie seleccionado
+	 */
 	public void setZombieDer(Zombie e) {
 		zombieDer = e;
 	}
-
+	/**
+	 * Permite agregar un zombie al arbol binari de zombies
+	 * @param z: Zombie que se desea agregar al arbol binario de los zombies, donde  z != null
+	 */
 	public void agregarZombie(Zombie z) {
 		if(getPosX() < z.getPosX()) {
 			if(zombieDer == null ) {
@@ -88,7 +97,14 @@ public class Zombie extends Personaje{
 		}
 		
 	}
-
+	/**
+	 * Este metodo permite quitarle vida a un zombie que este en una posicion determinada, si le dieron, se le quita a la vida del zombie el daño que recibio
+	 * y retorna un boleano =  true, si no le dio a ningun zombie en todo el arbol binario, retorna false
+	 * 
+	 * @param pos:  La posicion a evaluar si hay un zombie en ese lugar
+	 * @param damageBala: El daño de la bala, lo que hace que la vida se le quite al zombie
+	 * @return leDio: booleano que retornar verdadero si le ha dado a un zombie y falso si no le ha dado a ningun zombie
+	 */
 	public boolean quitarVidaZombie(int pos, int damageBala) {
 		boolean leDio = false;
 		
@@ -105,7 +121,10 @@ public class Zombie extends Personaje{
 		}		
 		return leDio;
 	}
-	
+	/**
+	 * Este metodo permite localizar el zombie que tiene  una vida <= 0, si lo encuentra en el árbol binario,lo retorna
+	 * @return zombie: Zommbie el cual tiene una vida <= 0
+	 */
 	public Zombie localizarZombieMuerto() {
 		
 		if(getVida() <= 0) {
@@ -119,26 +138,12 @@ public class Zombie extends Personaje{
 		}
 		
 		return null;
-	}
-	
-	public Zombie localizarAnterior(int pos) {
-		
-		Zombie der = getZombieDer() == null ? null: getZombieDer();
-		Zombie izq = getZombieIzq() == null ? null: getZombieIzq();
-		
-		if(izq != null) {
-			if(izq.getPosX() == pos) return this;
-			return izq.localizarAnterior(pos);
-		}
-		
-		if(der != null) {
-			if(der.getPosX() == pos) return this;
-			der.localizarAnterior(pos);
-		}
-		
-		return null;
-	}
-
+	}	
+	/**
+	 * 
+	 * @param pos
+	 * @return
+	 */
 	public Zombie buscarZombie(int pos) {
 		if(getHitBox().contains(pos, PersonajePrincipal.POS_Y)) {
 			return this;			
@@ -152,7 +157,10 @@ public class Zombie extends Personaje{
 			return null;
 		}
 	}
-	
+	/**
+	 * Este metodo permite retornar el zombie menor de todo el arbol bianario
+	 * @return zombie: Zombie que esta ubicado en el lado izquierdo del arbol binario
+	 */
 	public Zombie darMenor() {
 		if (zombieIzq == null) {
 			return this;
@@ -160,7 +168,11 @@ public class Zombie extends Personaje{
 			return zombieIzq.darMenor();
 		}
 	}
-
+	/**
+	 * Este metodo permite eliminar un zombie que este en una posicion determinada, lo busca en el arbol binario respecto a su posicion y lo elimina.
+	 * @param pos: posicion en x del zombie que se deasea eliminar 
+	 * @return zombie
+	 */
 	public Zombie eliminarZombie(int pos) {
 		
 		if (getHitBox().contains(pos, PersonajePrincipal.POS_Y)) {
