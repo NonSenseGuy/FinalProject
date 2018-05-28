@@ -55,7 +55,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 	
 	
 	//Para mantener el tiempo entre bala y bala
-	//quitar el da;o de la bala y la imagen despues de que colisione con el primer zombie
+	//quitar el dano de la bala y la imagen despues de que colisione con el primer zombie
 	@Override
 	public void disparar(int direccion) {
 			if(direccion == KeyEvent.VK_RIGHT) {

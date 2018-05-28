@@ -1,5 +1,7 @@
 package hilos;
 
+import javax.swing.JOptionPane;
+
 import interfaz.VentanaPrincipal;
 import modelo.ArmaTiro;
 import modelo.Bala;
@@ -35,13 +37,9 @@ public class HiloBalas extends Thread{
 					if(balaDisparada.getPosX() < 0 || balaDisparada.getPosX() > VentanaPrincipal.ANCHO_VENTANA) {
 						((ArmaTiro)arma).setBala(null);
 					}
-<<<<<<< HEAD
 
 					
 			
-=======
-					
->>>>>>> 8abbe732693b6b7a5b8ab78d054b0b55fcf0f95b
 				}
 					
 				
