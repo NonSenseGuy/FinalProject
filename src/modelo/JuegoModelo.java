@@ -183,7 +183,7 @@ public class JuegoModelo implements Serializable{
 		PersonajePrincipal p = elegido.getPersonajePrincipal();
 		
 		if(getNivel() == 2) {
-			p.agregarArma(new Rocket("Rocket", 15, Rocket.IMAGEN_ROCKET, 140));
+			p.agregarArma(new Rocket("Rocket", 15, Rocket.IMAGEN_ROCKET, 200));
 		}else if(getNivel() == 4) {
 			p.agregarArma(new RayGun("RayGun", 30, RayGun.IMAGEN_RAYGUN));
 		}
