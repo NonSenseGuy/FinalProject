@@ -1,6 +1,6 @@
 package modelo;
 
-public class Boss extends Personaje implements Disparar, Generar{
+public class Boss extends Personaje implements Generar{
 
 	
 	public final static String IMAGEN_BOSS = "./img/Boss.png";
@@ -14,7 +14,15 @@ public class Boss extends Personaje implements Disparar, Generar{
 	private int score;
 	private Zombie zombie;
 	
-	
+	/**
+	 * <b>pre:</b>; La clase JuegoModelo y Escenario ya deben estar inicializadas
+	 * Constructor que inicializa la clase Boss
+	 * @param vida
+	 * @param posX
+	 * @param imagen
+	 * @param damage
+	 * @param radioDistanciaAtaque
+	 */
 	public Boss(int vida, int posX, String imagen, int damage, int radioDistanciaAtaque) {
 		super(vida, posX, imagen);
 		this.damage = damage;
@@ -29,41 +37,40 @@ public class Boss extends Personaje implements Disparar, Generar{
 			setVelocidad(-5);
 		}
 	}
+	
+	/**
+	 * Retorna el daño que hace el boss por tick de contacto con el personaje principal
+	 * @return damage
+	 */
 	public int getDamage() {
 		return damage;
 	}
 	
+	/**
+	 * Retorna el score que da el Boss cuando el jugador lo mata
+	 * @return score
+	 */
 	public int getScore() {
 		return score;
 	}
-	
+	/**
+	 * Modifica el daño del boss
+	 * @param damage
+	 */
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
-	public int getRadioDistanciaAtaque() {
-		return radioDistanciaAtaque;
-	}
-	public void setRadioDistanciaAtaque(int radioDistanciaAtaque) {
-		this.radioDistanciaAtaque = radioDistanciaAtaque;
-	}
-	
-	public boolean getAtacar() {
-		return atacar;
-	}
-	
-	public void setAtacar(boolean atacar) {
-		this.atacar = atacar;
-	}
-	
+	/**
+	 * Zombie que acompaña al boss y raiz de un arbol binario de zombies
+	 * @return zombies
+	 */
 	public Zombie getZombie() {
 		return zombie;
 	}
-	
-	@Override
-	public void disparar(int direccion) {
-		// TODO Auto-generated method stub
-		
-	}
+	/**
+	 * Genera zombies segun una cantidad y los agrega a un arbol binario
+	 * @param cant
+	 */
 	@Override
 	public void generar(int cant) {
 		if(cant != 0) {
@@ -72,7 +79,10 @@ public class Boss extends Personaje implements Disparar, Generar{
 			generar(cant-1);
 		}
 	}
-	
+	/**
+	 * Genera un zombie en una posicion aleatoria dentro de un rango dado
+	 * @return zombie generado
+	 */
 	public Zombie generarZombie() {
 		boolean positivo = Math.random() > 0.5;
 		int rango = positivo ? 1 : -1;
@@ -80,6 +90,11 @@ public class Boss extends Personaje implements Disparar, Generar{
 		return z;
 	}
 	
+	/**
+	 * Agrega un zombie en estructura de arbol binario
+	 * Si la raiz es nula 
+	 * @param z
+	 */
 	public void agregarZombie(Zombie z) {
 		if(zombie == null) {
 			zombie = z;

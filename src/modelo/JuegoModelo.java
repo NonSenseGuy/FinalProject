@@ -132,6 +132,9 @@ public class JuegoModelo{
 		}
 	}
 	
+	/**
+	 * Guarda el nickname, nivel y puntaje alcanzados en un archivo de texto
+	 */
 	public void guardarPuntaje() {
 		File file = new File(PUNTAJES);
 		FileWriter fw = null;
@@ -159,6 +162,10 @@ public class JuegoModelo{
 		}
 	}
 	
+	/**
+	 *Cambia el escenario y pasa el personaje principal al nuevo escenario
+	 *Este metodo se llama unicamente al subir de nivel;
+	 */
 	public void subirNivel() {
 		PersonajePrincipal p = elegido.getPersonajePrincipal();
 		elegido = elegido.getSiguiente();
