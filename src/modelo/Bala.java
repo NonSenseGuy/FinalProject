@@ -97,16 +97,28 @@ public class Bala implements Serializable {
 	public int getDamage() {
 		return damage;
 	}
-	
+	/**
+	 * Permite retornar la posicion actual de la bala en el eje X
+	 * @return posX: posicion actual de la bala
+	 */
 	public int getPosX() {
 		return posX;
 	}
-	
+	/**
+	 * Permite modificar la posicion actual de la bala en el eje X
+	 * @param posX: posicion Nueva de la bala donde posX != null
+	 */
 	public void setPosX(int posX) {
 		this.posX = posX;
 		setHitBox();
 	}
-	
+	/**
+	 * Permite mover la bala respecto a una distancia pasada por parametro
+	 * 
+	 * <b>post: </b> La bala se desplaza en el eje X una cierta distancia
+	 * 
+	 * @param distancia:  distancia que va a recorrer la bala
+	 */
 	public void moverBala(int distancia) {
 		setPosX(getPosX() + distancia);
 		setHitBox();
