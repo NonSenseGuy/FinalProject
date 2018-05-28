@@ -13,6 +13,7 @@ import modelo.ArmaTiro;
 import modelo.Bala;
 import modelo.Botiquin;
 import modelo.Personaje;
+import modelo.RayGun;
 import modelo.Zombie;
 
 @SuppressWarnings("serial")
@@ -69,7 +70,15 @@ public class PanelJuego extends JPanel{
 			if(((ArmaTiro) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala() != null) {
 				Bala bala = ((ArmaTiro) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala();
 				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y +60, null);
-			}			
+				
+			}
+		}else if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() instanceof RayGun) {
+			
+			if(((RayGun) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala() != null) {
+				Bala bala = ((RayGun) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala();
+				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y + 60, null);
+				
+			}
 		}
 	}
 	
