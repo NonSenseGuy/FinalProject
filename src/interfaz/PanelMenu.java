@@ -114,10 +114,15 @@ public class PanelMenu extends JPanel implements MouseListener{
 	
 	public void crearPartida() {
 		String nickname = JOptionPane.showInputDialog("Digite su nickname");
-		JuegoModelo jm = new JuegoModelo(nickname,0,1);
-		VentanaPrincipal v = new VentanaPrincipal(jm);
-		this.v.dispose();
-		v.setVisible(true);
+		if(nickname == null || nickname.equals("")) {
+			JOptionPane.showMessageDialog(null, "Ingrese un nickname valido");
+		}else {
+			JuegoModelo jm = new JuegoModelo(nickname,0,1);
+			VentanaPrincipal v = new VentanaPrincipal(jm);
+			this.v.dispose();
+			v.setVisible(true);
+		}
+		
 		
 	}
 }

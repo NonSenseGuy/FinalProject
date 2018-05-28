@@ -71,18 +71,20 @@ public class DialogoPuntajes extends JDialog implements ActionListener{
 		File file = new File(PUNTAJES);
 		FileReader fr = null;
 		BufferedReader br = null;
+		puntajes.setText("Nickname / Nivel / Score" + "\n");
 		try {
 			fr = new FileReader(file);
 			br = new BufferedReader(fr);
 			StringBuilder sb = new StringBuilder();
-			String text = "";
-			sb.append("Nickname / Nivel / Score" + "\n");
-			while((text = br.readLine()) != null) {
+			String text = br.readLine();
+			
+			while(text != null) {
 				sb.append(text);
 				sb.append(System.lineSeparator());
+				text = br.readLine();
 			}
 				String everything = sb.toString();
-				puntajes.setText(everything);
+				puntajes.append(everything);
 			
 		}catch(Exception e) {
 			

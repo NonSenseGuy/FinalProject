@@ -153,12 +153,13 @@ public class JuegoModelo implements Serializable{
 		BufferedWriter bw = null;
 		
 		try {
-			if(!file.exists()) {
+			/*if(!file.exists()) {
 				file.createNewFile();
-			}
-			fw = new FileWriter(file);
+			}*/
+			fw = new FileWriter(file.getAbsoluteFile(), true);
 			bw = new BufferedWriter(fw);
 			bw.append(nickname + "  " + nivel + "  " + score);
+			bw.newLine();
 			
 			try {
 				if(bw != null) {
