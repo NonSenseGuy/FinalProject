@@ -19,7 +19,7 @@ public class HiloEnemigos extends Thread {
 		
 		while(true) {
 			try {
-				
+				subirNivel();
 				for(int i = 0; i < juegoM.getElegido().getBoss().length; i++) {
 					Boss boss = juegoM.getElegido().getBoss()[i];	
 					boss.setPosX(boss.getPosX() + boss.getVelocidad());
@@ -80,5 +80,20 @@ public class HiloEnemigos extends Thread {
 		PersonajePrincipal p = juegoM.getElegido().getPersonajePrincipal();
 		p.setVida(p.getVida() - dano);
 		
+	}
+	
+	public void subirNivel() {
+		int i = 0;
+		int contador = 0;
+		while(i < juegoM.getElegido().getBoss().length) {
+			if(juegoM.getElegido().getBoss()[i] == null) {
+				contador++;
+			}
+			i++;
+		}
+		if(i == contador) {
+			juegoM.setNivel(juegoM.getNivel()+1);
+			
+		}
 	}
 }

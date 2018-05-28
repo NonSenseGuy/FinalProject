@@ -81,6 +81,7 @@ public class JuegoModelo{
 	 */
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
+		subirNivel();
 	}
 	 /**
 	  * Retorna el primer escenario del juego
@@ -159,10 +160,10 @@ public class JuegoModelo{
 	}
 	
 	public void subirNivel() {
+		PersonajePrincipal p = elegido.getPersonajePrincipal();
 		elegido = elegido.getSiguiente();
 		elegido.generarBosses(nivel);
-		
-		
+		elegido.setPersonajePrincipal(p);
 	}
 	
 }

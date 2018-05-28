@@ -45,7 +45,7 @@ public class HiloBalas extends Thread{
 	
 	public void golpeaZombie(Bala balaDisparada) {
 		
-		Boss[] bosses = ventana.getJuegoModelo().getEscenario().getBoss();
+		Boss[] bosses = ventana.getJuegoModelo().getElegido().getBoss();
 		
 		for(int i = 0; i < bosses.length; i++) {
 			if(bosses[i] != null) {
