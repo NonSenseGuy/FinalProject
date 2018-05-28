@@ -6,6 +6,6 @@ public class FinalDeEscenarioException extends Exception{
 	public final int FINAL_ESCENARIO = 1180;
 	
 	public FinalDeEscenarioException(int pos) {
-		super();
+		super("No se puede ir mas alla de " + pos);
 	}
 }

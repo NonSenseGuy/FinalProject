@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class JuegoModelo{
 	
-	public final String PUNTAJES = "./data/puntajes.txt";
+	public final String PUNTAJES = "data/puntajes.txt";
 	private String nickname;
 	private int score;
 	private int nivel;
@@ -135,6 +135,9 @@ public class JuegoModelo{
 		BufferedWriter bw = null;
 		
 		try {
+			if(!file.exists()) {
+				file.createNewFile();
+			}
 			fw = new FileWriter(file);
 			bw = new BufferedWriter(fw);
 			bw.append(nickname + " " + nivel + " " + score);
