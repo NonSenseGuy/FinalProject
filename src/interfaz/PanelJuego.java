@@ -65,11 +65,12 @@ public class PanelJuego extends JPanel{
 	}
 	
 	public void pintarBalas(Graphics g) {
-		
+		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() instanceof ArmaTiro) {
 			if(((ArmaTiro) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala() != null) {
 				Bala bala = ((ArmaTiro) v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida()).getBala();
 				g.drawImage(new ImageIcon(bala.getImagenBala()).getImage(), bala.getPosX(), Personaje.POS_Y +60, null);
-			}
+			}			
+		}
 	}
 	
 	public void pintarEnemigos(Graphics g) {
@@ -85,6 +86,7 @@ public class PanelJuego extends JPanel{
 	}
 	
 	public void pintarArma(Graphics g) {
+		if(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida() != null)
 		g.drawImage(new ImageIcon(v.getJuegoModelo().getElegido().getPersonajePrincipal().getArmaElegida().getImagenArma()).getImage(), 1000, -10, null);
 	}
 	
@@ -114,6 +116,10 @@ public class PanelJuego extends JPanel{
 			v.dispararPersonajePrincipal(arg0.getKeyCode());
 		}
 		
+		if(arg0.getKeyCode() == KeyEvent.VK_Q || arg0.getKeyCode() == KeyEvent.VK_E) {
+			v.cambiarArmaPersonajePrincipal(arg0.getKeyCode());
+		}
+		
 	}
 	
 	public void keyReleased(KeyEvent arg0) {
@@ -123,6 +129,10 @@ public class PanelJuego extends JPanel{
 		
 		if(arg0.getKeyCode() == KeyEvent.VK_RIGHT || arg0.getKeyCode() == KeyEvent.VK_LEFT) {
 				v.dispararPersonajePrincipal(0);
+		}
+		
+		if(arg0.getKeyCode() == KeyEvent.VK_Q || arg0.getKeyCode() == KeyEvent.VK_E) {
+			v.cambiarArmaPersonajePrincipal(0);
 		}
 		
 	}
