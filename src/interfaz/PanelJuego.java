@@ -74,10 +74,12 @@ public class PanelJuego extends JPanel{
 	
 	public void pintarEnemigos(Graphics g) {
 		for(int i = 0; i < v.getJuegoModelo().getElegido().getBoss().length; i++) {
-			Image boss = new ImageIcon(v.getJuegoModelo().getElegido().getBoss()[i].getImagen()).getImage();
-			g.drawImage(boss, v.getJuegoModelo().getElegido().getBoss()[i].getPosX(),Personaje.POS_Y, null);
-			if(v.getJuegoModelo().getElegido().getBoss()[i].getZombie() != null) {
-				pintarZombie(g, v.getJuegoModelo().getElegido().getBoss()[i].getZombie());
+			if(v.getJuegoModelo().getElegido().getBoss()[i] != null) {
+				Image boss = new ImageIcon(v.getJuegoModelo().getElegido().getBoss()[i].getImagen()).getImage();
+				g.drawImage(boss, v.getJuegoModelo().getElegido().getBoss()[i].getPosX(),Personaje.POS_Y, null);
+				if(v.getJuegoModelo().getElegido().getBoss()[i].getZombie() != null) {
+					pintarZombie(g, v.getJuegoModelo().getElegido().getBoss()[i].getZombie());
+				}				
 			}
 		}
 	}

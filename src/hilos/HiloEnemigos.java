@@ -24,6 +24,11 @@ public class HiloEnemigos extends Thread {
 					Boss boss = juegoM.getElegido().getBoss()[i];	
 					boss.setPosX(boss.getPosX() + boss.getVelocidad());
 					
+					if(boss.getVida() <= 0) {
+						juegoM.setScore(juegoM.getScore() + boss.getScore());
+						juegoM.getElegido().eliminarBoss();
+					}
+					
 					if(juegoM.getElegido().intersecta(boss)) {
 						tick(boss.getDamage());
 					}

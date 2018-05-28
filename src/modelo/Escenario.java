@@ -1,9 +1,5 @@
 package modelo;
 
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
-
 public class Escenario {
 	
 	public final int FINAL_ESCENARIO = 1300;
@@ -99,6 +95,20 @@ public class Escenario {
 			}
 		}
 		return false;
+	}
+	
+	public void eliminarBoss() {
+		for(int i = 0; i < boss.length; i++) {
+			if(boss[i].getVida() <= 0) {
+				if(boss[i].getZombie() != null) {
+					boss[i].setImagen("");
+					boss[i].setDamage(0);
+					boss[i].setPosX(5000);
+				}else {
+					boss[i] = null;
+				}				
+			}
+		}
 	}
 	
 	
