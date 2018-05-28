@@ -1,11 +1,16 @@
 package modelo;
 
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
-public class Bala {
+public class Bala implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final int VELOCIDAD_BALA = 8;
 	private String imagenBala;
 	private int damage;

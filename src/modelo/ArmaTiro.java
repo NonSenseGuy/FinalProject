@@ -2,6 +2,10 @@ package modelo;
 
 public class ArmaTiro extends Arma {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final int VELOCIDAD_BALA = 5;
 	private int cadencia;	
 	private Bala bala;

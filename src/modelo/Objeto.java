@@ -1,6 +1,8 @@
 package modelo;
 
-public class Objeto implements Generar{
+import java.io.Serializable;
+
+public class Objeto implements Generar, Serializable{
 	private int posX;
 	private int posY;
 	public Objeto(int posX, int posY) {

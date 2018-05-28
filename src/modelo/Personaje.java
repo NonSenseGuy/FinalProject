@@ -1,9 +1,14 @@
 package modelo;
 
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 
-public abstract class Personaje {
+public abstract class Personaje implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final static int ANCHO = 60;
 	public final static int ALTO = 60;
 	public final static int POS_Y = 500;

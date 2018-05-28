@@ -6,6 +6,10 @@ import javax.swing.ImageIcon;
 
 public class PersonajePrincipal extends Personaje implements Disparar{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final static String IMAGEN= "./img/personajePrincipal.png";
 	public final  int ANCHO_IMAGEN = new ImageIcon(IMAGEN).getIconWidth();
 	public final static int VIDA = 100;
