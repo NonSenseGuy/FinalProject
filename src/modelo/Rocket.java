@@ -25,5 +25,4 @@ public class Rocket extends Arma {
 		if(bala == null)
 		bala = new Bala("./img/disparoRocket.png", posX, getDamage());
 	}	
-	
 }
