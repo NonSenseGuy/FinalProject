@@ -100,6 +100,9 @@ public class Boss extends Personaje implements Disparar, Generar{
 		return golpeado;
 	}
 	
+	public void setScore(int score) {
+		this.score = score;
+	}
 	public boolean eliminarZombie(int pos) {
 		boolean elimino = false;
 		

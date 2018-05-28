@@ -104,6 +104,7 @@ public class Escenario {
 					boss[i].setImagen("");
 					boss[i].setDamage(0);
 					boss[i].setPosX(5000);
+					boss[i].setScore(0);
 				}else {
 					boss[i] = null;
 				}				
