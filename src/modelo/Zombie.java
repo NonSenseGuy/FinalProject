@@ -1,22 +1,19 @@
 package modelo;
 /**
- * 
  * @since 2018
  * @author Alejandro Barrera Lozano
  * @author Luis Alfredo Rodriguez
  * 
- *  Clase que crea los zombies con una imagen, vida, damage y una posicion en el juego, como tambien el arbol bianrio
+ *  Clase que crea los zombies con una imagen, vida, damage y una posicion en el juego, como tambien el arbol binario
  */
 public class Zombie extends Personaje{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public final static String IMAGEN_ZOMBIE = "./img/zombieE.png";
 	public final static int VIDA = 50;
 	public final static int SCORE = 20;
 	public final static int DANO = 2;
+	
 	private int damage;
 	private int score;
 	private Zombie zombieIzq;
@@ -144,9 +141,9 @@ public class Zombie extends Personaje{
 		return null;
 	}	
 	/**
-	 * 
-	 * @param pos
-	 * @return
+	 * Permite buscar un zombie respecto a su posicion en X
+	 * @param pos: La poscion en X que se deasea saber y hay un zombie
+	 * @return zombie: Retorna el zombie en esa posicion en X, sino hay, retorna null
 	 */
 	public Zombie buscarZombie(int pos) {
 		if(getHitBox().contains(pos, PersonajePrincipal.POS_Y)) {

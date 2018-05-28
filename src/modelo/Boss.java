@@ -2,14 +2,11 @@ package modelo;
 
 public class Boss extends Personaje implements Generar{
 
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public final static String IMAGEN_BOSS = "./img/Boss.png";
 	public final static int DANO = 10;
 	public final static int VIDA = 100;
+	
 	public final static int SCORE = 60;
 	private int damage;
 	private int score;
