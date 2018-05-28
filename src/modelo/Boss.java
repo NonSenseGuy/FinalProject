@@ -166,4 +166,12 @@ public class Boss extends Personaje implements Generar{
 		if(zombie != null) 	return zombie.localizarZombieMuerto();		
 		return null;
 	}
+	
+	/**
+	 * Modifica el zombie raiz que tiene boss
+	 * @param z
+	 */
+	public void setZombie(Zombie z) {
+		zombie = z;
+	}
 }

@@ -93,7 +93,7 @@ public abstract class Personaje implements Mover,Serializable{
 		this.imagen = imagen;
 	}
 	/**
-	 * Permite modificar el hitBox del personaje que va deacuerdo a su posicion en X y sus constantes de Y, ancho y alto
+	 * Permite modificar el hitBox del personaje que va de acuerdo a su posicion en X y sus constantes de Y, ancho y alto
 	 */
 	public void setHitBox() {
 		hitBox = new Rectangle2D.Double(posX, POS_Y, ANCHO, ALTO);

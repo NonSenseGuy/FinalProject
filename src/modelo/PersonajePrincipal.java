@@ -89,7 +89,7 @@ public class PersonajePrincipal extends Personaje implements Disparar{
 			if(direccion == KeyEvent.VK_RIGHT) {
 				if(elegida instanceof ArmaTiro) {
 					if(((ArmaTiro)elegida).getBala() == null) {
-						((ArmaTiro)elegida).dispararBala(getPosX());
+						((ArmaTiro)elegida).dispararBala(getPosX()+5);
 						Bala balaDisparada = ((ArmaTiro) elegida).getBala();
 						balaDisparada.setVelocidad(ArmaTiro.VELOCIDAD_BALA);
 					}
