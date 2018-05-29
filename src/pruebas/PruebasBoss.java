@@ -56,7 +56,24 @@ class PruebasBoss extends TestCase {
 	
 	@Test
 	public void eliminarZombieTest() {
-		
+		setupEscenario2();
+		boss.eliminarZombie(-10);
+		assertTrue(boss.getZombie() == null);
+	}
+	
+	@Test
+	public void localizarZombieMuertoTest() {
+		setupEscenario2();
+		boss.getZombie().setVida(0);
+		Zombie z = boss.localizarZombieMuerto();
+		assertTrue(boss.getZombie().equals(z));	
+	}
+	
+	@Test
+	public void buscarZombieTest() {
+		setupEscenario2();
+		Zombie z = boss.buscarZombie(-10);
+		assertTrue(boss.getZombie().equals(z));
 	}
 	
 	

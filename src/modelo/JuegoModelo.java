@@ -31,7 +31,6 @@ public class JuegoModelo implements Serializable{
 	private int nivel;
 	private Escenario primero;
 	private Escenario elegido;
-	private Puntaje raiz;
 	private ArrayList<Puntaje> puntajes;
 	/**
 	 * Constructor que permite inizialiar el JuegoModelo
@@ -266,13 +265,7 @@ public class JuegoModelo implements Serializable{
 		
 		return jm;
 	}
-	/**
-	 * Permite retornar la raiz del arbol binario de puntajes de la clase puntajes
-	 * @return raiz: Retorna la raiz del arbol bianrio de puntajes
-	 */
-	public Puntaje getRaiz() {
-		return raiz;
-	}
+	
 	/**
 	 * Permite retornar el ArrayList con todos los puntajes guardados
 	 * @return puntajes: Puntajes gurdados para mostrarlos en una tabla de puntajes
@@ -470,15 +463,9 @@ public class JuegoModelo implements Serializable{
 		}
 		return null;
 	}
+	public void setEscenario(Escenario e) {
+		this.primero = e;
+		
+	}
 	
-	public static void convertirPuntajeAArbol() {
-		ArrayList<Puntaje> puntajes = leerPuntajes();
-		for(int i = 0; i < puntajes.size(); i++) {
-			agregarPuntaje(puntajes.get(i));
-		}
-	}
-	private static void agregarPuntaje(Puntaje puntaje) {
-		
-		
-	}
 }
