@@ -31,7 +31,7 @@ public class Escenario implements Serializable, Generar {
 	
 	/**
 	 * Permite retornar el botiquin de vida presente en el escenario actual.
-	 * @return
+	 * @return botiquin
 	 */
 	public Botiquin getBotiquin() {
 		return botiquin;
@@ -163,10 +163,10 @@ public class Escenario implements Serializable, Generar {
 		return false;
 	}
 	/**
-	 * Permite eliminar un boss de el arreglo de bosses si su vida es <= 0, si su zombie no se ha eliminado, entonces se cambia su posicion en x, el daño = 0, se borra la ruta de imagen
-	 * para que no aparezca en la ingerfaz grafica, si el zombie es == null entonces elimina al boss del arreglo de bosses
+	 * Permite eliminar un boss de el arreglo de bosses si su vida es menor o igual que 0, si su zombie no se ha eliminado, entonces se cambia su posicion en x, el daño = 0, se borra la ruta de imagen
+	 * para que no aparezca en la ingerfaz grafica, si el zombie es igual a null entonces elimina al boss del arreglo de bosses
 	 * <b>pre: </b> Arreglo de bosses inicializado
-	 * <b>post: </b> Se elimina un boss del arreglo de bosses o se modifica el boss si su intancia de zombie != null
+	 * <b>post: </b> Se elimina un boss del arreglo de bosses o se modifica el boss si su instancia de zombie es diferente de null
 	 */
 	public void eliminarBoss() {
 		for(int i = 0; i < boss.length; i++) {

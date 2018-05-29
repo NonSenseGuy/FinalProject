@@ -143,6 +143,7 @@ public class HiloBalas extends Thread{
 	 * grafica. En este caso la bala desaparece cuando toca un enemigo, pero de acuerdo al radio de explosion del arma daña a los enemigos con  que estan 
 	 * en ese radio.
 	 * @param balaDisparada: Bala que fue disparada de un arma tipo Rocket
+	 * @param radioExplosion: Radio hasta donde se extendera el dano del impacto
 	 */
 	public void golpeaZombieRocket(Bala balaDisparada, int radioExplosion) {
 		Boss[] bosses = ventana.getJuegoModelo().getElegido().getBoss();

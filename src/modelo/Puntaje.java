@@ -46,7 +46,7 @@ public class Puntaje {
 	}
 	/**
 	 * Permite modificar el nivel del jugador
-	 * @param nivel:  Nuevo nivel del jugador donde nivel > 0 y nivel != null 
+	 * @param nivel:  Nuevo nivel del jugador donde nivel mayor que 0 y nivel != null 
 	 */
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
@@ -60,7 +60,7 @@ public class Puntaje {
 	}
 	/**
 	 * Permite modificar el puntaje maximo que hizo un jugador
-	 * @param puntaje:  El nuevo puntaje a cambiarel viejo donde puntaje >= 0 y puntaje != null
+	 * @param puntaje:  El nuevo puntaje a cambiarel viejo donde puntaje mayor o igual 0 y puntaje != null
 	 */
 	public void setPuntaje(int puntaje) {
 		this.puntaje = puntaje;

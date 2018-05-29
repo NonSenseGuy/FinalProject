@@ -83,7 +83,7 @@ public class Arma implements Disparar, Serializable{
 	}
 	/**
 	 * Permite modificar el daño del arma
-	 * @param damage: Nuevo daño que va a ejercer el arma donde damage != null y damage >= 0
+	 * @param damage: Nuevo daño que va a ejercer el arma donde damage != null y damage mayor o igual que 0
 	 */
 	public void setDamage(int damage) {
 		this.damage = damage;
@@ -97,7 +97,7 @@ public class Arma implements Disparar, Serializable{
 	}
 	/**
 	 * Permite modificar la ruta de la imagen del Arma
-	 * @param imagen: Nueva ruta de la imagen que se muestra en la interfaz grafica, imagen != null y imagen != ""
+	 * @param imagen: Nueva ruta de la imagen que se muestra en la interfaz grafica, imagen sea diferente de null e imagen sea diferente de ""
 	 */
 	public void setImagenArma(String imagen) {
 		this.imagenArma = imagen;

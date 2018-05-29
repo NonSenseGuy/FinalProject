@@ -54,6 +54,11 @@ class PruebasBoss extends TestCase {
 		assertTrue(boss.getVida() == Boss.VIDA-15);
 	}
 	
+	@Test
+	public void eliminarZombieTest() {
+		
+	}
+	
 	
 	
 }

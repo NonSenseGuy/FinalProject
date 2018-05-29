@@ -58,7 +58,7 @@ public class Bala implements Mover,Serializable {
 	/**
 	 * Permite modificar la ruta en donde esta la imagen de la bala
 	 * 
-	 * <b>post: <b> Se cambio la ruta de la imagen de la bala
+	 * <b>post: </b> Se cambio la ruta de la imagen de la bala
 	 * 
 	 * @param imagen: nueva ruta de la imagen de la bala, donde imagen != null y imagen != ""
 	 */

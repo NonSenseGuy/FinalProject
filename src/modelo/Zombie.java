@@ -123,8 +123,8 @@ public class Zombie extends Personaje{
 		return leDio;
 	}
 	/**
-	 * Este metodo permite localizar el zombie que tiene  una vida <= 0, si lo encuentra en el árbol binario,lo retorna
-	 * @return zombie: Zommbie el cual tiene una vida <= 0
+	 * Este metodo permite localizar el zombie que tiene  una vida menor o igual que 0, si lo encuentra en el árbol binario,lo retorna
+	 * @return zombie: Zommbie el cual tiene una vida menor o igual que 0
 	 */
 	public Zombie localizarZombieMuerto() {
 		

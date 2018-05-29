@@ -423,8 +423,8 @@ public class JuegoModelo implements Serializable{
 	/**
 	 * Permite buscar un puntaje en una lista de puntajes dadas por parametro y retorna una instancia de clase puntaje que tiene ese puntaje
 	 * de lo contrario retorna null
-	 * @param puntaje: Puntaje a buscar en un arreglo, puntaje >= 0
-	 * @param puntajes: Arreglo de puntajes donde se desea encontrar el jugador con ese puntaje, donde puntajes != null
+	 * @param puntaje: Puntaje a buscar en un arreglo, puntaje mayor o igual a  0
+	 * @param puntajes: Arreglo de puntajes donde se desea encontrar el jugador con ese puntaje, donde puntajes sea diferente de null
 	 * @return puntajeBuscado: instancia de la Clase puntaje que tiene todos los datos del jugaodor con ese score
 	 */
 	public static Puntaje busquedaBinariaPuntaje(int puntaje, ArrayList<Puntaje> puntajes) {
@@ -448,8 +448,8 @@ public class JuegoModelo implements Serializable{
 	/**
 	 * Permite buscar un nivel en una lista de puntajes dadas por parametro y retorna una instancia de clase puntaje que tiene ese nivel
 	 * de lo contrario retorna null
-	 * @param nviel: Nivel a buscar en un arreglo, nivel > 0
-	 * @param puntajes: Arreglo de puntajes donde se desea encontrar el jugador con ese nivel, donde puntajes != null
+	 * @param nivel: Nivel a buscar en un arreglo, nivel mayor que 0
+	 * @param puntajes: Arreglo de puntajes donde se desea encontrar el jugador con ese nivel, donde puntajes sea diferente de null
 	 * @return nivelBuscado: instancia de la Clase puntaje que tiene todos los datos del jugaodor con ese nivel
 	 */
 	public static Puntaje busquedaBinariaPorNivel(int nivel, ArrayList<Puntaje> puntajes) {
@@ -469,5 +469,16 @@ public class JuegoModelo implements Serializable{
 			}
 		}
 		return null;
+	}
+	
+	public static void convertirPuntajeAArbol() {
+		ArrayList<Puntaje> puntajes = leerPuntajes();
+		for(int i = 0; i < puntajes.size(); i++) {
+			agregarPuntaje(puntajes.get(i));
+		}
+	}
+	private static void agregarPuntaje(Puntaje puntaje) {
+		
+		
 	}
 }

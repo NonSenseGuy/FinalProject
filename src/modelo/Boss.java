@@ -98,7 +98,7 @@ public class Boss extends Personaje implements Generar{
 	 * 
 	 * <b>pos: </b> Se ha agregado un zombie al arbol binario
 	 * 
-	 * @param z: Zombie a agregar en el arbol binario z != null
+	 * @param z: Zombie a agregar en el arbol binario z diferente de null
 	 */
 	public void agregarZombie(Zombie z) {
 		if(zombie == null) {
@@ -148,8 +148,9 @@ public class Boss extends Personaje implements Generar{
 	
 	/**
 	 * Busca un zombie que esta en la posicion pasada por parametro y si no encuentra al zombie retorna null
+	 * retorna el zombie buscado y si no lo encuentra, retorna null
 	 * @param pos: Posicion que se desea saber si hay un zombie
-	 * @return zombie: retorna el zombie buscado y si no lo encuentra, retorna null
+	 * @return zombie
 	 */
 	public Zombie buscarZombie(int pos) {
 		if(zombie == null) {
@@ -160,7 +161,7 @@ public class Boss extends Personaje implements Generar{
 	}
 	/**
 	 * Localiza zombies que tengan vida menor o igual a 0 y si no no hay un zombie con esas condiciones, retorna null
-	 * @return Zombie:  retorna el zombie que tiene vida <= 0
+	 * @return Zombie
 	 */
 	public Zombie localizarZombieMuerto() {
 		if(zombie != null) 	return zombie.localizarZombieMuerto();		
@@ -169,7 +170,7 @@ public class Boss extends Personaje implements Generar{
 	
 	/**
 	 * Modifica el zombie raiz que tiene boss
-	 * @param z
+	 * @param z: Zombie nuevo
 	 */
 	public void setZombie(Zombie z) {
 		zombie = z;

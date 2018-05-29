@@ -47,7 +47,7 @@ public abstract class Objeto implements Generar, Serializable{
 	}
 	/**
 	 * Permite modificar la poscision actual del objeto en el eje Y
-	 * @param posX: Nueva posicion del objeto en el eje Y
+	 * @param posY: Nueva posicion del objeto en el eje y
 	 */
 	public void setPosY(int posY) {
 		this.posY = posY;
