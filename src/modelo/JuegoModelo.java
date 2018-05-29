@@ -14,6 +14,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import excepciones.PartidaNoGuardadaException;
+
 /**
  * @since 2018
  * @author Alejandro Barrera Lozano
@@ -236,7 +238,7 @@ public class JuegoModelo implements Serializable{
 	 * @return partida: Parida guardada en la aplicacion para ejecutarla en la interfaz
 	 */
 	
-	public static JuegoModelo cargarPartida() {
+	public static JuegoModelo cargarPartida() throws PartidaNoGuardadaException {
 		File file = new File(GUARDAR_PARTIDA);
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
@@ -257,6 +259,8 @@ public class JuegoModelo implements Serializable{
 				}catch(IOException e) {
 					e.printStackTrace();
 				}
+			}else {
+				throw new PartidaNoGuardadaException();
 			}
 			
 		}catch(Exception e) {
@@ -463,9 +467,6 @@ public class JuegoModelo implements Serializable{
 		}
 		return null;
 	}
-	public void setEscenario(Escenario e) {
-		this.primero = e;
-		
-	}
+
 	
 }

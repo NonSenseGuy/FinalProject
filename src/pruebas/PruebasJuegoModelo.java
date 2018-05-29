@@ -18,12 +18,12 @@ class PruebasJuegoModelo {
 	
 	public void setupEscenario() {
 		jm = new JuegoModelo("Test", 1, 0);
-		jm.setEscenario(null);
+		jm.setPrimero(null);
 	}
 	
 	public void setupEscenario2() {
 		jm = new JuegoModelo("Test", 1, 0);
-		jm.setEscenario(null);
+		jm.setPrimero(null);
 		e = new Escenario(Escenario.ESCENARIOS[0]);
 		jm.agregarEscenario(e);
 	}
@@ -37,6 +37,13 @@ class PruebasJuegoModelo {
 		puntajes.add(new Puntaje("Test1", 1, 25));
 		puntajes.add(new Puntaje("Alejandro", 3, 600));
 		puntajes.add(new Puntaje("Fredo", 6, 1200));
+	}
+	
+	public void setupEscenario5() {
+		puntajes = new ArrayList<Puntaje>();
+		puntajes.add(new Puntaje("Fredo", 6, 1200));
+		puntajes.add(new Puntaje("Alejandro", 3, 600));
+		puntajes.add(new Puntaje("Test1", 1, 25));
 	}
 	
 
@@ -81,9 +88,21 @@ class PruebasJuegoModelo {
 	
 	@Test
 	public void  busquedaBinariaNivelTest() {
-		setupEscenario5(){
-			Puntaje
-		}
+		setupEscenario5();
+		Puntaje p = JuegoModelo.busquedaBinariaPorNivel(3, puntajes);
+		assertTrue(p.equals(puntajes.get(1)));
+	}
+	@Test
+	public void busquedaBinariaPuntajeTest() {
+		setupEscenario5();
+		Puntaje p = JuegoModelo.busquedaBinariaPuntaje(25, puntajes);
+		assertTrue(p.equals(puntajes.get(2)));
+	}
+	
+	@Test
+	public void leerPuntajesTest() {
+		ArrayList<Puntaje> p = JuegoModelo.leerPuntajes();
+		assertTrue(p != null);
 	}
 	
 	
