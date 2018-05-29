@@ -1,6 +1,6 @@
-# FinalProject
+<h1> Dead Pixel </h1> <br>
 
-<b> Instrucciones del juego </b>
+<h2> Instrucciones del juego </h2> <br>
 Mueve el personaje con las teclas 'A' y 'D' <br>
 Dispara con las teclas flecha izquierda y flecha derecha <br>
 Cambia de armas con la tecla 'E' y 'Q' <br>
@@ -8,7 +8,7 @@ Subiras de nivel cada vez que mates toda la ronda de zombie, si alguno de los zo
 el juego quedara en un punto muerto y tendras que reiniciar el juego
 Obtendras nuevas armas en el nivel 2 y 4
 
-<b> Como se cubrieron cada uno de los puntos </b>
+<h2> Como se cubrieron cada uno de los puntos </h2> <br>
 1.El proyecto fue trabajado y montado en github https://github.com/NonSenseGuy/FinalProject.git <br>
 2.El juego guarda partida cada vez que se pasa de nivel <br>
  Se puede cargar la partida desde el menu de inicio en el boton de cargar partida <br>
